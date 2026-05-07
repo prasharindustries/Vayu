@@ -2,6 +2,7 @@
 <html lang="hi" translate="no">
 <head>
     <meta charset="UTF-8">
+    <link rel="preconnect" href="https://raw.githubusercontent.com">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover, user-scalable=no">
     <meta name="google" content="notranslate">
     <meta name="theme-color" content="#1a3a2a">
@@ -905,9 +906,11 @@
 
             // SW
             if('serviceWorker' in navigator){
-                const sw=`const C='pawan-v4';self.addEventListener('install',e=>{e.waitUntil(caches.open(C).then(c=>c.addAll(['/'])).then(()=>self.skipWaiting()))});self.addEventListener('activate',e=>{e.waitUntil(caches.keys().then(k=>Promise.all(k.filter(x=>x!==C).map(x=>caches.delete(x)))).then(()=>self.clients.claim()))});self.addEventListener('fetch',e=>{e.respondWith(caches.match(e.request).then(r=>r||fetch(e.request).then(res=>{if(res.ok){const cl=res.clone();caches.open(C).then(c=>c.put(e.request,cl));}return res;})))});`;
-                navigator.serviceWorker.register(URL.createObjectURL(new Blob([sw],{type:'application/javascript'}))).catch(()=>{});
-            }
+    const sw=`const C='pawan-v5';self.addEventListener('install',e=>{e.waitUntil(caches.open(C).then(c=>c.addAll([location.pathname])).then(()=>self.skipWaiting()));});self.addEventListener('activate',e=>{e.waitUntil(caches.keys().then(k=>Promise.all(k.filter(x=>x!==C).map(x=>caches.delete(x)))).then(()=>self.clients.claim()));});self.addEventListener('fetch',e=>{e.respondWith(caches.match(e.request).then(r=>r||fetch(e.request).then(res=>{if(res.ok){const cl=res.clone();caches.open(C).then(c=>c.put(e.request,cl));}return res;})))});`;
+    const blob=new Blob([sw],{type:'application/javascript'});
+    const swUrl=URL.createObjectURL(blob);
+    navigator.serviceWorker.register(swUrl,{scope:location.pathname}).catch(()=>{});
+}
 
             // Init
             setTechnique('578');
