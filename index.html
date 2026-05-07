@@ -511,6 +511,7 @@
             let phase='inhale', timeLeft=INHALE, round=0, running=false, timerId=null;
             let mode='audio';
             let audioCtx=null;
+            let roundsBeforeBreak = 3; // Show break after every 3 rounds
             let breakActive = false;
             let countdownActive = false;
 
@@ -670,11 +671,6 @@
                 if(pref) u.voice=pref;
                 window.speechSynthesis.speak(u);
             }
-            function speakPhrase(k){ 
-                if (!breakActive && !countdownActive) {
-                    speakCalm(t(k), lang==='hi'); 
-                }
-            }
 
             function updateAllLabels(){
                 if(!running && !countdownActive){ phaseLabel.textContent=t('ready'); startBtn.textContent=t('start'); }
@@ -717,11 +713,11 @@
             
             function setCues(p){
                 haptic(); chime(p);
-                if(mode==='audio'){
-                    if(p==='inhale') speakPhrase('voiceInhale');
-                    else if(p==='hold') speakPhrase('voiceHold');
-                    else speakPhrase('voiceExhale');
-                    if(!breakActive) audioIndicator.textContent=t('audioActive');
+                if(mode==='audio' && !breakActive && !countdownActive){
+                    if(p==='inhale') speakCalm(t('voiceInhale'), lang==='hi');
+                    else if(p==='hold') speakCalm(t('voiceHold'), lang==='hi');
+                    else speakCalm(t('voiceExhale'), lang==='hi');
+                    audioIndicator.textContent=t('audioActive');
                 }
             }
 
@@ -730,6 +726,9 @@
                 else if(phase==='hold'){ phase='exhale'; timeLeft=EXHALE; }
                 else{
                     phase='inhale'; timeLeft=INHALE; round++;
+                    if(running && round > 0 && round % roundsBeforeBreak === 0) {
+                        showBreakDialog();
+                    }
                 }
                 updateUI();
                 updateProgressRing();
@@ -836,6 +835,8 @@
                     updateUI();
                     if(timerId) clearInterval(timerId);
                     timerId=setInterval(tick,1000);
+                    // Speak first inhale cue
+                    if(mode==='audio') setCues('inhale');
                 });
             }
             function pause(){
@@ -888,11 +889,6 @@
                 visualBtn.classList.remove('active-mode');
                 audioIndicator.textContent=running?t('audioActive'):t('audioGuide');
                 startSub.textContent = running ? (lang==='hi'?'विराम':'Pause') : t('startSub');
-                if(running && !breakActive){
-                    if(phase==='inhale') speakPhrase('voiceInhaleDeep');
-                    else if(phase==='hold') speakPhrase('voiceHoldGentle');
-                    else speakPhrase('voiceExhaleSlow');
-                }
             }
             visualBtn.addEventListener('click',setVisual);
             audioBtn.addEventListener('click',setAudio);
