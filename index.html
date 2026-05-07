@@ -915,8 +915,12 @@
             audioBtn.addEventListener('click',setAudio);
 
             langToggle.addEventListener('click',()=>{
-                lang=lang==='hi'?'en':'hi';
-                updateAllLabels(); updateUI();
+    lang=lang==='hi'?'en':'hi';
+    updateAllLabels(); updateUI();
+    document.getElementById('disclaimerText').textContent = 
+        lang === 'hi' ? 
+        '🕉️ यदि सही तरीके से किया जाए तो 4-5 चक्र पर्याप्त हैं। इसे ज़बरदस्ती न करें।' : 
+        '🕉️ 4-5 rounds are enough when done correctly. Don\'t force it.';
                 if(!running && !countdownActive){
                     phaseLabel.textContent=t('ready');
                     timerDisplay.textContent=timeLeft;
