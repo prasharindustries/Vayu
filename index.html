@@ -3,956 +3,976 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
-<title>Breathe · 5-7-8</title>
+<meta name="description" content="Vāyu — Ancient breath, modern calm. 5-7-8 breathing technique.">
+<title>Vāyu · वायु</title>
 <style>
-  @import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300;1,400&family=Jost:wght@200;300;400&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400;0,500;1,400;1,500&family=Outfit:wght@200;300;400&display=swap');
 
-  :root {
-    --ink: #e8e4dc;
-    --ink-dim: rgba(232,228,220,0.45);
-    --ink-faint: rgba(232,228,220,0.18);
-    --gold: #c9a96e;
-    --gold-dim: rgba(201,169,110,0.35);
-    --deep: #0a0c10;
-    --circle-in: #6eb5c9;
-    --circle-hold: #c9a96e;
-    --circle-out: #9bc9a0;
-    --radius: 140px;
-  }
+:root {
+  --bg:        #07080d;
+  --ink:       #ede8df;
+  --ink-dim:   rgba(237,232,223,0.42);
+  --ink-ghost: rgba(237,232,223,0.14);
+  --saffron:   #e8935a;
+  --saffron-d: rgba(232,147,90,0.28);
+  --teal:      #5ab8c8;
+  --teal-d:    rgba(90,184,200,0.22);
+  --sage:      #7dbf91;
+  --sage-d:    rgba(125,191,145,0.22);
+  --gold:      #d4a96a;
+  --gold-d:    rgba(212,169,106,0.25);
+  --r: 138px;
+}
 
-  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
 
-  html, body {
-    width: 100%; height: 100%;
-    background: var(--deep);
-    overflow: hidden;
-    font-family: 'Jost', sans-serif;
-    color: var(--ink);
-    -webkit-font-smoothing: antialiased;
-    user-select: none;
-  }
+html,body{
+  width:100%;height:100%;
+  background:var(--bg);
+  overflow:hidden;
+  font-family:'Outfit',sans-serif;
+  color:var(--ink);
+  -webkit-font-smoothing:antialiased;
+  user-select:none;
+}
 
-  /* ── CANVAS BACKGROUND ── */
-  #bg {
-    position: fixed; inset: 0;
-    z-index: 0;
-  }
+/* ── BG CANVAS ── */
+#bg{position:fixed;inset:0;z-index:0}
 
-  /* ── GRAIN OVERLAY ── */
-  .grain {
-    position: fixed; inset: 0; z-index: 1;
-    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='1'/%3E%3C/svg%3E");
-    opacity: 0.04; pointer-events: none;
-  }
+/* ── VIGNETTE ── */
+.vignette{
+  position:fixed;inset:0;z-index:1;
+  background:radial-gradient(ellipse at 50% 50%, transparent 40%, rgba(7,8,13,0.75) 100%);
+  pointer-events:none;
+}
 
-  /* ── MAIN LAYOUT ── */
-  #app {
-    position: relative; z-index: 2;
-    width: 100%; height: 100vh;
-    display: flex; flex-direction: column;
-    align-items: center; justify-content: center;
-    gap: 0;
-    padding: 20px;
-  }
+/* ── GRAIN ── */
+.grain{
+  position:fixed;inset:0;z-index:2;pointer-events:none;
+  background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  opacity:0.032;
+}
 
-  /* ── QUOTE SECTION ── */
-  #quote-wrap {
-    text-align: center;
-    max-width: 580px;
-    margin-bottom: 36px;
-    opacity: 0;
-    animation: fadeUp 1.8s ease 0.3s forwards;
-  }
-  #quote-en {
-    font-family: 'Cormorant Garamond', serif;
-    font-size: clamp(1.05rem, 2.2vw, 1.35rem);
-    font-style: italic;
-    font-weight: 300;
-    color: var(--ink);
-    line-height: 1.55;
-    letter-spacing: 0.01em;
-  }
-  #quote-divider {
-    width: 36px; height: 1px;
-    background: var(--gold-dim);
-    margin: 12px auto;
-  }
-  #quote-hi {
-    font-size: clamp(0.9rem, 1.8vw, 1.05rem);
-    font-weight: 200;
-    color: var(--ink-dim);
-    letter-spacing: 0.04em;
-    line-height: 1.6;
-  }
+/* ── WORDMARK ── */
+#wordmark{
+  position:fixed;top:22px;left:26px;z-index:10;
+  opacity:0;animation:riseIn 2.2s cubic-bezier(.16,1,.3,1) 0.2s forwards;
+}
+#wordmark-main{
+  font-family:'EB Garamond',serif;
+  font-size:1.5rem;font-weight:400;
+  letter-spacing:0.06em;
+  background:linear-gradient(135deg, var(--ink) 30%, var(--saffron) 100%);
+  -webkit-background-clip:text;-webkit-text-fill-color:transparent;
+  background-clip:text;
+  line-height:1;
+}
+#wordmark-deva{
+  font-size:0.7rem;font-weight:200;
+  letter-spacing:0.22em;
+  color:var(--ink-dim);
+  margin-top:3px;
+  font-style:italic;
+}
 
-  /* ── BREATHING CIRCLE ── */
-  #circle-wrap {
-    position: relative;
-    width: calc(var(--radius) * 2 + 60px);
-    height: calc(var(--radius) * 2 + 60px);
-    display: flex; align-items: center; justify-content: center;
-    opacity: 0;
-    animation: fadeUp 1.8s ease 0.7s forwards;
-  }
+/* ── TOP-RIGHT CONTROLS ── */
+#top-right{
+  position:fixed;top:18px;right:18px;z-index:10;
+  display:flex;gap:8px;align-items:center;
+}
+.icon-btn{
+  width:36px;height:36px;border-radius:50%;
+  border:1px solid var(--ink-ghost);
+  background:rgba(7,8,13,0.5);
+  color:var(--ink-dim);
+  font-size:0.95rem;cursor:pointer;
+  display:flex;align-items:center;justify-content:center;
+  transition:all 0.3s;backdrop-filter:blur(12px);
+}
+.icon-btn:hover{border-color:var(--saffron-d);color:var(--saffron);}
 
-  #ring-outer {
-    position: absolute;
-    width: calc(var(--radius) * 2 + 60px);
-    height: calc(var(--radius) * 2 + 60px);
-    border-radius: 50%;
-    border: 1px solid var(--ink-faint);
-    animation: rotateRing 20s linear infinite;
-  }
-  #ring-outer::before {
-    content: '';
-    position: absolute;
-    top: -3px; left: 50%;
-    transform: translateX(-50%);
-    width: 6px; height: 6px;
-    border-radius: 50%;
-    background: var(--gold);
-    box-shadow: 0 0 10px var(--gold);
-  }
+/* ── APP SHELL ── */
+#app{
+  position:relative;z-index:3;
+  width:100%;height:100vh;
+  display:flex;flex-direction:column;
+  align-items:center;justify-content:center;
+  padding:16px;gap:0;
+}
 
-  #circle {
-    width: calc(var(--radius) * 2);
-    height: calc(var(--radius) * 2);
-    border-radius: 50%;
-    background: radial-gradient(circle at 35% 35%, rgba(110,181,201,0.22), rgba(10,12,16,0.6));
-    border: 1.5px solid rgba(110,181,201,0.3);
-    box-shadow: 0 0 60px rgba(110,181,201,0.1), inset 0 0 40px rgba(10,12,16,0.5);
-    display: flex; flex-direction: column;
-    align-items: center; justify-content: center;
-    gap: 4px;
-    transition: transform 0.4s ease, border-color 0.6s ease, box-shadow 0.6s ease;
-    transform: scale(1);
-    position: relative;
-    overflow: hidden;
-  }
+/* ── QUOTE ── */
+#quote-wrap{
+  text-align:center;max-width:520px;
+  margin-bottom:32px;
+  opacity:0;animation:riseIn 2s cubic-bezier(.16,1,.3,1) 0.5s forwards;
+}
+#quote-en{
+  font-family:'EB Garamond',serif;
+  font-size:clamp(1rem,2vw,1.28rem);
+  font-style:italic;font-weight:400;
+  color:var(--ink);line-height:1.6;
+  letter-spacing:0.015em;
+}
+#qdivider{
+  width:1px;height:28px;
+  background:linear-gradient(to bottom, transparent, var(--gold-d), transparent);
+  margin:10px auto;
+}
+#quote-hi{
+  font-size:clamp(0.82rem,1.6vw,0.98rem);
+  font-weight:200;color:var(--ink-dim);
+  letter-spacing:0.05em;line-height:1.65;
+}
 
-  #circle::before {
-    content: '';
-    position: absolute; inset: 0;
-    border-radius: 50%;
-    background: radial-gradient(circle at 50% 50%, transparent 40%, rgba(10,12,16,0.3) 100%);
-    pointer-events: none;
-  }
+/* ── CIRCLE SYSTEM ── */
+#circle-wrap{
+  position:relative;
+  width:calc(var(--r)*2 + 80px);
+  height:calc(var(--r)*2 + 80px);
+  display:flex;align-items:center;justify-content:center;
+  opacity:0;animation:riseIn 2s cubic-bezier(.16,1,.3,1) 0.8s forwards;
+}
 
-  #phase-label {
-    font-family: 'Cormorant Garamond', serif;
-    font-size: clamp(1.4rem, 3.5vw, 2rem);
-    font-weight: 300;
-    font-style: italic;
-    letter-spacing: 0.04em;
-    color: var(--ink);
-    transition: opacity 0.4s;
-  }
-  #phase-count {
-    font-size: clamp(2.2rem, 5vw, 3rem);
-    font-weight: 200;
-    letter-spacing: -0.02em;
-    color: var(--ink);
-    line-height: 1;
-    font-variant-numeric: tabular-nums;
-  }
-  #phase-sub {
-    font-size: 0.65rem;
-    font-weight: 300;
-    letter-spacing: 0.18em;
-    text-transform: uppercase;
-    color: var(--ink-dim);
-    margin-top: 2px;
-  }
+/* Slow orbit ring */
+#orbit{
+  position:absolute;
+  width:calc(var(--r)*2 + 80px);
+  height:calc(var(--r)*2 + 80px);
+  border-radius:50%;
+  border:1px solid var(--ink-ghost);
+  animation:spin 28s linear infinite;
+}
+#orbit::before,#orbit::after{
+  content:'';position:absolute;
+  width:5px;height:5px;border-radius:50%;
+  top:-2.5px;left:50%;transform:translateX(-50%);
+  background:var(--saffron);
+  box-shadow:0 0 8px 2px var(--saffron-d);
+}
+#orbit::after{
+  top:auto;bottom:-2.5px;
+  background:var(--teal);
+  box-shadow:0 0 8px 2px var(--teal-d);
+}
 
-  /* ── PROGRESS ARC ── */
-  #arc-svg {
-    position: absolute; inset: -30px;
-    width: calc(100% + 60px);
-    height: calc(100% + 60px);
-    transform: rotate(-90deg);
-    pointer-events: none;
-  }
-  #arc-track {
-    fill: none;
-    stroke: var(--ink-faint);
-    stroke-width: 1.5;
-  }
-  #arc-fill {
-    fill: none;
-    stroke: var(--circle-in);
-    stroke-width: 2;
-    stroke-linecap: round;
-    transition: stroke-dashoffset 1s linear, stroke 0.6s ease;
-  }
+/* Inner orbit */
+#orbit2{
+  position:absolute;
+  width:calc(var(--r)*2 + 40px);
+  height:calc(var(--r)*2 + 40px);
+  border-radius:50%;
+  border:1px dashed rgba(237,232,223,0.07);
+  animation:spinRev 40s linear infinite;
+}
 
-  /* ── RIPPLE RINGS ── */
-  .ripple {
-    position: absolute;
-    border-radius: 50%;
-    border: 1px solid rgba(110,181,201,0.15);
-    animation: rippleOut 4s ease-out infinite;
-    pointer-events: none;
-  }
-  .ripple:nth-child(1) { width: 100%; height: 100%; animation-delay: 0s; }
-  .ripple:nth-child(2) { width: 100%; height: 100%; animation-delay: 1.3s; }
-  .ripple:nth-child(3) { width: 100%; height: 100%; animation-delay: 2.6s; }
+/* Main circle */
+#circle{
+  width:calc(var(--r)*2);
+  height:calc(var(--r)*2);
+  border-radius:50%;
+  background:radial-gradient(circle at 38% 32%, rgba(90,184,200,0.18) 0%, rgba(7,8,13,0.55) 65%);
+  border:1.5px solid rgba(90,184,200,0.25);
+  box-shadow:0 0 70px rgba(90,184,200,0.08),inset 0 0 50px rgba(7,8,13,0.6);
+  display:flex;flex-direction:column;align-items:center;justify-content:center;gap:3px;
+  transition:transform 0.6s cubic-bezier(.34,1.56,.64,1),
+             border-color 0.7s ease,
+             box-shadow 0.7s ease,
+             background 0.7s ease;
+  position:relative;cursor:pointer;
+}
+#circle::after{
+  content:'';position:absolute;inset:0;border-radius:50%;
+  background:radial-gradient(circle at 50% 50%, transparent 35%, rgba(7,8,13,0.35) 100%);
+  pointer-events:none;
+}
 
-  /* ── ROUND COUNTER ── */
-  #round-info {
-    margin-top: 24px;
-    text-align: center;
-    opacity: 0;
-    animation: fadeUp 1.8s ease 1s forwards;
-  }
-  #round-label {
-    font-size: 0.65rem;
-    letter-spacing: 0.2em;
-    text-transform: uppercase;
-    color: var(--ink-dim);
-    margin-bottom: 8px;
-  }
-  #dots {
-    display: flex; gap: 8px; justify-content: center; align-items: center;
-  }
-  .dot {
-    width: 6px; height: 6px;
-    border-radius: 50%;
-    background: var(--ink-faint);
-    border: 1px solid var(--ink-dim);
-    transition: background 0.4s, box-shadow 0.4s;
-  }
-  .dot.done {
-    background: var(--gold);
-    border-color: var(--gold);
-    box-shadow: 0 0 8px var(--gold);
-  }
-  .dot.active {
-    background: var(--circle-in);
-    border-color: var(--circle-in);
-    box-shadow: 0 0 10px var(--circle-in);
-  }
+/* Ripples */
+.ripple{
+  position:absolute;border-radius:50%;pointer-events:none;
+  border:1px solid rgba(90,184,200,0.12);
+  width:100%;height:100%;
+  animation:rippleOut 5s ease-out infinite;
+}
+.ripple:nth-child(2){animation-delay:1.6s;}
+.ripple:nth-child(3){animation-delay:3.2s;}
 
-  /* ── CONTROLS ── */
-  #controls {
-    margin-top: 28px;
-    display: flex; flex-direction: column;
-    align-items: center; gap: 14px;
-    opacity: 0;
-    animation: fadeUp 1.8s ease 1.2s forwards;
-  }
+/* Progress arc */
+#arc-svg{
+  position:absolute;
+  left:50%;top:50%;
+  width:calc(var(--r)*2 + 46px);
+  height:calc(var(--r)*2 + 46px);
+  transform:translate(-50%,-50%) rotate(-90deg);
+  pointer-events:none;overflow:visible;
+}
+#arc-track{fill:none;stroke:var(--ink-ghost);stroke-width:1.5;}
+#arc-fill{
+  fill:none;stroke:var(--teal);stroke-width:2.5;stroke-linecap:round;
+  transition:stroke-dashoffset 1s linear,stroke 0.7s ease;
+}
 
-  #btn-start {
-    padding: 12px 44px;
-    border-radius: 40px;
-    border: 1px solid var(--gold-dim);
-    background: rgba(201,169,110,0.08);
-    color: var(--gold);
-    font-family: 'Jost', sans-serif;
-    font-size: 0.8rem;
-    font-weight: 300;
-    letter-spacing: 0.22em;
-    text-transform: uppercase;
-    cursor: pointer;
-    transition: all 0.3s ease;
-    backdrop-filter: blur(4px);
-  }
-  #btn-start:hover {
-    background: rgba(201,169,110,0.16);
-    box-shadow: 0 0 20px rgba(201,169,110,0.2);
-    transform: translateY(-1px);
-  }
-  #btn-start:active { transform: scale(0.98); }
+/* Phase text */
+#phase-label{
+  font-family:'EB Garamond',serif;
+  font-size:clamp(1.15rem,3vw,1.7rem);
+  font-weight:400;font-style:italic;
+  letter-spacing:0.04em;color:var(--ink);
+  transition:opacity 0.35s;position:relative;z-index:1;
+}
+#phase-count{
+  font-size:clamp(2.4rem,5.5vw,3.2rem);
+  font-weight:200;letter-spacing:-0.03em;
+  color:var(--ink);line-height:1;
+  font-variant-numeric:tabular-nums;
+  position:relative;z-index:1;
+}
+#phase-hint{
+  font-size:0.6rem;font-weight:300;
+  letter-spacing:0.2em;text-transform:uppercase;
+  color:var(--ink-dim);margin-top:1px;
+  position:relative;z-index:1;
+}
 
-  #mode-row {
-    display: flex; gap: 6px; align-items: center;
-  }
-  .mode-btn {
-    padding: 6px 18px;
-    border-radius: 20px;
-    border: 1px solid var(--ink-faint);
-    background: transparent;
-    color: var(--ink-dim);
-    font-family: 'Jost', sans-serif;
-    font-size: 0.65rem;
-    font-weight: 300;
-    letter-spacing: 0.16em;
-    text-transform: uppercase;
-    cursor: pointer;
-    transition: all 0.3s;
-  }
-  .mode-btn.active {
-    border-color: rgba(110,181,201,0.5);
-    background: rgba(110,181,201,0.1);
-    color: var(--circle-in);
-  }
-  .mode-btn:hover:not(.active) {
-    border-color: var(--ink-dim);
-    color: var(--ink);
-  }
+/* ── ROUND DOTS ── */
+#round-info{
+  margin-top:22px;text-align:center;
+  opacity:0;animation:riseIn 2s cubic-bezier(.16,1,.3,1) 1s forwards;
+}
+#round-label{
+  font-size:0.58rem;letter-spacing:0.24em;
+  text-transform:uppercase;color:var(--ink-dim);margin-bottom:7px;
+}
+#dots{display:flex;gap:9px;justify-content:center;align-items:center;}
+.dot{
+  width:5px;height:5px;border-radius:50%;
+  background:var(--ink-ghost);
+  border:1px solid rgba(237,232,223,0.2);
+  transition:all 0.4s ease;
+}
+.dot.done{background:var(--gold);border-color:var(--gold);box-shadow:0 0 6px var(--gold);}
+.dot.active{background:var(--teal);border-color:var(--teal);box-shadow:0 0 10px var(--teal);transform:scale(1.3);}
 
-  #rounds-row {
-    display: flex; gap: 10px; align-items: center;
-  }
-  #rounds-row span {
-    font-size: 0.65rem;
-    letter-spacing: 0.16em;
-    text-transform: uppercase;
-    color: var(--ink-dim);
-  }
-  .r-btn {
-    width: 26px; height: 26px;
-    border-radius: 50%;
-    border: 1px solid var(--ink-faint);
-    background: transparent;
-    color: var(--ink-dim);
-    font-size: 1rem;
-    line-height: 1;
-    cursor: pointer;
-    display: flex; align-items: center; justify-content: center;
-    transition: all 0.2s;
-  }
-  .r-btn:hover { border-color: var(--gold-dim); color: var(--gold); }
-  #rounds-val {
-    font-size: 0.9rem;
-    font-weight: 300;
-    color: var(--ink);
-    width: 20px; text-align: center;
-  }
+/* ── CONTROLS ── */
+#controls{
+  margin-top:26px;display:flex;flex-direction:column;
+  align-items:center;gap:12px;
+  opacity:0;animation:riseIn 2s cubic-bezier(.16,1,.3,1) 1.15s forwards;
+}
 
-  /* ── SOUND TOGGLE ── */
-  #sound-btn {
-    position: fixed; top: 20px; right: 20px;
-    width: 38px; height: 38px;
-    border-radius: 50%;
-    border: 1px solid var(--ink-faint);
-    background: rgba(10,12,16,0.4);
-    color: var(--ink-dim);
-    font-size: 1rem;
-    cursor: pointer;
-    display: flex; align-items: center; justify-content: center;
-    transition: all 0.3s;
-    backdrop-filter: blur(8px);
-    z-index: 10;
-  }
-  #sound-btn:hover { border-color: var(--gold-dim); color: var(--gold); }
+#btn-start{
+  padding:11px 52px;border-radius:40px;
+  border:1px solid var(--saffron-d);
+  background:rgba(232,147,90,0.07);
+  color:var(--saffron);
+  font-family:'Outfit',sans-serif;
+  font-size:0.75rem;font-weight:300;
+  letter-spacing:0.26em;text-transform:uppercase;
+  cursor:pointer;transition:all 0.35s ease;
+  backdrop-filter:blur(6px);
+}
+#btn-start:hover{
+  background:rgba(232,147,90,0.15);
+  box-shadow:0 0 28px rgba(232,147,90,0.18);
+  transform:translateY(-1px);
+}
+#btn-start:active{transform:scale(0.97);}
 
-  /* ── TITLE ── */
-  #title-wrap {
-    position: fixed; top: 18px; left: 24px;
-    z-index: 10;
-    opacity: 0;
-    animation: fadeIn 2s ease 0.5s forwards;
-  }
-  #title-main {
-    font-family: 'Cormorant Garamond', serif;
-    font-size: 1.1rem;
-    font-weight: 300;
-    font-style: italic;
-    letter-spacing: 0.05em;
-    color: var(--ink-dim);
-  }
-  #title-sub {
-    font-size: 0.55rem;
-    letter-spacing: 0.22em;
-    text-transform: uppercase;
-    color: rgba(232,228,220,0.25);
-    margin-top: 2px;
-  }
+#mode-row{display:flex;gap:5px;}
+.mode-btn{
+  padding:5px 16px;border-radius:20px;
+  border:1px solid var(--ink-ghost);
+  background:transparent;color:var(--ink-dim);
+  font-family:'Outfit',sans-serif;
+  font-size:0.6rem;font-weight:300;
+  letter-spacing:0.14em;text-transform:uppercase;
+  cursor:pointer;transition:all 0.3s;
+}
+.mode-btn.active{
+  border-color:rgba(90,184,200,0.4);
+  background:rgba(90,184,200,0.09);
+  color:var(--teal);
+}
+.mode-btn:hover:not(.active){border-color:var(--ink-dim);color:var(--ink);}
 
-  /* ── BREATHING VISUAL (eyes open mode) ── */
-  #breath-visual {
-    position: fixed; inset: 0;
-    display: none;
-    align-items: center; justify-content: center;
-    z-index: 5;
-    background: radial-gradient(ellipse at center, rgba(10,12,16,0) 0%, rgba(10,12,16,0.85) 100%);
-    pointer-events: none;
-  }
-  #breath-visual.show { display: flex; }
+#rounds-row{display:flex;gap:10px;align-items:center;}
+#rounds-row span{
+  font-size:0.6rem;letter-spacing:0.18em;
+  text-transform:uppercase;color:var(--ink-dim);
+}
+.r-btn{
+  width:24px;height:24px;border-radius:50%;
+  border:1px solid var(--ink-ghost);
+  background:transparent;color:var(--ink-dim);
+  font-size:1rem;cursor:pointer;
+  display:flex;align-items:center;justify-content:center;
+  transition:all 0.2s;
+}
+.r-btn:hover{border-color:var(--saffron-d);color:var(--saffron);}
+#rounds-val{font-size:0.88rem;font-weight:300;color:var(--ink);width:18px;text-align:center;}
 
-  /* ── FINISH MESSAGE ── */
-  #finish-msg {
-    display: none;
-    position: fixed; inset: 0; z-index: 20;
-    background: rgba(10,12,16,0.7);
-    backdrop-filter: blur(16px);
-    align-items: center; justify-content: center;
-    flex-direction: column;
-    gap: 16px;
-    text-align: center;
-    padding: 40px;
-  }
-  #finish-msg.show { display: flex; }
-  #finish-msg h2 {
-    font-family: 'Cormorant Garamond', serif;
-    font-size: clamp(1.8rem, 4vw, 2.8rem);
-    font-weight: 300;
-    font-style: italic;
-    color: var(--ink);
-  }
-  #finish-msg p {
-    font-size: 0.85rem;
-    font-weight: 200;
-    color: var(--ink-dim);
-    letter-spacing: 0.08em;
-    max-width: 340px;
-    line-height: 1.7;
-  }
-  #btn-again {
-    margin-top: 16px;
-    padding: 12px 40px;
-    border-radius: 40px;
-    border: 1px solid var(--gold-dim);
-    background: rgba(201,169,110,0.08);
-    color: var(--gold);
-    font-family: 'Jost', sans-serif;
-    font-size: 0.75rem;
-    font-weight: 300;
-    letter-spacing: 0.2em;
-    text-transform: uppercase;
-    cursor: pointer;
-    transition: all 0.3s;
-  }
-  #btn-again:hover { background: rgba(201,169,110,0.16); }
+/* ── TECHNIQUE BADGE ── */
+#technique{
+  position:fixed;bottom:22px;left:50%;transform:translateX(-50%);
+  z-index:10;opacity:0;
+  animation:riseIn 2s ease 1.4s forwards;
+  font-size:0.55rem;letter-spacing:0.28em;
+  text-transform:uppercase;color:rgba(237,232,223,0.2);
+  white-space:nowrap;
+}
 
-  /* ── KEYFRAMES ── */
-  @keyframes fadeUp {
-    from { opacity: 0; transform: translateY(18px); }
-    to   { opacity: 1; transform: translateY(0); }
-  }
-  @keyframes fadeIn {
-    from { opacity: 0; } to { opacity: 1; }
-  }
-  @keyframes rotateRing {
-    from { transform: rotate(0deg); }
-    to   { transform: rotate(360deg); }
-  }
-  @keyframes rippleOut {
-    0%   { transform: scale(1);    opacity: 0.3; }
-    100% { transform: scale(1.6);  opacity: 0; }
-  }
-  @keyframes pulseGlow {
-    0%, 100% { box-shadow: 0 0 30px rgba(110,181,201,0.08); }
-    50%       { box-shadow: 0 0 60px rgba(110,181,201,0.2); }
-  }
+/* ── FINISH OVERLAY ── */
+#finish-msg{
+  display:none;position:fixed;inset:0;z-index:20;
+  background:rgba(7,8,13,0.72);
+  backdrop-filter:blur(20px);
+  align-items:center;justify-content:center;
+  flex-direction:column;gap:14px;
+  text-align:center;padding:40px;
+}
+#finish-msg.show{display:flex;}
+#finish-msg .f-deva{
+  font-size:0.65rem;letter-spacing:0.3em;
+  text-transform:uppercase;color:var(--saffron);
+  margin-bottom:4px;opacity:0.7;
+}
+#finish-msg h2{
+  font-family:'EB Garamond',serif;
+  font-size:clamp(2rem,5vw,3rem);
+  font-weight:400;font-style:italic;
+  color:var(--ink);line-height:1.2;
+}
+#finish-msg p{
+  font-size:0.82rem;font-weight:200;
+  color:var(--ink-dim);letter-spacing:0.07em;
+  max-width:320px;line-height:1.75;margin-top:6px;
+}
+#finish-msg .f-hi{
+  font-size:0.78rem;font-weight:200;
+  color:rgba(237,232,223,0.3);
+  font-style:italic;letter-spacing:0.06em;
+}
+#btn-again{
+  margin-top:18px;padding:11px 44px;border-radius:40px;
+  border:1px solid var(--saffron-d);
+  background:rgba(232,147,90,0.07);
+  color:var(--saffron);
+  font-family:'Outfit',sans-serif;
+  font-size:0.72rem;font-weight:300;
+  letter-spacing:0.22em;text-transform:uppercase;
+  cursor:pointer;transition:all 0.3s;
+}
+#btn-again:hover{background:rgba(232,147,90,0.15);}
 
-  /* ── RESPONSIVE ── */
-  @media (max-width: 480px) {
-    :root { --radius: 110px; }
-    #quote-wrap { margin-bottom: 24px; }
-    #controls { margin-top: 20px; }
-  }
-  @media (max-height: 700px) {
-    :root { --radius: 100px; }
-    #quote-wrap { margin-bottom: 16px; }
-    #controls { margin-top: 16px; gap: 10px; }
-  }
+/* ── PHASE FLASH (eyes-closed full-screen cue) ── */
+#phase-flash{
+  position:fixed;inset:0;z-index:4;pointer-events:none;
+  opacity:0;transition:opacity 1.2s ease;
+  display:flex;flex-direction:column;
+  align-items:center;justify-content:center;gap:12px;
+}
+#phase-flash.visible{opacity:1;}
+#flash-label{
+  font-family:'EB Garamond',serif;
+  font-size:clamp(2.2rem,6vw,4rem);
+  font-weight:400;font-style:italic;
+  color:rgba(237,232,223,0.08);
+  letter-spacing:0.08em;
+}
+#flash-count{
+  font-size:clamp(4rem,10vw,7rem);
+  font-weight:200;color:rgba(237,232,223,0.06);
+  font-variant-numeric:tabular-nums;
+  letter-spacing:-0.04em;
+}
+
+/* ── KEYFRAMES ── */
+@keyframes riseIn{
+  from{opacity:0;transform:translateY(20px);}
+  to{opacity:1;transform:translateY(0);}
+}
+@keyframes spin{from{transform:rotate(0deg);}to{transform:rotate(360deg);}}
+@keyframes spinRev{from{transform:rotate(0deg);}to{transform:rotate(-360deg);}}
+@keyframes rippleOut{
+  0%{transform:scale(1);opacity:0.25;}
+  100%{transform:scale(1.7);opacity:0;}
+}
+
+/* ── RESPONSIVE ── */
+@media(max-width:440px){
+  :root{--r:105px;}
+  #quote-wrap{margin-bottom:20px;}
+  #controls{margin-top:18px;gap:10px;}
+}
+@media(max-height:680px){
+  :root{--r:96px;}
+  #quote-wrap{margin-bottom:14px;}
+  #controls{margin-top:14px;gap:8px;}
+}
 </style>
 </head>
 <body>
 
 <canvas id="bg"></canvas>
+<div class="vignette"></div>
 <div class="grain"></div>
 
-<div id="title-wrap">
-  <div id="title-main">Breathe</div>
-  <div id="title-sub">5 · 7 · 8 technique</div>
+<!-- Wordmark -->
+<div id="wordmark">
+  <div id="wordmark-main">Vāyu</div>
+  <div id="wordmark-deva">वायु · breath</div>
 </div>
 
-<button id="sound-btn" title="Toggle sound">🔊</button>
+<!-- Top-right controls -->
+<div id="top-right">
+  <button class="icon-btn" id="sound-btn" title="Toggle sound">🔊</button>
+  <button class="icon-btn" id="info-btn" title="About 5-7-8">?</button>
+</div>
 
+<!-- Technique label bottom -->
+<div id="technique">5 · inhale &nbsp;·&nbsp; 7 · hold &nbsp;·&nbsp; 8 · exhale</div>
+
+<!-- Phase flash (eyes-closed) -->
+<div id="phase-flash">
+  <div id="flash-label"></div>
+  <div id="flash-count"></div>
+</div>
+
+<!-- Main app -->
 <div id="app">
+
   <div id="quote-wrap">
     <div id="quote-en"></div>
-    <div id="quote-divider"></div>
+    <div id="qdivider"></div>
     <div id="quote-hi"></div>
   </div>
 
   <div id="circle-wrap">
-    <div id="ring-outer"></div>
+    <div id="orbit"></div>
+    <div id="orbit2"></div>
+    <svg id="arc-svg">
+      <circle id="arc-track" cx="50%" cy="50%"/>
+      <circle id="arc-fill"  cx="50%" cy="50%"/>
+    </svg>
     <div id="circle">
       <div class="ripple"></div>
       <div class="ripple"></div>
       <div class="ripple"></div>
-      <svg id="arc-svg" viewBox="0 0 340 340">
-        <circle id="arc-track" cx="170" cy="170" r="158"/>
-        <circle id="arc-fill"  cx="170" cy="170" r="158"/>
-      </svg>
-      <div id="phase-label">Ready</div>
+      <div id="phase-label">Vāyu</div>
       <div id="phase-count">·</div>
-      <div id="phase-sub">tap start</div>
+      <div id="phase-hint">tap to begin</div>
     </div>
   </div>
 
   <div id="round-info">
-    <div id="round-label">Rounds</div>
+    <div id="round-label">Cycles</div>
     <div id="dots"></div>
   </div>
 
   <div id="controls">
     <button id="btn-start">Begin</button>
-
     <div id="mode-row">
-      <button class="mode-btn active" data-mode="visual">👁 Visual</button>
+      <button class="mode-btn active" data-mode="visual">👁 Watch</button>
       <button class="mode-btn" data-mode="audio">🎧 Eyes Closed</button>
     </div>
-
     <div id="rounds-row">
-      <span>Rounds</span>
+      <span>Cycles</span>
       <button class="r-btn" id="btn-less">−</button>
       <span id="rounds-val">4</span>
       <button class="r-btn" id="btn-more">+</button>
     </div>
   </div>
+
 </div>
 
+<!-- Finish -->
 <div id="finish-msg">
+  <div class="f-deva">वायु · complete</div>
   <h2>Well done.</h2>
-  <p>You've completed your breathing session. Carry this calm with you.</p>
-  <p style="font-size:0.75rem;opacity:0.5;font-style:italic;margin-top:4px">शांति बनाए रखें</p>
+  <p>Your nervous system has shifted. Carry this stillness wherever you go.</p>
+  <p class="f-hi">शांति अब तुम्हारे साथ है।</p>
   <button id="btn-again">Breathe Again</button>
 </div>
 
 <script>
-// ══════════════════════════════════════════════════
+// ══════════════════════════════════════════
 // QUOTES
-// ══════════════════════════════════════════════════
-const quotes = [
-  { en: "Peace comes from within. Do not seek it without.", hi: "शांति भीतर से आती है। इसे बाहर मत खोजो।" },
-  { en: "Breathe. Let go. And remind yourself that this very moment is the only one you know you have for sure.", hi: "श्वास लो। छोड़ दो। याद रखो — यही क्षण सच है।" },
-  { en: "Within you there is a stillness and a sanctuary to which you can retreat at any time.", hi: "तुम्हारे अंदर एक शांत आश्रय है — हमेशा तुम्हारा अपना।" },
-  { en: "You are enough, just as you are, in this moment.", hi: "तुम काफी हो, बिल्कुल वैसे जैसे हो।" },
-  { en: "Calm mind brings inner strength and self-confidence.", hi: "शांत मन आत्मबल और आत्मविश्वास देता है।" },
-  { en: "Happiness is not something ready-made. It comes from your own actions.", hi: "खुशी बाहर से नहीं मिलती — यह तुम्हारे अपने कर्मों से आती है।" },
-  { en: "Let your breath be your anchor. Everything else is just passing weather.", hi: "सांस को अपना लंगर बनाओ। बाकी सब बस गुजरता है।" },
+// ══════════════════════════════════════════
+const QUOTES = [
+  {en:"Peace comes from within. Do not seek it without.", hi:"शांति भीतर से आती है। इसे बाहर मत खोजो।"},
+  {en:"Breathe. Let go. This moment is the only one you know you truly have.", hi:"सांस लो। छोड़ दो। यही क्षण सच है।"},
+  {en:"Within you there is a stillness and a sanctuary to which you can retreat at any time.", hi:"तुम्हारे भीतर एक शांत आश्रय है — सदा तुम्हारा।"},
+  {en:"You are enough, exactly as you are, in this very moment.", hi:"तुम काफी हो — बिल्कुल वैसे जैसे तुम हो।"},
+  {en:"A calm mind brings inner strength and self-confidence.", hi:"शांत मन आत्मबल और आत्मविश्वास देता है।"},
+  {en:"Let your breath be your anchor. Everything else is just passing weather.", hi:"सांस को अपना लंगर बनाओ। बाकी सब बस गुज़र जाता है।"},
+  {en:"Happiness blooms from within — it is the fruit of your own presence.", hi:"खुशी भीतर से खिलती है — यह तुम्हारी अपनी उपस्थिति का फल है।"},
 ];
-
-const q = quotes[Math.floor(Math.random() * quotes.length)];
+const q = QUOTES[Math.floor(Math.random()*QUOTES.length)];
 document.getElementById('quote-en').textContent = `"${q.en}"`;
 document.getElementById('quote-hi').textContent = q.hi;
 
-// ══════════════════════════════════════════════════
-// CANVAS BACKGROUND — Fluid aurora orbs
-// ══════════════════════════════════════════════════
+// ══════════════════════════════════════════
+// CANVAS — Wind-particle aurora
+// ══════════════════════════════════════════
 const canvas = document.getElementById('bg');
 const ctx = canvas.getContext('2d');
 let W, H;
 
-function resize() {
+function resize(){
   W = canvas.width  = window.innerWidth;
   H = canvas.height = window.innerHeight;
+  buildStars();
 }
-resize();
 window.addEventListener('resize', resize);
 
-const orbs = [
-  { x: 0.2, y: 0.3, r: 0.45, hue: 195, speed: 0.00018, phase: 0 },
-  { x: 0.75, y: 0.65, r: 0.38, hue: 240, speed: 0.00022, phase: 1.8 },
-  { x: 0.5, y: 0.8, r: 0.3, hue: 165, speed: 0.00015, phase: 3.4 },
-  { x: 0.85, y: 0.15, r: 0.28, hue: 45, speed: 0.0002, phase: 0.9 },
+// Aurora orbs
+const ORBS = [
+  {x:0.15,y:0.25,r:0.5,  h:200,s:0.00014,ph:0   },
+  {x:0.8, y:0.7, r:0.42, h:30, s:0.00018,ph:2.1 },
+  {x:0.5, y:0.9, r:0.35, h:165,s:0.00012,ph:4.0 },
+  {x:0.9, y:0.1, r:0.3,  h:260,s:0.00020,ph:1.2 },
+  {x:0.3, y:0.6, r:0.25, h:45, s:0.00016,ph:3.5 },
 ];
 
-let t = 0;
-function drawBg(ts) {
-  t = ts * 0.001;
-  ctx.clearRect(0, 0, W, H);
-  ctx.fillStyle = '#0a0c10';
-  ctx.fillRect(0, 0, W, H);
-
-  for (const o of orbs) {
-    const cx = (o.x + Math.sin(t * o.speed * 60 + o.phase) * 0.12) * W;
-    const cy = (o.y + Math.cos(t * o.speed * 50 + o.phase) * 0.1) * H;
-    const r  = o.r * Math.min(W, H);
-    const g  = ctx.createRadialGradient(cx, cy, 0, cx, cy, r);
-    g.addColorStop(0,   `hsla(${o.hue},45%,35%,0.13)`);
-    g.addColorStop(0.5, `hsla(${o.hue},40%,25%,0.06)`);
-    g.addColorStop(1,   `hsla(${o.hue},30%,10%,0)`);
-    ctx.beginPath();
-    ctx.arc(cx, cy, r, 0, Math.PI * 2);
-    ctx.fillStyle = g;
-    ctx.fill();
+// Wind particles
+let particles = [];
+function buildParticles(){
+  particles = [];
+  const count = Math.min(80, Math.floor(W*H/14000));
+  for(let i=0;i<count;i++){
+    particles.push(newParticle(true));
   }
-
-  // Subtle star field
-  if (!stars) buildStars();
-  for (const s of stars) {
-    const flicker = 0.4 + 0.6 * (0.5 + 0.5 * Math.sin(t * s.f + s.p));
-    ctx.beginPath();
-    ctx.arc(s.x, s.y, s.r, 0, Math.PI * 2);
-    ctx.fillStyle = `rgba(232,228,220,${s.a * flicker})`;
-    ctx.fill();
-  }
-
-  requestAnimationFrame(drawBg);
+}
+function newParticle(random){
+  const y = random ? Math.random()*H : (Math.random()<0.5 ? -5 : H+5);
+  return {
+    x: random ? Math.random()*W : -20,
+    y,
+    vx: 0.18 + Math.random()*0.32,
+    vy: (Math.random()-0.5)*0.08,
+    len: 18 + Math.random()*55,
+    a: 0.04 + Math.random()*0.1,
+    life:0,maxLife: 180+Math.random()*300,
+    w: 0.4 + Math.random()*0.7,
+  };
 }
 
-let stars = null;
-function buildStars() {
+let stars = [];
+function buildStars(){
   stars = [];
-  for (let i = 0; i < 120; i++) {
+  for(let i=0;i<90;i++){
     stars.push({
-      x: Math.random() * W,
-      y: Math.random() * H,
-      r: Math.random() * 0.8 + 0.2,
-      a: Math.random() * 0.25 + 0.05,
-      f: Math.random() * 0.8 + 0.3,
-      p: Math.random() * Math.PI * 2,
+      x:Math.random()*W, y:Math.random()*H,
+      r:Math.random()*0.6+0.15,
+      a:Math.random()*0.22+0.03,
+      f:Math.random()*0.6+0.2,
+      p:Math.random()*Math.PI*2,
     });
   }
 }
-requestAnimationFrame(drawBg);
 
-// ══════════════════════════════════════════════════
-// WEB AUDIO ENGINE
-// ══════════════════════════════════════════════════
-let audioCtx = null;
-let ambientNodes = [];
-let soundOn = true;
-let audioStarted = false;
+let t=0;
+function frame(ts){
+  t = ts*0.001;
+  ctx.clearRect(0,0,W,H);
+  ctx.fillStyle='#07080d';
+  ctx.fillRect(0,0,W,H);
 
-function getCtx() {
-  if (!audioCtx) audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+  // Orbs
+  for(const o of ORBS){
+    const cx=(o.x+Math.sin(t*o.s*55+o.ph)*0.14)*W;
+    const cy=(o.y+Math.cos(t*o.s*45+o.ph)*0.1 )*H;
+    const r=o.r*Math.min(W,H);
+    const g=ctx.createRadialGradient(cx,cy,0,cx,cy,r);
+    g.addColorStop(0,  `hsla(${o.h},42%,32%,0.12)`);
+    g.addColorStop(0.5,`hsla(${o.h},38%,22%,0.05)`);
+    g.addColorStop(1,  `hsla(${o.h},28%,8%, 0)`);
+    ctx.beginPath();ctx.arc(cx,cy,r,0,Math.PI*2);
+    ctx.fillStyle=g;ctx.fill();
+  }
+
+  // Stars
+  for(const s of stars){
+    const fl=0.5+0.5*(0.5+0.5*Math.sin(t*s.f+s.p));
+    ctx.beginPath();ctx.arc(s.x,s.y,s.r,0,Math.PI*2);
+    ctx.fillStyle=`rgba(237,232,223,${s.a*fl})`;ctx.fill();
+  }
+
+  // Wind particles
+  for(let i=particles.length-1;i>=0;i--){
+    const p=particles[i];
+    p.life++;p.x+=p.vx;p.y+=p.vy;
+    const prog=p.life/p.maxLife;
+    const alpha=p.a*Math.sin(prog*Math.PI)*0.8;
+    ctx.beginPath();
+    ctx.moveTo(p.x,p.y);
+    ctx.lineTo(p.x-p.len*p.vx/p.vx,p.y-p.len*0.05);
+    ctx.strokeStyle=`rgba(212,169,106,${alpha})`;
+    ctx.lineWidth=p.w;ctx.stroke();
+    if(p.life>=p.maxLife||p.x>W+30) particles[i]=newParticle(false);
+  }
+
+  requestAnimationFrame(frame);
+}
+
+resize();
+buildParticles();
+requestAnimationFrame(frame);
+
+// ══════════════════════════════════════════
+// ARC SETUP (dynamic from CSS var)
+// ══════════════════════════════════════════
+function getRadius(){
+  const r=parseInt(getComputedStyle(document.documentElement).getPropertyValue('--r'));
+  return r+23; // arc radius = circle radius + half of gap
+}
+
+let ARC_R, ARC_CIRC;
+function setupArc(){
+  ARC_R=getRadius();
+  ARC_CIRC=2*Math.PI*ARC_R;
+  const svgEl=document.getElementById('arc-svg');
+  const track=document.getElementById('arc-track');
+  const fill=document.getElementById('arc-fill');
+  const sz=ARC_R*2+4;
+  svgEl.setAttribute('viewBox',`0 0 ${sz} ${sz}`);
+  track.setAttribute('cx',sz/2);track.setAttribute('cy',sz/2);track.setAttribute('r',ARC_R);
+  fill.setAttribute('cx', sz/2);fill.setAttribute('cy', sz/2);fill.setAttribute('r', ARC_R);
+  track.style.strokeDasharray=ARC_CIRC;
+  fill.style.strokeDasharray=ARC_CIRC;
+  fill.style.strokeDashoffset=ARC_CIRC;
+}
+setupArc();
+window.addEventListener('resize',setupArc);
+
+// ══════════════════════════════════════════
+// WEB AUDIO
+// ══════════════════════════════════════════
+let audioCtx=null,masterGain=null,reverbNode=null;
+let soundOn=true,audioStarted=false;
+
+function getAC(){
+  if(!audioCtx){
+    audioCtx=new(window.AudioContext||window.webkitAudioContext)();
+    reverbNode=makeReverb(audioCtx);
+    masterGain=audioCtx.createGain();
+    masterGain.gain.value=0;
+    masterGain.connect(audioCtx.destination);
+    reverbNode.connect(masterGain);
+  }
   return audioCtx;
 }
 
-function startAmbient() {
-  if (audioStarted) return;
-  audioStarted = true;
-  const ac = getCtx();
+function makeReverb(ac){
+  const conv=ac.createConvolver();
+  const len=ac.sampleRate*5.5;
+  const buf=ac.createBuffer(2,len,ac.sampleRate);
+  for(let ch=0;ch<2;ch++){
+    const d=buf.getChannelData(ch);
+    for(let i=0;i<len;i++) d[i]=(Math.random()*2-1)*Math.pow(1-i/len,2.2);
+  }
+  conv.buffer=buf;return conv;
+}
 
-  // Drone: 3 detuned oscillators + gentle LFO
-  const droneFreqs = [55, 82.4, 110, 164.8]; // A1, E2, A2, E3
-  const masterGain = ac.createGain();
-  masterGain.gain.setValueAtTime(0, ac.currentTime);
-  masterGain.gain.linearRampToValueAtTime(0.18, ac.currentTime + 4);
-  masterGain.connect(ac.destination);
+function startAmbient(){
+  if(audioStarted)return;
+  audioStarted=true;
+  const ac=getAC();
+  masterGain.gain.setValueAtTime(0,ac.currentTime);
+  masterGain.gain.linearRampToValueAtTime(0.22,ac.currentTime+5);
 
-  const reverb = createReverb(ac);
-  reverb.connect(masterGain);
-
-  droneFreqs.forEach((freq, i) => {
-    const osc = ac.createOscillator();
-    osc.type = 'sine';
-    osc.frequency.value = freq + (Math.random() - 0.5) * 0.3;
-
-    const lfo = ac.createOscillator();
-    lfo.frequency.value = 0.05 + i * 0.02;
-    const lfoGain = ac.createGain();
-    lfoGain.gain.value = freq * 0.003;
-    lfo.connect(lfoGain);
-    lfoGain.connect(osc.frequency);
-    lfo.start();
-
-    const g = ac.createGain();
-    g.gain.value = 0.08 + (i === 0 ? 0.04 : 0);
-    osc.connect(g);
-    g.connect(reverb);
-    osc.start();
-    ambientNodes.push(osc, lfo, g);
+  // Tanpura-like drone: Sa Pa Sa
+  [[55,0],[82.4,0.3],[110,0.7],[164.8,1.1],[220,1.5]].forEach(([freq,det],i)=>{
+    const osc=ac.createOscillator();
+    osc.type='sine';
+    osc.frequency.value=freq+det;
+    const lfo=ac.createOscillator();
+    lfo.frequency.value=0.04+i*0.015;
+    const lg=ac.createGain(); lg.gain.value=freq*0.0025;
+    lfo.connect(lg); lg.connect(osc.frequency); lfo.start();
+    const g=ac.createGain(); g.gain.value=0.055+(i===0?0.04:0);
+    osc.connect(g); g.connect(reverbNode); osc.start();
   });
 
-  // Bowl overtone
-  playBowl(ac, reverb, 528, 0.06, 0);
-  setInterval(() => { if (soundOn) playBowl(ac, reverb, 528, 0.04, 0); }, 18000);
-  setInterval(() => { if (soundOn) playBowl(ac, reverb, 396, 0.03, 0); }, 27000);
+  // Bowls
+  playBowl(528,0.055,1);
+  playBowl(396,0.035,14);
+  setInterval(()=>{ if(soundOn){playBowl(528,0.04,0);} },22000);
+  setInterval(()=>{ if(soundOn){playBowl(396,0.03,0);} },31000);
+  setInterval(()=>{ if(soundOn){playBowl(660,0.025,0);} },17000);
 }
 
-function playBowl(ac, dest, freq, gain, delay) {
-  const t0 = ac.currentTime + delay;
-  const osc = ac.createOscillator();
-  const g   = ac.createGain();
-  osc.type = 'sine';
-  osc.frequency.setValueAtTime(freq, t0);
-  osc.frequency.exponentialRampToValueAtTime(freq * 0.998, t0 + 8);
-  g.gain.setValueAtTime(0, t0);
-  g.gain.linearRampToValueAtTime(gain, t0 + 0.1);
-  g.gain.exponentialRampToValueAtTime(0.001, t0 + 9);
-  osc.connect(g);
-  g.connect(dest || ac.destination);
-  osc.start(t0);
-  osc.stop(t0 + 9);
+function playBowl(freq,gain,delay){
+  if(!soundOn)return;
+  const ac=getAC();
+  const t0=ac.currentTime+delay;
+  const osc=ac.createOscillator();
+  const g=ac.createGain();
+  osc.type='sine';
+  osc.frequency.setValueAtTime(freq,t0);
+  osc.frequency.exponentialRampToValueAtTime(freq*0.9975,t0+10);
+  g.gain.setValueAtTime(0,t0);
+  g.gain.linearRampToValueAtTime(gain,t0+0.12);
+  g.gain.exponentialRampToValueAtTime(0.0001,t0+10);
+  osc.connect(g);g.connect(reverbNode||ac.destination);
+  osc.start(t0);osc.stop(t0+10);
 }
 
-function createReverb(ac) {
-  const conv = ac.createConvolver();
-  const len  = ac.sampleRate * 5;
-  const buf  = ac.createBuffer(2, len, ac.sampleRate);
-  for (let ch = 0; ch < 2; ch++) {
-    const d = buf.getChannelData(ch);
-    for (let i = 0; i < len; i++) {
-      d[i] = (Math.random() * 2 - 1) * Math.pow(1 - i / len, 2.5);
-    }
+function phaseTone(ac,type){
+  if(!soundOn||!ac)return;
+  const pairs={inhale:[[330,0],[440,0.16]],hold:[[440,0],[440,0.18]],exhale:[[440,0],[330,0.16]]};
+  pairs[type].forEach(([f,d])=>{
+    const t0=ac.currentTime+d;
+    const osc=ac.createOscillator();
+    const g=ac.createGain();
+    osc.type='sine';osc.frequency.value=f;
+    g.gain.setValueAtTime(0,t0);
+    g.gain.linearRampToValueAtTime(0.16,t0+0.07);
+    g.gain.exponentialRampToValueAtTime(0.001,t0+0.5);
+    osc.connect(g);g.connect(ac.destination);
+    osc.start(t0);osc.stop(t0+0.55);
+  });
+}
+
+function countBeats(ac,n,total){
+  if(!soundOn||!ac)return;
+  for(let i=0;i<n;i++){
+    const t0=ac.currentTime+i*(total/n);
+    const osc=ac.createOscillator();
+    const g=ac.createGain();
+    osc.frequency.value=i===0?880:660;
+    osc.type='sine';
+    g.gain.setValueAtTime(0.1,t0);
+    g.gain.exponentialRampToValueAtTime(0.001,t0+0.07);
+    osc.connect(g);g.connect(ac.destination);
+    osc.start(t0);osc.stop(t0+0.08);
   }
-  conv.buffer = buf;
-  return conv;
 }
 
-function speakPhase(text, delay = 0) {
-  if (!soundOn) return;
-  setTimeout(() => {
-    const u = new SpeechSynthesisUtterance(text);
-    u.rate  = 0.78;
-    u.pitch = 0.9;
-    u.volume = 0.92;
-    // Prefer a calm voice
-    const voices = speechSynthesis.getVoices();
-    const preferred = voices.find(v =>
-      /samantha|karen|victoria|moira|fiona|daniel|rishi/i.test(v.name)
-    ) || voices.find(v => v.lang.startsWith('en')) || voices[0];
-    if (preferred) u.voice = preferred;
+function speak(text,delay=0){
+  if(!soundOn)return;
+  setTimeout(()=>{
+    speechSynthesis.cancel();
+    const u=new SpeechSynthesisUtterance(text);
+    u.rate=0.76;u.pitch=0.88;u.volume=0.9;
+    const vv=speechSynthesis.getVoices();
+    const pick=vv.find(v=>/samantha|karen|victoria|moira|fiona|daniel|rishi|allison|ava/i.test(v.name))
+              ||vv.find(v=>v.lang.startsWith('en'))||vv[0];
+    if(pick)u.voice=pick;
     speechSynthesis.speak(u);
-  }, delay * 1000);
+  },delay*1000);
 }
 
-function countTone(ac, n, duration) {
-  // Soft click/tick for count
-  if (!soundOn || !ac) return;
-  for (let i = 0; i < n; i++) {
-    const t0 = ac.currentTime + i * (duration / n);
-    const osc = ac.createOscillator();
-    const g   = ac.createGain();
-    osc.frequency.value = 660;
-    osc.type = 'sine';
-    g.gain.setValueAtTime(0.12, t0);
-    g.gain.exponentialRampToValueAtTime(0.001, t0 + 0.08);
-    osc.connect(g);
-    g.connect(ac.destination);
-    osc.start(t0);
-    osc.stop(t0 + 0.09);
-  }
-}
-
-function transitionTone(ac, type) {
-  if (!soundOn || !ac) return;
-  const t0 = ac.currentTime;
-  const freqs = type === 'inhale' ? [330, 440] : type === 'hold' ? [440, 440] : [440, 330];
-  freqs.forEach((f, i) => {
-    const osc = ac.createOscillator();
-    const g   = ac.createGain();
-    osc.frequency.value = f;
-    osc.type = 'sine';
-    const ti = t0 + i * 0.14;
-    g.gain.setValueAtTime(0, ti);
-    g.gain.linearRampToValueAtTime(0.18, ti + 0.06);
-    g.gain.exponentialRampToValueAtTime(0.001, ti + 0.4);
-    osc.connect(g);
-    g.connect(ac.destination);
-    osc.start(ti);
-    osc.stop(ti + 0.45);
-  });
-}
-
-// ══════════════════════════════════════════════════
+// ══════════════════════════════════════════
 // BREATHING ENGINE
-// ══════════════════════════════════════════════════
-const PHASES = [
-  { name: 'Breathe In',  duration: 5, color: '--circle-in',   arc: '#6eb5c9', scale: 1.18 },
-  { name: 'Hold',        duration: 7, color: '--circle-hold', arc: '#c9a96e', scale: 1.18 },
-  { name: 'Breathe Out', duration: 8, color: '--circle-out',  arc: '#9bc9a0', scale: 0.92 },
+// ══════════════════════════════════════════
+const PHASES=[
+  {name:'Breathe In', hint:'through your nose',  dur:5, arcColor:'#5ab8c8', scale:1.2,  bg:'rgba(90,184,200,0.18)',  border:'rgba(90,184,200,0.35)',  glow:'rgba(90,184,200,0.12)',  speech:'Breathe in'},
+  {name:'Hold',       hint:'gently, gently',      dur:7, arcColor:'#d4a96a', scale:1.2,  bg:'rgba(212,169,106,0.15)', border:'rgba(212,169,106,0.35)', glow:'rgba(212,169,106,0.10)', speech:'Hold'},
+  {name:'Breathe Out',hint:'through your mouth',  dur:8, arcColor:'#7dbf91', scale:0.9,  bg:'rgba(125,191,145,0.15)', border:'rgba(125,191,145,0.30)', glow:'rgba(125,191,145,0.10)', speech:'Breathe out'},
 ];
-const PHASE_SPEECH = ['Breathe in', 'Hold', 'Breathe out'];
 
-let totalRounds = 4;
-let currentRound = 0;
-let running = false;
-let mode = 'visual'; // 'visual' | 'audio'
-let phaseTimer = null;
-let countInterval = null;
-let phaseIndex = 0;
-let phaseSecondsLeft = 0;
+let totalRounds=4,currentRound=0,running=false,mode='visual';
+let countInterval=null,phaseIndex=-1;
 
-const circle    = document.getElementById('circle');
-const phaseLabel = document.getElementById('phase-label');
-const phaseCount = document.getElementById('phase-count');
-const phaseSub   = document.getElementById('phase-sub');
-const arcFill    = document.getElementById('arc-fill');
-const arcTrack   = document.getElementById('arc-track');
-const dotsEl     = document.getElementById('dots');
-const btnStart   = document.getElementById('btn-start');
-const finishMsg  = document.getElementById('finish-msg');
-const roundsVal  = document.getElementById('rounds-val');
+const circleEl   =document.getElementById('circle');
+const phaseLabelEl=document.getElementById('phase-label');
+const phaseCountEl=document.getElementById('phase-count');
+const phaseHintEl =document.getElementById('phase-hint');
+const arcFillEl   =document.getElementById('arc-fill');
+const dotsEl      =document.getElementById('dots');
+const btnStart    =document.getElementById('btn-start');
+const finishMsgEl =document.getElementById('finish-msg');
+const roundsValEl =document.getElementById('rounds-val');
+const flashEl     =document.getElementById('phase-flash');
+const flashLabel  =document.getElementById('flash-label');
+const flashCount  =document.getElementById('flash-count');
 
-// Arc setup
-const ARC_R    = 158;
-const ARC_CIRC = 2 * Math.PI * ARC_R;
-arcTrack.style.strokeDasharray  = ARC_CIRC;
-arcFill.style.strokeDasharray   = ARC_CIRC;
-arcFill.style.strokeDashoffset  = ARC_CIRC;
-
-function buildDots() {
-  dotsEl.innerHTML = '';
-  for (let i = 0; i < totalRounds; i++) {
-    const d = document.createElement('div');
-    d.className = 'dot';
-    if (i < currentRound) d.classList.add('done');
-    else if (i === currentRound && running) d.classList.add('active');
+function buildDots(){
+  dotsEl.innerHTML='';
+  for(let i=0;i<totalRounds;i++){
+    const d=document.createElement('div');
+    d.className='dot';
+    if(i<currentRound) d.classList.add('done');
+    else if(i===currentRound&&running) d.classList.add('active');
     dotsEl.appendChild(d);
   }
 }
 buildDots();
 
-function setPhase(idx) {
-  phaseIndex = idx;
-  const p = PHASES[idx];
-  phaseSecondsLeft = p.duration;
+function setArcProgress(progress, color){
+  arcFillEl.style.stroke=color;
+  arcFillEl.style.strokeDashoffset=ARC_CIRC*(1-progress);
+}
 
-  // Update circle visuals
-  circle.style.borderColor = `var(${p.color})`;
-  circle.style.boxShadow   = `0 0 60px rgba(var(--${idx===0?'circle-in':idx===1?'circle-hold':'circle-out'}), 0.15), inset 0 0 40px rgba(10,12,16,0.5)`;
-  circle.style.transform   = `scale(${p.scale})`;
-  arcFill.style.stroke     = p.arc;
+function setPhase(idx){
+  phaseIndex=idx;
+  const p=PHASES[idx];
 
-  phaseLabel.textContent = p.name;
-  phaseCount.textContent = p.duration;
-  phaseSub.textContent   = idx === 0 ? 'through your nose' : idx === 1 ? 'gently' : 'through your mouth';
+  // Visual updates
+  phaseLabelEl.style.opacity='0';
+  setTimeout(()=>{
+    phaseLabelEl.textContent=p.name;
+    phaseLabelEl.style.opacity='1';
+  },200);
+  phaseHintEl.textContent=p.hint;
+  phaseCountEl.textContent=p.dur;
 
-  // Audio
-  const ac = soundOn ? getCtx() : null;
-  if (soundOn) {
-    transitionTone(ac, idx === 0 ? 'inhale' : idx === 1 ? 'hold' : 'exhale');
-    speakPhase(PHASE_SPEECH[idx], 0.2);
-    if (ac) countTone(ac, p.duration, p.duration);
+  circleEl.style.transform=`scale(${p.scale})`;
+  circleEl.style.borderColor=p.border;
+  circleEl.style.boxShadow=`0 0 80px ${p.glow},inset 0 0 50px rgba(7,8,13,0.6)`;
+  circleEl.style.background=`radial-gradient(circle at 38% 32%, ${p.bg} 0%, rgba(7,8,13,0.55) 65%)`;
+
+  // Flash (eyes-closed)
+  if(mode==='audio'){
+    flashLabel.textContent=p.name;
+    flashCount.textContent=p.dur;
+    flashEl.classList.add('visible');
   }
 
-  // Arc
-  let elapsed = 0;
-  arcFill.style.strokeDashoffset = ARC_CIRC;
+  // Arc reset
+  setArcProgress(0, p.arcColor);
 
+  // Audio
+  const ac=soundOn?getAC():null;
+  phaseTone(ac,idx===0?'inhale':idx===1?'hold':'exhale');
+  speak(p.speech,0.25);
+  if(ac) countBeats(ac,p.dur,p.dur);
+
+  // Count interval
+  let elapsed=0;
   clearInterval(countInterval);
-  countInterval = setInterval(() => {
+  countInterval=setInterval(()=>{
     elapsed++;
-    phaseSecondsLeft--;
-    const progress = elapsed / p.duration;
-    arcFill.style.strokeDashoffset = ARC_CIRC * (1 - progress);
-    phaseCount.textContent = Math.max(0, p.duration - elapsed);
-    if (elapsed >= p.duration) {
+    const prog=elapsed/p.dur;
+    setArcProgress(prog,p.arcColor);
+    const rem=Math.max(0,p.dur-elapsed);
+    phaseCountEl.textContent=rem;
+    if(mode==='audio') flashCount.textContent=rem;
+    if(elapsed>=p.dur){
       clearInterval(countInterval);
       advancePhase();
     }
-  }, 1000);
+  },1000);
 }
 
-function advancePhase() {
-  if (!running) return;
-  const nextPhase = (phaseIndex + 1) % 3;
-  if (nextPhase === 0) {
+function advancePhase(){
+  if(!running)return;
+  const next=(phaseIndex+1)%3;
+  if(next===0){
     currentRound++;
     buildDots();
-    if (currentRound >= totalRounds) {
-      finishSession();
-      return;
-    }
+    if(currentRound>=totalRounds){finishSession();return;}
   }
-  setPhase(nextPhase);
+  setPhase(next);
 }
 
-function startSession() {
-  if (running) {
-    stopSession();
-    return;
-  }
-  running = true;
-  currentRound = 0;
-  phaseIndex   = -1;
-  buildDots();
-  btnStart.textContent = 'Pause';
-
+function startSession(){
+  running=true;currentRound=0;phaseIndex=-1;
+  buildDots();btnStart.textContent='Pause';
   startAmbient();
-  if (soundOn) speakPhase('Find a comfortable position. Let us begin.', 0);
-  setTimeout(() => setPhase(0), 2200);
+  speak('Find a comfortable position. Let Vāyu guide you.',0);
+  setTimeout(()=>setPhase(0),2600);
 }
 
-function stopSession() {
-  running = false;
-  clearInterval(countInterval);
-  circle.style.transform = 'scale(1)';
-  circle.style.borderColor = 'rgba(110,181,201,0.3)';
-  arcFill.style.strokeDashoffset = ARC_CIRC;
-  phaseLabel.textContent = 'Paused';
-  phaseCount.textContent = '·';
-  phaseSub.textContent   = 'tap start';
-  btnStart.textContent   = 'Resume';
+function pauseSession(){
+  running=false;clearInterval(countInterval);
+  flashEl.classList.remove('visible');
+  circleEl.style.transform='scale(1)';
+  circleEl.style.borderColor='rgba(90,184,200,0.25)';
+  phaseLabelEl.textContent='Paused';
+  phaseCountEl.textContent='·';
+  phaseHintEl.textContent='tap resume';
+  btnStart.textContent='Resume';
   buildDots();
 }
 
-function finishSession() {
-  running = false;
-  clearInterval(countInterval);
-  circle.style.transform = 'scale(1)';
-  if (soundOn) speakPhase('Wonderful. You have completed your session. Carry this calm.', 0.3);
-  setTimeout(() => { finishMsg.classList.add('show'); }, 1200);
+function resumeSession(){
+  running=true;btnStart.textContent='Pause';
+  setPhase(phaseIndex<0?0:phaseIndex);
 }
 
-function resetSession() {
-  finishMsg.classList.remove('show');
-  running = false;
-  currentRound = 0;
-  phaseIndex = 0;
-  circle.style.transform = 'scale(1)';
-  circle.style.borderColor = 'rgba(110,181,201,0.3)';
-  arcFill.style.strokeDashoffset = ARC_CIRC;
-  phaseLabel.textContent = 'Ready';
-  phaseCount.textContent = '·';
-  phaseSub.textContent   = 'tap start';
-  btnStart.textContent   = 'Begin';
+function finishSession(){
+  running=false;clearInterval(countInterval);
+  flashEl.classList.remove('visible');
+  circleEl.style.transform='scale(1)';
+  circleEl.style.borderColor='rgba(90,184,200,0.25)';
+  speak('Beautiful. Your session is complete. Carry this peace with you.',0.4);
+  setTimeout(()=>finishMsgEl.classList.add('show'),1400);
+}
+
+function resetSession(){
+  finishMsgEl.classList.remove('show');
+  running=false;currentRound=0;phaseIndex=-1;
+  clearInterval(countInterval);
+  circleEl.style.transform='scale(1)';
+  circleEl.style.borderColor='rgba(90,184,200,0.25)';
+  circleEl.style.boxShadow='0 0 70px rgba(90,184,200,0.08),inset 0 0 50px rgba(7,8,13,0.6)';
+  circleEl.style.background='radial-gradient(circle at 38% 32%, rgba(90,184,200,0.18) 0%, rgba(7,8,13,0.55) 65%)';
+  arcFillEl.style.strokeDashoffset=ARC_CIRC;
+  phaseLabelEl.textContent='Vāyu';
+  phaseCountEl.textContent='·';
+  phaseHintEl.textContent='tap to begin';
+  btnStart.textContent='Begin';
   buildDots();
 }
 
-// ══════════════════════════════════════════════════
+// ══════════════════════════════════════════
 // UI BINDINGS
-// ══════════════════════════════════════════════════
-btnStart.addEventListener('click', () => {
-  if (btnStart.textContent === 'Resume') {
-    running = true;
-    btnStart.textContent = 'Pause';
-    setPhase(phaseIndex < 0 ? 0 : phaseIndex);
-  } else if (btnStart.textContent === 'Pause') {
-    stopSession();
-  } else {
-    startSession();
-  }
+// ══════════════════════════════════════════
+btnStart.addEventListener('click',()=>{
+  if(btnStart.textContent==='Begin')       startSession();
+  else if(btnStart.textContent==='Pause')  pauseSession();
+  else if(btnStart.textContent==='Resume') resumeSession();
 });
 
-document.getElementById('btn-again').addEventListener('click', resetSession);
+circleEl.addEventListener('click',()=>{
+  if(!running&&btnStart.textContent!=='Pause') btnStart.click();
+});
 
-document.querySelectorAll('.mode-btn').forEach(btn => {
-  btn.addEventListener('click', () => {
-    document.querySelectorAll('.mode-btn').forEach(b => b.classList.remove('active'));
+document.getElementById('btn-again').addEventListener('click',resetSession);
+
+document.querySelectorAll('.mode-btn').forEach(btn=>{
+  btn.addEventListener('click',()=>{
+    document.querySelectorAll('.mode-btn').forEach(b=>b.classList.remove('active'));
     btn.classList.add('active');
-    mode = btn.dataset.mode;
-    // In audio mode, dim the visuals slightly
-    document.getElementById('app').style.opacity = mode === 'audio' ? '0.25' : '1';
-    document.getElementById('app').style.transition = 'opacity 1.2s ease';
-    document.getElementById('title-wrap').style.opacity = mode === 'audio' ? '0.15' : '1';
+    mode=btn.dataset.mode;
+    const app=document.getElementById('app');
+    const wm=document.getElementById('wordmark');
+    const tc=document.getElementById('technique');
+    if(mode==='audio'){
+      app.style.transition='opacity 1.5s ease';
+      app.style.opacity='0.12';
+      wm.style.transition='opacity 1.5s';wm.style.opacity='0.1';
+      tc.style.opacity='0';
+    } else {
+      app.style.opacity='1';wm.style.opacity='1';tc.style.opacity='1';
+      flashEl.classList.remove('visible');
+    }
   });
 });
 
-document.getElementById('btn-less').addEventListener('click', () => {
-  if (totalRounds > 1) { totalRounds--; roundsVal.textContent = totalRounds; buildDots(); }
+document.getElementById('btn-less').addEventListener('click',()=>{
+  if(totalRounds>1){totalRounds--;roundsValEl.textContent=totalRounds;buildDots();}
 });
-document.getElementById('btn-more').addEventListener('click', () => {
-  if (totalRounds < 10) { totalRounds++; roundsVal.textContent = totalRounds; buildDots(); }
-});
-
-const soundBtn = document.getElementById('sound-btn');
-soundBtn.addEventListener('click', () => {
-  soundOn = !soundOn;
-  soundBtn.textContent = soundOn ? '🔊' : '🔇';
-  if (soundOn && !audioStarted) startAmbient();
-  if (audioCtx) {
-    if (soundOn) audioCtx.resume();
-    else audioCtx.suspend();
-  }
+document.getElementById('btn-more').addEventListener('click',()=>{
+  if(totalRounds<10){totalRounds++;roundsValEl.textContent=totalRounds;buildDots();}
 });
 
-// Preload voices
+const soundBtn=document.getElementById('sound-btn');
+soundBtn.addEventListener('click',()=>{
+  soundOn=!soundOn;
+  soundBtn.textContent=soundOn?'🔊':'🔇';
+  if(soundOn&&!audioStarted) startAmbient();
+  if(audioCtx){soundOn?audioCtx.resume():audioCtx.suspend();}
+});
+
+document.getElementById('info-btn').addEventListener('click',()=>{
+  speak('The 5-7-8 technique: inhale for 5 counts, hold for 7, exhale for 8. This activates your parasympathetic nervous system and reduces anxiety.',0);
+});
+
+// Boot
 window.speechSynthesis.getVoices();
-window.speechSynthesis.onvoiceschanged = () => window.speechSynthesis.getVoices();
-
-// Circle tap = start (convenience)
-circle.addEventListener('click', () => {
-  if (!running) btnStart.click();
-});
+window.speechSynthesis.onvoiceschanged=()=>window.speechSynthesis.getVoices();
 </script>
 </body>
 </html>
