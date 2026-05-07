@@ -1,6 +1,6 @@
 <p align="center">
   <a href="https://prasharindustries.github.io/Pawan/">
-    <img src="https://img.shields.io/badge/🌬️_Start_पवन_·_Breathe_Now-0d281a?style=for-the-badge&logo=airbnb&logoColor=white&labelColor=0a1f15&color=3d7a5f&borderRadius=40px" height="55" alt="Start पवन">
+    <img src="https://img.shields.io/badge/🌿_शुरू_करें_·_Start_पवन-0d281a?style=for-the-badge&logo=airbnb&logoColor=white&labelColor=0a1f15&color=3d7a5f&borderRadius=40px" height="55" alt="Start पवन">
   </a>
 </p>
 
@@ -14,9 +14,8 @@
 <p align="center">
   <img src="https://img.shields.io/badge/5--7--8_breath-mint?style=for-the-badge&logo=airbnb&logoColor=white&labelColor=1a3b2e&color=4a8c6f" alt="5-7-8">
   <img src="https://img.shields.io/badge/no_signup-instant_calm-teal?style=for-the-badge&logo=github&logoColor=white&labelColor=0f2f24&color=3d7a5f" alt="No Signup">
-  <img src="https://img.shields.io/badge/hindi_first-भारत-orange?style=for-the-badge&logo=language&logoColor=white&labelColor=1a2a1f&color=c47a38" alt="Hindi First">
+  <img src="https://img.shields.io/badge/hindi_first-भारत-orange?style=for-the-badge&labelColor=1a2a1f&color=c47a38" alt="Hindi First">
   <img src="https://img.shields.io/badge/offline_ready-zero_loading-darkgreen?style=for-the-badge&logo=cloudflare&logoColor=white&labelColor=122e22&color=2b6b4c" alt="Offline Ready">
-  <img src="https://img.shields.io/github/license/PrasharIndustries/Pawan?style=for-the-badge&color=3a7355&labelColor=0e281e" alt="License">
 </p>
 
 <br>
@@ -29,8 +28,6 @@
 <br>
 
 ---
-
-<br>
 
 ## 🌬️ The Sanctuary
 
@@ -45,9 +42,11 @@ Most breathing apps demand downloads. Accounts. Payments. Attention.
 
 Open the link — any device, anywhere, anytime — and you're already home. A living, breathing 3D world greets you. Gentle light pulses with your breath. A calm Hindi voice guides each inhale, each hold, each exhale. Ancient wisdom in Hindi and English reminds you: peace was never missing. It was waiting.
 
+<br>
+
 <p align="center">
   <a href="https://prasharindustries.github.io/Pawan/">
-    <img src="https://img.shields.io/badge/🌿_शुरू_करें_·_Start_पवन-1a3b2e?style=for-the-badge&logo=airbnb&logoColor=white&labelColor=0d281a&color=4a8c6f&borderRadius=36px" height="50" alt="Start पवन">
+    <img src="https://img.shields.io/badge/🌿_शुरू_करें_·_Start_Now-1a3b2e?style=for-the-badge&logo=airbnb&logoColor=white&labelColor=0d281a&color=4a8c6f&borderRadius=36px" height="50" alt="Start पवन">
   </a>
 </p>
 
@@ -59,54 +58,56 @@ Open the link — any device, anywhere, anytime — and you're already home. A l
 <table align="center">
   <tr>
     <td align="center" width="300">
-      <img src="https://img.icons8.com/fluency/96/meditation-guru.png" width="64" alt="Instant"><br>
+      <h3>⚡</h3>
       <strong>Instant Sanctuary</strong><br>
       <sub>No loading spinners. No splash screens.<br>Open → You're already breathing.</sub>
     </td>
     <td align="center" width="300">
-      <img src="https://img.icons8.com/fluency/96/mind-map.png" width="64" alt="Dual Mode"><br>
+      <h3>👁️🎧</h3>
       <strong>Two Worlds, One Breath</strong><br>
-      <sub>👁️ <b>Visual Mode</b> — watch the living orb<br>expand, glow, and contract with you.<br>🎧 <b>Audio Mode</b> — close your eyes.<br>A calm Hindi voice becomes your anchor.</sub>
+      <sub><b>Visual Mode</b> — the living orb<br>expands, glows, and contracts with you.<br><b>Audio Mode</b> — close your eyes.<br>A calm Hindi voice anchors you.</sub>
     </td>
     <td align="center" width="300">
-      <img src="https://img.icons8.com/fluency/96/language.png" width="64" alt="Bilingual"><br>
+      <h3>🇮🇳</h3>
       <strong>Hindi-First Soul</strong><br>
       <sub>Default interface in हिंदी.<br>One tap switches to English.<br>Quotes in both languages.<br>शांति भीतर से आती है।</sub>
     </td>
   </tr>
   <tr>
     <td align="center" width="300">
-      <img src="https://img.icons8.com/fluency/96/audio-wave.png" width="64" alt="Audio"><br>
+      <h3>🎤</h3>
       <strong>Voice That Holds You</strong><br>
       <sub>Calm, unhurried Hindi voice.<br>"श्वास लें… रोकें… छोड़ें…"<br>Like a teacher beside you.</sub>
     </td>
     <td align="center" width="300">
-      <img src="https://img.icons8.com/fluency/96/3d-select.png" width="64" alt="3D"><br>
-      <strong>Living 3D Depth</strong><br>
+      <h3>✨</h3>
+      <strong>Living 3D Atmosphere</strong><br>
       <sub>Floating golden particles.<br>Aurora gradients. Infinite calm.<br>Pure CSS — zero heavy assets.</sub>
     </td>
     <td align="center" width="300">
-      <img src="https://img.icons8.com/fluency/96/countdown.png" width="64" alt="Countdown"><br>
+      <h3>🔢</h3>
       <strong>3-2-1 Countdown</strong><br>
       <sub>Large animated numbers +<br>spoken words + gentle haptic pulse.<br>Prepares your mind before you begin.</sub>
     </td>
   </tr>
 </table>
-
 <br>
 
-
 ## 🧘 The 5-7-8 Rhythm
+श्वास लें (Inhale) रोकें (Hold) श्वास छोड़ें (Exhale)
 
-<p align="center">
-  <img src="https://raw.githubusercontent.com/PrasharIndustries/Pawan/main/assets/breath-cycle.svg" width="80%" alt="5-7-8 breath cycle visualization">
-</p>
+5 sec 7 sec 8 sec
 
-| Phase | Seconds | The Orb | The Voice (Hindi) | The Voice (English) |
-|-------|---------|---------|-------------------|---------------------|
-| **श्वास लें / Inhale** | 5 | Expands, glows mint-green | *"श्वास लें…"* | *"Breathe in…"* |
-| **रोकें / Hold** | 7 | Holds full, luminous gold | *"रोकें…"* | *"Hold…"* |
-| **श्वास छोड़ें / Exhale** | 8 | Contracts softly, deep teal | *"श्वास छोड़ें…"* | *"Breathe out…"* |
+Orb expands Orb glows gold Orb contracts
+Mint-green light Steady & full Deep teal calm
+"श्वास लें…" "रोकें…" "श्वास छोड़ें…"
+
+
+| Phase | Seconds | The Orb | The Voice (Hindi) |
+|-------|---------|---------|-------------------|
+| **श्वास लें** | 5 | Expands, mint-green glow | *"श्वास लें…"* |
+| **रोकें** | 7 | Holds full, golden light | *"रोकें…"* |
+| **श्वास छोड़ें** | 8 | Contracts, deep teal | *"श्वास छोड़ें…"* |
 
 <br>
 
@@ -120,60 +121,39 @@ Open the link — any device, anywhere, anytime — and you're already home. A l
 ## 🎯 Born For
 
 <p align="center">
-  <img src="https://img.icons8.com/fluency/48/smoking-risk.png" width="36"> <b>Quitting Smoking</b> — replace the craving ritual with breath<br>
-  <img src="https://img.icons8.com/fluency/48/anxiety.png" width="36"> <b>Anxiety Spikes</b> — at work, in traffic, before sleep<br>
-  <img src="https://img.icons8.com/fluency/48/insomnia.png" width="36"> <b>Midnight Overthinking</b> — when the world is asleep but your mind isn't<br>
-  <img src="https://img.icons8.com/fluency/48/crowd.png" width="36"> <b>Public Spaces</b> — discreet. One earbud. No one knows.<br>
-  <img src="https://img.icons8.com/fluency/48/prayer.png" width="36"> <b>Daily Practice</b> — because peace deserves repetition.<br>
-  <img src="https://img.icons8.com/fluency/48/india.png" width="36"> <b>Indian Users</b> — finally, a breathing app that speaks your language first.
+  <strong>🚬 Quitting Smoking</strong> — replace the craving ritual with breath<br><br>
+  <strong>😰 Anxiety Spikes</strong> — at work, in traffic, before sleep<br><br>
+  <strong>🌙 Midnight Overthinking</strong> — when the world sleeps but your mind doesn't<br><br>
+  <strong>🚇 Public Spaces</strong> — discreet, one earbud, no one knows<br><br>
+  <strong>🙏 Daily Practice</strong> — because peace deserves repetition<br><br>
+  <strong>🇮🇳 Indian Users</strong> — finally, a wellness tool that speaks your language first
 </p>
 
 <br>
-## 🌊 The Experience in Seconds
 
+
+## 🌊 The Experience in Seconds
+https://prasharindustries.github.io/Pawan/
 Open link → Quote appears in Hindi → पवन appears at top →
 Tap शुरू करें → ३…२…१… → Orb expands → Voice guides →
 5-7-8 repeats → Peace arrives
+
 
 <br>
 
 
 ## ⚡ Technical Purity
 
-<table align="center">
-  <tr>
-    <td><strong>Zero dependencies</strong></td>
-    <td>Pure vanilla HTML/CSS/JS</td>
-  </tr>
-  <tr>
-    <td><strong>No images</strong></td>
-    <td>All visuals are CSS gradients & canvas particles</td>
-  </tr>
-  <tr>
-    <td><strong>No audio files</strong></td>
-    <td>Generative tones via Web Audio API</td>
-  </tr>
-  <tr>
-    <td><strong>No frameworks</strong></td>
-    <td>Instant first paint — under 150ms</td>
-  </tr>
-  <tr>
-    <td><strong>No signups</strong></td>
-    <td>No cookies. No tracking. No backend.</td>
-  </tr>
-  <tr>
-    <td><strong>Offline capable</strong></td>
-    <td>Service worker caches on first visit</td>
-  </tr>
-  <tr>
-    <td><strong>Single file</strong></td>
-    <td>Everything in one ~24KB index.html</td>
-  </tr>
-  <tr>
-    <td><strong>Hindi-first</strong></td>
-    <td>Default UI + voice in हिंदी, optional English</td>
-  </tr>
-</table>
+| Feature | Detail |
+|---------|--------|
+| **Zero dependencies** | Pure vanilla HTML/CSS/JS |
+| **No images** | All visuals via CSS gradients & canvas |
+| **No audio files** | Generative tones via Web Audio API |
+| **No frameworks** | First paint under 150ms |
+| **No signups** | No cookies. No tracking. No backend. |
+| **Offline capable** | Service worker caches on first visit |
+| **Single file** | Everything in one ~24KB `index.html` |
+| **Hindi-first** | Default UI + voice in हिंदी |
 
 <br>
 
@@ -203,8 +183,8 @@ Just breathe. You are already whole.
 ## 🗺️ The Road Ahead
 🌿 पवन 1.0 — 5-7-8 Breathing · You are here
 
-| Technique | Status | Sanskrit / Hindi Name |
-|-----------|--------|----------------------|
+| Technique | Status | Hindi Name |
+|-----------|--------|-------------|
 | 5-7-8 Breathing | ✅ Live | पवन श्वास |
 | 4-7-8 Extended | 🔜 Next | दीर्घ श्वास |
 | Box Breathing (4-4-4-4) | 🔜 Planned | सम श्वास |
@@ -219,17 +199,17 @@ Just breathe. You are already whole.
 
 | Feature | Detail |
 |---------|--------|
-| 🌐 **Language** | Hindi default, English toggle |
-| 🎤 **Voice** | Calm Hindi female voice for guidance |
+| 🌐 **Language** | Hindi default, one-tap English toggle |
+| 🎤 **Voice** | Calm Hindi voice guidance |
 | 🔢 **Countdown** | 3-2-1 animated + spoken + haptic |
-| 👁️ **Visual Mode** | Breathing orb with chimes, no voice |
-| 🎧 **Audio Mode** | Close your eyes, voice guides fully |
-| 🌓 **Dark/Light** | Toggle in bottom-right corner |
-| 📲 **PWA Ready** | Add to home screen on iOS/Android |
-| 📴 **Offline** | Works without internet after first visit |
-| 🔄 **Restart** | Reset anytime, instantly |
-| 💬 **Quotes** | Random Hindi + English peace quotes every visit |
-| 🧘 **पवन Brand** | Appears at top during active breathing |
+| 👁️ **Visual Mode** | Breathing orb + chimes, no voice |
+| 🎧 **Audio Mode** | Close eyes, full voice guidance |
+| 🌓 **Dark/Light** | Toggle bottom-right |
+| 📲 **PWA Ready** | Add to home screen |
+| 📴 **Offline** | Works without internet |
+| 🔄 **Restart** | Reset anytime |
+| 💬 **Quotes** | Random Hindi + English every visit |
+| 🧘 **पवन Brand** | Appears during active breathing |
 
 <br>
 
