@@ -185,12 +185,27 @@
             from { opacity:0; transform:translateY(14px); }
             to { opacity:1; transform:translateY(0); }
         }
-
+<!-- Technique selector -->
+<p class="technique-label" id="techniqueLabel">अपनी गति चुनें · Choose your pace</p>
+<div class="technique-selector" id="techniqueSelector">
+    <button class="tech-btn" data-tech="345">🌱 3-4-5</button>
+    <button class="tech-btn" data-tech="478">🌿 4-7-8</button>
+    <button class="tech-btn active-tech" data-tech="578">🌳 5-7-8</button>
+</div>
         /* Technique selector - ABOVE the orb */
         .technique-selector {
             display:flex; gap:0.5rem; flex-wrap:wrap;
             justify-content:center; margin-bottom:0.6rem;
         }
+        .technique-label {
+    color: var(--text-dim);
+    font-size: 0.8rem;
+    letter-spacing: 1px;
+    margin-bottom: 0.5rem;
+    text-align: center;
+    opacity: 0.7;
+    transition: color 0.5s ease;
+}
         .tech-btn {
             background:var(--btn-bg); border:1px solid var(--btn-border);
             color:var(--btn-text); padding:0.45rem 1rem;
@@ -456,8 +471,8 @@
 
         <!-- Controls -->
         <div class="controls">
-            <button class="btn active-mode" id="visualModeBtn">👁️ दृश्य</button>
-            <button class="btn" id="audioModeBtn">🎧 ध्वनि</button>
+            <button class="btn" id="visualModeBtn">👁️ दृश्य</button>
+            <button class="btn active-mode" id="audioModeBtn">🎧 ध्वनि</button>
         </div>
         <div class="controls" style="margin-top:0.3rem;">
             <button class="btn btn-start" id="startBtn">🌿 शुरू करें</button>
@@ -483,7 +498,7 @@
             let technique = '578'; // '345','478','578'
             let INHALE=5, HOLD=7, EXHALE=8;
             let phase='inhale', timeLeft=INHALE, round=0, running=false, timerId=null;
-            let mode='visual', audioCtx=null;
+            let mode='audio', audioCtx=null;
             let roundsBeforeBreak = 1; // show break after every round
             let breakActive = false;
 
@@ -765,6 +780,7 @@
                 timerDisplay.textContent=INHALE;
                 roundCounter.textContent=`${t('round')} 0`;
                 startBtn.textContent=t('start');
+                setAudio(); // Set audio mode as default
                 audioIndicator.textContent='';
                 brand.classList.remove('visible');
                 if(window.speechSynthesis) window.speechSynthesis.cancel();
