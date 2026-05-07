@@ -33,11 +33,15 @@
     <style>
         :root {
             --bg: #1a3a2a;
+            --bg-soft: #1f4432;
+            --bg-warm: #2a4a3a;
+            --bg-gold: #3a4a2a;
             --text: #e8e4db;
             --text-dim: #b8c4b0;
             --gold: #d4a853;
             --gold-light: #e8d5a3;
             --teal: #7ab8a0;
+            --teal-deep: #4a8a6a;
             --white-soft: #f0ece0;
             --btn-bg: rgba(255,255,245,0.08);
             --btn-border: rgba(255,255,240,0.2);
@@ -57,6 +61,9 @@
 
         .light-mode {
             --bg: #e8f0e4;
+            --bg-soft: #dce8d8;
+            --bg-warm: #e2ece0;
+            --bg-gold: #ece4d0;
             --text: #2a3028;
             --text-dim: #5a6058;
             --white-soft: #2a2820;
@@ -134,70 +141,63 @@
         }
         .theme-toggle:hover { opacity:1; background:var(--btn-hover); }
 
-        /* Flow indicator - bottom center */
-        .flow-indicator {
-            position:fixed; bottom:1rem; left:50%; transform:translateX(-50%);
-            z-index:100; text-align:center;
-            color:var(--text-dim); font-size:0.7rem;
-            letter-spacing:0.8px; opacity:0.65;
-            pointer-events:none;
-            line-height:1.6;
-            transition: color 0.5s ease;
-        }
-
         /* Main container */
         .container {
             position:relative; z-index:10;
             display:flex; flex-direction:column; align-items:center;
             justify-content:center; width:100%; height:100%;
-            padding:1.5rem 1.5rem 3.5rem 1.5rem; gap:0;
+            padding:1.5rem; gap:0;
         }
 
         /* Quotes */
         .quote-wrapper {
             text-align:center; max-width:600px; width:100%;
-            min-height:55px; display:flex; flex-direction:column;
+            min-height:60px; display:flex; flex-direction:column;
             align-items:center; justify-content:center;
-            margin-bottom:0.2rem; position:relative; z-index:20;
+            margin-bottom:0.3rem; transition:opacity 0.6s ease;
+            position:relative; z-index:20;
         }
         .quote-hindi {
-            font-size:clamp(0.85rem,2.2vw,1.1rem); color:var(--text);
-            letter-spacing:0.3px; line-height:1.4;
+            font-size:clamp(0.9rem,2.5vw,1.2rem); color:var(--text);
+            letter-spacing:0.3px; line-height:1.5;
             text-shadow:0 2px 10px rgba(0,0,0,0.2);
             animation:quoteIn 1.8s ease forwards; font-weight:400;
         }
         .quote-english {
-            font-size:clamp(0.75rem,1.8vw,0.9rem); color:var(--text-dim);
-            font-style:italic; letter-spacing:0.3px; line-height:1.3;
-            margin-top:0.1rem; display:none;
+            font-size:clamp(0.8rem,2vw,1rem); color:var(--text-dim);
+            font-style:italic; letter-spacing:0.3px; line-height:1.4;
+            margin-top:0.2rem; display:none;
             animation:quoteIn 2.2s ease forwards;
         }
         .quote-english.show { display:block; }
         @keyframes quoteIn {
-            from { opacity:0; transform:translateY(10px); }
+            from { opacity:0; transform:translateY(12px); }
             to { opacity:1; transform:translateY(0); }
         }
 
-        /* Technique section */
+        /* Technique label + selector */
         .technique-section {
             position:relative; z-index:20;
             display:flex; flex-direction:column; align-items:center;
-            margin-bottom:0.3rem;
+            margin-bottom:0.4rem;
         }
         .technique-label {
             color: var(--text-dim);
-            font-size: 0.75rem; letter-spacing: 1px;
-            margin-bottom: 0.4rem; text-align: center;
-            opacity: 0.75; transition: color 0.5s ease;
+            font-size: 0.8rem;
+            letter-spacing: 1px;
+            margin-bottom: 0.5rem;
+            text-align: center;
+            opacity: 0.75;
+            transition: color 0.5s ease;
         }
         .technique-selector {
-            display:flex; gap:0.45rem; flex-wrap:wrap;
+            display:flex; gap:0.5rem; flex-wrap:wrap;
             justify-content:center;
         }
         .tech-btn {
             background:var(--btn-bg); border:1px solid var(--btn-border);
-            color:var(--btn-text); padding:0.4rem 0.85rem;
-            border-radius:28px; font-size:0.72rem; letter-spacing:0.5px;
+            color:var(--btn-text); padding:0.45rem 1rem;
+            border-radius:30px; font-size:0.78rem; letter-spacing:0.5px;
             cursor:pointer; transition:all 0.3s ease;
             backdrop-filter:blur(6px); -webkit-backdrop-filter:blur(6px);
             font-family:inherit; white-space:nowrap;
@@ -205,24 +205,28 @@
         .tech-btn:hover { background:var(--btn-hover); }
         .tech-btn.active-tech {
             background:var(--btn-active-bg); border-color:var(--btn-active-border);
-            color:var(--btn-active-text); box-shadow:0 0 18px rgba(140,180,150,0.3);
+            color:var(--btn-active-text); box-shadow:0 0 20px rgba(140,180,150,0.3);
             font-weight:600;
         }
 
-        /* Orb section - isolated */
+        /* Orb area - FIXED position, text flows above and below */
         .orb-section {
             position:relative; z-index:5;
-            width:min(210px,46vw); height:min(210px,46vw);
-            margin:0.2rem 0 0.5rem; flex-shrink:0;
             display:flex; align-items:center; justify-content:center;
+            width:min(230px,50vw); height:min(230px,50vw);
+            margin:0.3rem 0 0.8rem;
+            flex-shrink:0;
         }
         .orb-container {
-            position:relative; width:100%; height:100%;
+            position:absolute;
+            top:50%; left:50%;
+            transform:translate(-50%,-50%);
+            width:100%; height:100%;
         }
         .orb {
             width:100%; height:100%; border-radius:50%;
             background:radial-gradient(circle at 35% 30%, #3a5a4a, #1a3028 70%, #0a1a14);
-            box-shadow:0 0 45px rgba(100,160,130,0.2), 0 0 0 1px rgba(255,255,240,0.06);
+            box-shadow:0 0 50px rgba(100,160,130,0.2), 0 0 0 1px rgba(255,255,240,0.06);
             transition: transform 0.7s cubic-bezier(0.33,0.08,0.21,0.94),
                 box-shadow 0.7s cubic-bezier(0.33,0.08,0.21,0.94),
                 background 0.7s ease;
@@ -238,34 +242,34 @@
         }
         .orb-glow.ring {
             width:115%; height:115%;
-            box-shadow:0 0 60px var(--glow-inhale); opacity:0.65;
+            box-shadow:0 0 70px var(--glow-inhale); opacity:0.65;
         }
         .phase-inhale .orb {
             transform:scale(1.3);
             background:radial-gradient(circle at 35% 30%, #c0dcc8, #4a7a60 55%, #1a3a2a);
-            box-shadow:0 0 70px rgba(160,200,170,0.45), 0 0 0 1px rgba(255,255,240,0.15);
+            box-shadow:0 0 80px rgba(160,200,170,0.45), 0 0 0 1px rgba(255,255,240,0.15);
         }
-        .phase-inhale .orb-glow.ring { box-shadow:0 0 90px var(--glow-inhale); opacity:0.8; }
+        .phase-inhale .orb-glow.ring { box-shadow:0 0 100px var(--glow-inhale); opacity:0.8; }
         .phase-hold .orb {
             transform:scale(1.3);
             background:radial-gradient(circle at 35% 30%, #e8d8a0, #7a6a40 55%, #2a2218);
-            box-shadow:0 0 80px rgba(210,170,100,0.5), 0 0 0 1px rgba(255,250,220,0.18);
+            box-shadow:0 0 90px rgba(210,170,100,0.5), 0 0 0 1px rgba(255,250,220,0.18);
         }
-        .phase-hold .orb-glow.ring { box-shadow:0 0 100px var(--glow-hold); opacity:0.85; }
+        .phase-hold .orb-glow.ring { box-shadow:0 0 110px var(--glow-hold); opacity:0.85; }
         .phase-exhale .orb {
             transform:scale(0.9);
             background:radial-gradient(circle at 35% 30%, #90c0a8, #2a5040 55%, #0a1f18);
-            box-shadow:0 0 45px rgba(90,150,130,0.35), 0 0 0 1px rgba(255,255,240,0.08);
+            box-shadow:0 0 50px rgba(90,150,130,0.35), 0 0 0 1px rgba(255,255,240,0.08);
         }
-        .phase-exhale .orb-glow.ring { box-shadow:0 0 55px var(--glow-exhale); opacity:0.55; }
+        .phase-exhale .orb-glow.ring { box-shadow:0 0 60px var(--glow-exhale); opacity:0.55; }
 
         .phase-text {
-            color:#f0ece0; font-size:clamp(0.7rem,1.6vw,0.9rem);
+            color:#f0ece0; font-size:clamp(0.8rem,1.8vw,1rem);
             letter-spacing:2px; text-transform:uppercase; font-weight:600;
-            text-shadow:0 2px 12px rgba(0,0,0,0.6); z-index:5;
+            text-shadow:0 2px 15px rgba(0,0,0,0.6); z-index:5;
         }
 
-        /* Countdown overlay */
+        /* Countdown */
         .countdown-overlay {
             position:fixed; top:0; left:0; width:100%; height:100%;
             z-index:200; display:flex; align-items:center; justify-content:center;
@@ -274,14 +278,14 @@
         }
         .countdown-overlay.active { opacity:1; }
         .countdown-number {
-            font-size:clamp(4rem,16vw,10rem); font-weight:200;
-            color:#f2efe4; text-shadow:0 0 70px rgba(200,180,140,0.8);
+            font-size:clamp(5rem,18vw,11rem); font-weight:200;
+            color:#f2efe4; text-shadow:0 0 80px rgba(200,180,140,0.8);
             animation:countPulse 0.9s ease-out forwards;
             font-family:'Georgia','Times New Roman',serif;
         }
         @keyframes countPulse {
             0% { transform:scale(0.4); opacity:0; }
-            40% { transform:scale(1.15); opacity:1; }
+            40% { transform:scale(1.2); opacity:1; }
             100% { transform:scale(0.6); opacity:0; }
         }
 
@@ -289,38 +293,36 @@
         .timer-section {
             position:relative; z-index:20;
             display:flex; flex-direction:column; align-items:center;
-            margin-bottom:0.2rem;
+            margin-bottom:0.3rem;
         }
         .timer {
-            font-size:clamp(2.2rem,5.5vw,3.4rem); font-weight:300;
-            color:#f2efe4; letter-spacing:4px;
-            text-shadow:0 0 30px rgba(200,180,140,0.5);
+            font-size:clamp(2.4rem,6vw,3.8rem); font-weight:300;
+            color:#f2efe4; letter-spacing:5px;
+            text-shadow:0 0 35px rgba(200,180,140,0.5);
             font-variant-numeric:tabular-nums;
             font-family:'Georgia','Times New Roman',serif;
         }
-        .timer-unit {
-            font-size:clamp(0.7rem,1.8vw,0.9rem);
-            color:var(--text-dim); letter-spacing:1px;
-            margin-top:0.1rem;
-        }
-        .light-mode .timer { color:#2a2218; text-shadow:0 0 20px rgba(140,110,60,0.3); }
+        .light-mode .timer { color:#2a2218; text-shadow:0 0 25px rgba(140,110,60,0.3); }
 
         .round-counter {
-            font-size: 0.95rem; color: var(--text-dim);
-            letter-spacing: 2px; margin-top: 0.1rem; font-weight: 500;
+            font-size: 1rem;
+            color: var(--text-dim);
+            letter-spacing: 2px;
+            margin-top: 0.1rem;
+            font-weight: 500;
         }
 
         /* Controls */
         .controls {
             position:relative; z-index:20;
-            display:flex; flex-wrap:wrap; gap:0.5rem;
+            display:flex; flex-wrap:wrap; gap:0.6rem;
             align-items:center; justify-content:center;
             margin-top:0.2rem;
         }
         .btn {
             background:var(--btn-bg); border:1px solid var(--btn-border);
-            color:var(--btn-text); padding:0.4rem 0.85rem;
-            border-radius:28px; font-size:0.7rem; letter-spacing:0.5px;
+            color:var(--btn-text); padding:0.45rem 1rem;
+            border-radius:30px; font-size:0.75rem; letter-spacing:0.5px;
             cursor:pointer; transition:all 0.3s ease;
             backdrop-filter:blur(6px); -webkit-backdrop-filter:blur(6px);
             font-family:inherit; white-space:nowrap;
@@ -328,29 +330,34 @@
         .btn:hover { background:var(--btn-hover); }
         .btn.active-mode {
             background:var(--btn-active-bg); border-color:var(--btn-active-border);
-            color:var(--btn-active-text); box-shadow:0 0 18px rgba(140,180,150,0.25);
+            color:var(--btn-active-text); box-shadow:0 0 20px rgba(140,180,150,0.25);
         }
-        .btn-start {
+        .btn-start, .btn-restart {
             background:var(--start-bg); border-color:var(--start-border);
             color:var(--start-text);
-            font-size: 1.1rem; padding: 0.7rem 2.4rem;
-            letter-spacing:1.5px; font-weight:600;
-            min-width:170px; border-radius:35px;
+            font-size: 1.15rem;
+            padding: 0.8rem 2.2rem;
+            letter-spacing:1.2px; font-weight:600;
+            min-width:160px;
+            border-radius:35px;
         }
         .btn-start-sub {
-            font-size: 0.65rem; color: var(--text-dim);
-            letter-spacing: 1px; margin-top: 0.1rem;
-            text-align: center; opacity: 0.7;
+            font-size: 0.7rem;
+            color: var(--text-dim);
+            letter-spacing: 0.8px;
+            margin-top: 0.15rem;
+            text-align: center;
+            opacity: 0.7;
         }
         .btn-restart {
             background:rgba(160,190,170,0.12); border-color:rgba(160,190,170,0.4);
-            color:var(--text); min-width:100px; font-size:0.9rem; padding:0.6rem 1.4rem;
+            color:var(--text); min-width:110px; font-size:1rem; padding:0.7rem 1.6rem;
         }
 
         .audio-indicator {
             position:relative; z-index:20;
-            font-size:0.65rem; color:var(--text-dim); letter-spacing:0.8px;
-            margin-top:0.15rem; min-height:14px; text-align:center;
+            font-size:0.7rem; color:var(--text-dim); letter-spacing:0.8px;
+            margin-top:0.2rem; min-height:16px; text-align:center;
         }
 
         /* Break dialog */
@@ -363,8 +370,8 @@
         .break-dialog.active { opacity:1; pointer-events:auto; }
         .break-card {
             background:var(--card-bg); border:1px solid var(--btn-border);
-            border-radius:24px; padding:1.8rem 1.6rem;
-            text-align:center; max-width:330px; width:90%;
+            border-radius:24px; padding:2rem 1.8rem;
+            text-align:center; max-width:340px; width:90%;
             backdrop-filter:blur(20px); -webkit-backdrop-filter:blur(20px);
             box-shadow:0 20px 50px rgba(0,0,0,0.4);
             animation:dialogIn 0.5s ease;
@@ -374,18 +381,18 @@
             to { transform:scale(1); opacity:1; }
         }
         .break-title {
-            font-size:1.1rem; color:var(--white-soft); margin-bottom:0.4rem;
+            font-size:1.2rem; color:var(--white-soft); margin-bottom:0.5rem;
             letter-spacing:0.5px;
         }
         .break-subtitle {
-            font-size:0.8rem; color:var(--text-dim); margin-bottom:1rem;
+            font-size:0.85rem; color:var(--text-dim); margin-bottom:1.2rem;
             line-height:1.5;
         }
         .break-buttons {
-            display:flex; gap:0.7rem; justify-content:center; flex-wrap:wrap;
+            display:flex; gap:0.8rem; justify-content:center; flex-wrap:wrap;
         }
         .break-btn {
-            padding:0.55rem 1.3rem; border-radius:28px; font-size:0.8rem;
+            padding:0.6rem 1.4rem; border-radius:30px; font-size:0.85rem;
             cursor:pointer; font-family:inherit; letter-spacing:0.5px;
             transition:all 0.3s ease; border:1px solid var(--btn-border);
         }
@@ -401,8 +408,8 @@
         .pwa-hint {
             position:fixed; bottom:5rem; left:50%; transform:translateX(-50%);
             z-index:200; background:var(--card-bg); border:1px solid var(--btn-border);
-            color:var(--text); padding:0.6rem 1.2rem; border-radius:28px;
-            font-size:0.7rem; letter-spacing:0.4px;
+            color:var(--text); padding:0.7rem 1.3rem; border-radius:30px;
+            font-size:0.75rem; letter-spacing:0.4px;
             backdrop-filter:blur(14px); -webkit-backdrop-filter:blur(14px);
             box-shadow:0 8px 25px rgba(0,0,0,0.3);
             animation:hintFloat 3s ease-in-out infinite;
@@ -416,17 +423,15 @@
         }
 
         @media (max-width:480px) {
-            .container { padding:0.6rem 0.6rem 3rem 0.6rem; }
-            .btn { padding:0.35rem 0.7rem; font-size:0.65rem; }
-            .btn-start { padding:0.6rem 1.8rem; font-size:1rem; min-width:140px; }
-            .btn-restart { min-width:80px; font-size:0.8rem; padding:0.5rem 1.1rem; }
-            .orb-section { width:min(160px,42vw); height:min(160px,42vw); margin:0.15rem 0 0.35rem; }
-            .tech-btn { padding:0.3rem 0.65rem; font-size:0.65rem; }
-            .break-card { padding:1.4rem 1.1rem; }
-            .round-counter { font-size:0.8rem; }
-            .btn-start-sub { font-size:0.6rem; }
-            .flow-indicator { font-size:0.6rem; bottom:0.6rem; }
-            .timer { font-size:clamp(1.8rem,5vw,2.8rem); }
+            .container { padding:0.8rem; }
+            .btn { padding:0.4rem 0.8rem; font-size:0.7rem; }
+            .btn-start, .btn-restart { padding:0.65rem 1.6rem; font-size:1rem; min-width:130px; }
+            .btn-restart { min-width:90px; font-size:0.85rem; padding:0.55rem 1.2rem; }
+            .orb-section { width:min(170px,45vw); height:min(170px,45vw); margin:0.2rem 0 0.5rem; }
+            .tech-btn { padding:0.35rem 0.7rem; font-size:0.7rem; }
+            .break-card { padding:1.5rem 1.2rem; }
+            .round-counter { font-size:0.85rem; }
+            .btn-start-sub { font-size:0.65rem; }
         }
     </style>
 </head>
@@ -474,7 +479,7 @@
             </div>
         </div>
 
-        <!-- Orb section -->
+        <!-- Orb section - isolated from text flow -->
         <div class="orb-section">
             <div class="orb-container" id="orbContainer">
                 <div class="orb-glow ring" id="orbRing"></div>
@@ -487,7 +492,6 @@
         <!-- Timer section -->
         <div class="timer-section">
             <div class="timer" id="timerDisplay">5</div>
-            <div class="timer-unit" id="timerUnit">सेकंड</div>
             <div class="round-counter" id="roundCounter">चक्र 0</div>
         </div>
 
@@ -496,19 +500,12 @@
             <button class="btn" id="visualModeBtn">👁️ दृश्य</button>
             <button class="btn active-mode" id="audioModeBtn">🎧 ध्वनि</button>
         </div>
-        <div style="display:flex; flex-direction:column; align-items:center; margin-top:0.2rem;">
+        <div class="controls" style="margin-top:0.25rem;">
             <button class="btn btn-start" id="startBtn">🌿 शुरू करें</button>
-            <div class="btn-start-sub" id="startSub">प्रारंभ</div>
-        </div>
-        <div class="controls" style="margin-top:0.15rem;">
             <button class="btn btn-restart" id="restartBtn">↺ पुनः आरंभ</button>
         </div>
+        <div class="btn-start-sub" id="startSub">प्रारंभ</div>
         <div class="audio-indicator" id="audioIndicator">🎧 ध्वनि मार्गदर्शन</div>
-    </div>
-
-    <!-- Flow indicator -->
-    <div class="flow-indicator" id="flowIndicator">
-        शुरू करें → श्वास लें → रोकें → छोड़ें → अगला चक्र / विराम
     </div>
 
     <!-- Theme toggle -->
@@ -520,8 +517,8 @@
     <script>
         (function() {
             // ─────────────────────────────────────
-            // पवन · PAWAN · Complete v5
-            // Round-ready voice · Technique reset · Seconds display · Flow indicator
+            // पवन · PAWAN · Adaptive Breathing
+            // Audio default · Orb isolated · प्रारंभ subtitle
             // ─────────────────────────────────────
 
             let lang = 'hi';
@@ -532,12 +529,11 @@
             let audioCtx=null;
             let roundsBeforeBreak = 1;
             let breakActive = false;
-            let roundReadyCountdownActive = false;
 
             const techniques = {
-                '345': { inhale:3, hold:4, exhale:5 },
-                '478': { inhale:4, hold:7, exhale:8 },
-                '578': { inhale:5, hold:7, exhale:8 }
+                '345': { inhale:3, hold:4, exhale:5, hi:'3-4-5 · सरल', en:'3-4-5 · Easy' },
+                '478': { inhale:4, hold:7, exhale:8, hi:'4-7-8 · मध्यम', en:'4-7-8 · Medium' },
+                '578': { inhale:5, hold:7, exhale:8, hi:'5-7-8 · उन्नत', en:'5-7-8 · Advanced' }
             };
 
             const hiStrings = {
@@ -554,12 +550,7 @@
                 breakContinue:'▶ जारी रखें', breakRest:'⏸ 30 सेकंड विराम',
                 breakCountdown:'विराम: ',
                 techniqueLabel:'अपनी गति चुनें',
-                startSub:'प्रारंभ',
-                seconds:'सेकंड',
-                roundReady:'चक्र {n} के लिए तैयार हों',
-                roundReadyEn:'Get ready for round {n}',
-                flowHi:'शुरू करें → श्वास लें → रोकें → छोड़ें → अगला चक्र / विराम',
-                flowEn:'Start → Inhale → Hold → Exhale → Next round / Break'
+                startSub:'प्रारंभ'
             };
             const enStrings = {
                 ready:'READY', inhale:'Inhale', hold:'Hold', exhale:'Exhale',
@@ -575,19 +566,14 @@
                 breakContinue:'▶ Continue', breakRest:'⏸ 30 sec break',
                 breakCountdown:'Break: ',
                 techniqueLabel:'Choose your pace',
-                startSub:'Begin',
-                seconds:'seconds',
-                roundReady:'Get ready for round {n}',
-                roundReadyEn:'Get ready for round {n}',
-                flowHi:'शुरू करें → श्वास लें → रोकें → छोड़ें → अगला चक्र / विराम',
-                flowEn:'Start → Inhale → Hold → Exhale → Next round / Break'
+                startSub:'Begin'
             };
             function t(k){ return lang==='hi' ? hiStrings[k] : enStrings[k]; }
 
             const quotes = [
                 { hi:"शांति भीतर से आती है, उसे बाहर मत खोजो।", en:"Peace comes from within. Do not seek it without." },
-                { hi:"वर्तमान क्षण आनंद से भरा है।", en:"The present moment is filled with joy." },
-                { hi:"भावनाएँ बादलों की तरह आती-जाती हैं।", en:"Feelings come and go like clouds." },
+                { hi:"वर्तमान क्षण आनंद से भरा है। यदि आप ध्यान दें, तो इसे देख लेंगे।", en:"The present moment is filled with joy. If you are attentive, you will see it." },
+                { hi:"भावनाएँ बादलों की तरह आती-जाती हैं। सचेत श्वास मेरा सहारा है।", en:"Feelings come and go like clouds. Conscious breathing is my anchor." },
                 { hi:"आपके भीतर एक शांति का अभयारण्य है।", en:"Within you is a sanctuary of stillness." },
                 { hi:"इस पल में खुश रहो, बस इतना ही काफी है।", en:"Be happy in this moment. That's enough." },
                 { hi:"जितने शांत होते हैं, उतना ही अधिक सुन पाते हैं।", en:"The quieter you become, the more you can hear." },
@@ -616,7 +602,6 @@
             const orbContainer=document.getElementById('orbContainer'),
                 phaseLabel=document.getElementById('phaseLabel'),
                 timerDisplay=document.getElementById('timerDisplay'),
-                timerUnit=document.getElementById('timerUnit'),
                 roundCounter=document.getElementById('roundCounter'),
                 startBtn=document.getElementById('startBtn'),
                 restartBtn=document.getElementById('restartBtn'),
@@ -636,45 +621,18 @@
                 breakRest=document.getElementById('breakRest'),
                 techniqueSelector=document.getElementById('techniqueSelector'),
                 techniqueLabel=document.getElementById('techniqueLabel'),
-                startSub=document.getElementById('startSub'),
-                flowIndicator=document.getElementById('flowIndicator');
+                startSub=document.getElementById('startSub');
 
-            function stopAllTimers(){
-                if(timerId){ clearInterval(timerId); timerId=null; }
-            }
-
-            function setTechnique(tech, fromUserClick){
+            function setTechnique(tech){
                 technique=tech;
                 const tData=techniques[tech];
                 INHALE=tData.inhale; HOLD=tData.hold; EXHALE=tData.exhale;
                 document.querySelectorAll('.tech-btn').forEach(b=>b.classList.remove('active-tech'));
                 document.querySelector(`[data-tech="${tech}"]`).classList.add('active-tech');
-
-                if(fromUserClick){
-                    // Full reset to round 1
-                    stopAllTimers();
-                    running=false;
-                    breakActive=false;
-                    hideBreakDialog();
-                    phase='inhale'; timeLeft=INHALE; round=0;
-                    updateUI();
-                    orbContainer.classList.remove('phase-inhale','phase-hold','phase-exhale');
-                    phaseLabel.textContent=t('ready');
-                    timerDisplay.textContent=INHALE;
-                    timerUnit.textContent=t('seconds');
-                    roundCounter.textContent=`${t('round')} 0`;
-                    startBtn.textContent=t('start');
-                    startSub.textContent=t('startSub');
-                    brand.classList.remove('visible');
-                    audioIndicator.textContent=mode==='audio'?t('audioGuide'):'';
-                    if(window.speechSynthesis) window.speechSynthesis.cancel();
-                    document.body.style.background='';
-                    updateAllLabels();
-                } else if(!running){
+                if(!running){
                     phase='inhale'; timeLeft=INHALE; round=0;
                     updateUI(); updateAllLabels();
                     timerDisplay.textContent=INHALE;
-                    timerUnit.textContent=t('seconds');
                     roundCounter.textContent=`${t('round')} 0`;
                     phaseLabel.textContent=t('ready');
                     orbContainer.classList.remove('phase-inhale','phase-hold','phase-exhale');
@@ -684,7 +642,7 @@
             techniqueSelector.addEventListener('click',(e)=>{
                 const btn=e.target.closest('.tech-btn');
                 if(!btn) return;
-                setTechnique(btn.dataset.tech, true);
+                setTechnique(btn.dataset.tech);
             });
 
             function vibrate(p){ if(navigator.vibrate) navigator.vibrate(p); }
@@ -723,13 +681,12 @@
             function speakPhrase(k){ speakCalm(t(k), lang==='hi'); }
 
             function updateAllLabels(){
-                if(!running){ phaseLabel.textContent=t('ready'); startBtn.textContent=t('start'); startSub.textContent=t('startSub'); }
+                if(!running){ phaseLabel.textContent=t('ready'); startBtn.textContent=t('start'); }
                 visualBtn.textContent=t('visual'); audioBtn.textContent=t('audio');
                 restartBtn.textContent=t('restart');
                 langToggle.textContent=lang==='hi'?'English →':'हिंदी →';
                 techniqueLabel.textContent=t('techniqueLabel');
-                timerUnit.textContent=t('seconds');
-                flowIndicator.textContent = lang==='hi' ? hiStrings.flowHi : enStrings.flowEn;
+                startSub.textContent=t('startSub');
                 updateQuoteVis();
                 if(mode==='audio'&&running) audioIndicator.textContent=t('audioActive');
                 else if(mode==='audio'&&!running) audioIndicator.textContent=t('audioGuide');
@@ -737,7 +694,6 @@
             }
             function updateUI(){
                 timerDisplay.textContent=timeLeft;
-                timerUnit.textContent=t('seconds');
                 roundCounter.textContent=`${t('round')} ${round}`;
                 orbContainer.classList.remove('phase-inhale','phase-hold','phase-exhale');
                 if(phase==='inhale'){ orbContainer.classList.add('phase-inhale'); phaseLabel.textContent=t('inhale'); }
@@ -764,53 +720,21 @@
                     }
                 }
                 updateUI();
-                if(running && !breakActive) setCues(phase);
+                if(running) setCues(phase);
             }
             function tick(){
-                if(!running || breakActive || roundReadyCountdownActive) return;
+                if(!running || breakActive) return;
                 timeLeft--; updateUI();
                 if(timeLeft<=0) nextPhase();
             }
 
-            // Round-ready countdown
-            function doRoundReadyCountdown(roundNum, callback){
-                roundReadyCountdownActive=true;
-                const msg = lang==='hi' ? 
-                    hiStrings.roundReady.replace('{n}', roundNum) : 
-                    enStrings.roundReadyEn.replace('{n}', roundNum);
-                speakCalm(msg, lang==='hi');
-                const nums=lang==='hi'?['३','२','१']:['3','2','1'];
-                const words=t('countdownVoice');
-                const w=Array.isArray(words)?words:['Three','Two','One'];
-                let i=0;
-                countdownOverlay.classList.add('active');
-                function show(){
-                    if(i>=3){ 
-                        countdownOverlay.classList.remove('active'); 
-                        countdownNumber.textContent=''; 
-                        roundReadyCountdownActive=false;
-                        callback(); 
-                        return; 
-                    }
-                    countdownNumber.textContent=nums[i];
-                    countdownNumber.style.animation='none'; countdownNumber.offsetHeight;
-                    countdownNumber.style.animation='countPulse 0.9s ease-out forwards';
-                    speakCalm(w[i],lang==='hi'); vibrate(60);
-                    i++; setTimeout(show,900);
-                }
-                show();
-            }
-
-            // Break dialog
             function showBreakDialog(){
                 breakActive=true;
-                stopAllTimers();
                 breakDialog.classList.add('active');
                 breakTitle.textContent=t('breakTitle');
                 breakSubtitle.innerHTML=t('breakSubtitle');
                 breakContinue.textContent=t('breakContinue');
                 breakRest.textContent=t('breakRest');
-                breakContinue.style.display=''; breakRest.style.display='';
                 document.body.style.background='#2a3a20';
                 setTimeout(()=>{ document.body.style.background=''; }, 500);
             }
@@ -831,23 +755,16 @@
             }
             breakContinue.addEventListener('click',()=>{
                 hideBreakDialog();
-                const nextRound = round+1;
-                doRoundReadyCountdown(nextRound, ()=>{
+                if(timerId) clearInterval(timerId);
+                timerId=setInterval(tick,1000);
+            });
+            breakRest.addEventListener('click',()=>{
+                doBreakCountdown(()=>{
                     if(timerId) clearInterval(timerId);
                     timerId=setInterval(tick,1000);
                 });
             });
-            breakRest.addEventListener('click',()=>{
-                doBreakCountdown(()=>{
-                    const nextRound = round+1;
-                    doRoundReadyCountdown(nextRound, ()=>{
-                        if(timerId) clearInterval(timerId);
-                        timerId=setInterval(tick,1000);
-                    });
-                });
-            });
 
-            // Initial countdown
             function doCountdown(cb){
                 const nums=lang==='hi'?['३','२','१']:['3','2','1'];
                 const words=t('countdownVoice');
@@ -869,26 +786,19 @@
                 if(running) return;
                 initAudio();
                 if(window.speechSynthesis) window.speechSynthesis.getVoices();
-                // "Get ready for round 1"
-                const msg = lang==='hi' ? 
-                    hiStrings.roundReady.replace('{n}', 1) : 
-                    enStrings.roundReadyEn.replace('{n}', 1);
-                speakCalm(msg, lang==='hi');
                 doCountdown(()=>{
-                    round=1;
-                    phase='inhale'; timeLeft=INHALE;
                     running=true; startBtn.textContent=t('pause');
-                    startSub.textContent = lang==='hi' ? 'विराम' : 'Pause';
                     brand.classList.add('visible');
+                    startSub.textContent = lang==='hi' ? 'विराम' : 'Pause';
                     updateUI(); setCues(phase);
-                    stopAllTimers();
+                    if(timerId) clearInterval(timerId);
                     timerId=setInterval(tick,1000);
                 });
             }
             function pause(){
                 if(!running) return;
                 running=false;
-                stopAllTimers();
+                if(timerId){ clearInterval(timerId); timerId=null; }
                 startBtn.textContent=t('resume');
                 startSub.textContent=t('startSub');
                 if(window.speechSynthesis) window.speechSynthesis.cancel();
@@ -897,13 +807,11 @@
             }
             function restart(){
                 pause(); hideBreakDialog();
-                stopAllTimers();
                 phase='inhale'; timeLeft=INHALE; round=0;
                 updateUI();
                 orbContainer.classList.remove('phase-inhale','phase-hold','phase-exhale');
                 phaseLabel.textContent=t('ready');
                 timerDisplay.textContent=INHALE;
-                timerUnit.textContent=t('seconds');
                 roundCounter.textContent=`${t('round')} 0`;
                 startBtn.textContent=t('start');
                 startSub.textContent=t('startSub');
@@ -911,8 +819,6 @@
                 brand.classList.remove('visible');
                 if(window.speechSynthesis) window.speechSynthesis.cancel();
                 document.body.style.background='';
-                breakActive=false;
-                roundReadyCountdownActive=false;
             }
 
             startBtn.addEventListener('click',()=>{ if(running) pause(); else start(); });
@@ -945,13 +851,11 @@
                 if(!running){
                     phaseLabel.textContent=t('ready');
                     timerDisplay.textContent=timeLeft;
-                    timerUnit.textContent=t('seconds');
                     roundCounter.textContent=`${t('round')} ${round}`;
                     startSub.textContent=t('startSub');
                 } else {
                     startSub.textContent = lang==='hi' ? 'विराम' : 'Pause';
                 }
-                flowIndicator.textContent = lang==='hi' ? hiStrings.flowHi : enStrings.flowEn;
                 setQuote();
             });
 
@@ -967,32 +871,32 @@
             function showPwa(){
                 const standalone=window.matchMedia('(display-mode:standalone)').matches||navigator.standalone;
                 const iOS=/iphone|ipad|ipod/.test(navigator.userAgent.toLowerCase());
-                if(!standalone&&iOS&&!localStorage.getItem('pawan-pwa-v5')){
+                if(!standalone&&iOS&&!localStorage.getItem('pawan-pwa-v3')){
                     pwaHint.textContent=t('pwaHint'); pwaHint.classList.add('show');
                 }
             }
             pwaHint.addEventListener('click',()=>{ pwaHint.classList.remove('show');
-                localStorage.setItem('pawan-pwa-v5','true'); });
+                localStorage.setItem('pawan-pwa-v3','true'); });
             setTimeout(()=>pwaHint.classList.remove('show'),12000);
             window.addEventListener('load',showPwa);
 
             // Particles
             const canvas=document.getElementById('particles'), ctx=canvas.getContext('2d');
-            let parts=[]; const PC=55;
+            let parts=[]; const PC=60;
             function resize(){ canvas.width=window.innerWidth; canvas.height=window.innerHeight; }
             window.addEventListener('resize',resize); resize();
             class Particle{
                 constructor(){ this.reset(); }
                 reset(){ this.x=Math.random()*canvas.width; this.y=Math.random()*canvas.height;
-                    this.r=Math.random()*1.4+0.3; this.speed=Math.random()*0.25+0.07;
-                    this.opacity=Math.random()*0.4+0.14; this.wobble=Math.random()*Math.PI*2; }
-                update(){ this.y-=this.speed; this.wobble+=0.005;
-                    this.x+=Math.sin(this.wobble)*0.16;
+                    this.r=Math.random()*1.5+0.3; this.speed=Math.random()*0.28+0.08;
+                    this.opacity=Math.random()*0.45+0.15; this.wobble=Math.random()*Math.PI*2; }
+                update(){ this.y-=this.speed; this.wobble+=0.006;
+                    this.x+=Math.sin(this.wobble)*0.18;
                     if(this.y<-10){ this.y=canvas.height+10; this.x=Math.random()*canvas.width; } }
                 draw(){ ctx.beginPath(); ctx.arc(this.x,this.y,this.r,0,Math.PI*2);
                     ctx.fillStyle=`rgba(210,180,130,${this.opacity})`; ctx.fill();
                     ctx.beginPath(); ctx.arc(this.x,this.y,this.r*2,0,Math.PI*2);
-                    ctx.fillStyle=`rgba(210,180,130,${this.opacity*0.07})`; ctx.fill(); }
+                    ctx.fillStyle=`rgba(210,180,130,${this.opacity*0.08})`; ctx.fill(); }
             }
             for(let i=0;i<PC;i++) parts.push(new Particle());
             function anim(){ ctx.clearRect(0,0,canvas.width,canvas.height);
@@ -1001,23 +905,21 @@
 
             // SW
             if('serviceWorker' in navigator){
-                const sw=`const C='pawan-v5';self.addEventListener('install',e=>{e.waitUntil(caches.open(C).then(c=>c.addAll(['/'])).then(()=>self.skipWaiting()))});self.addEventListener('activate',e=>{e.waitUntil(caches.keys().then(k=>Promise.all(k.filter(x=>x!==C).map(x=>caches.delete(x)))).then(()=>self.clients.claim()))});self.addEventListener('fetch',e=>{e.respondWith(caches.match(e.request).then(r=>r||fetch(e.request).then(res=>{if(res.ok){const cl=res.clone();caches.open(C).then(c=>c.put(e.request,cl));}return res;})))});`;
+                const sw=`const C='pawan-v4';self.addEventListener('install',e=>{e.waitUntil(caches.open(C).then(c=>c.addAll(['/'])).then(()=>self.skipWaiting()))});self.addEventListener('activate',e=>{e.waitUntil(caches.keys().then(k=>Promise.all(k.filter(x=>x!==C).map(x=>caches.delete(x)))).then(()=>self.clients.claim()))});self.addEventListener('fetch',e=>{e.respondWith(caches.match(e.request).then(r=>r||fetch(e.request).then(res=>{if(res.ok){const cl=res.clone();caches.open(C).then(c=>c.put(e.request,cl));}return res;})))});`;
                 navigator.serviceWorker.register(URL.createObjectURL(new Blob([sw],{type:'application/javascript'}))).catch(()=>{});
             }
 
             // Init
-            setTechnique('578', false);
+            setTechnique('578');
             updateAllLabels();
             setAudio();
             phaseLabel.textContent=t('ready');
             timerDisplay.textContent=INHALE;
-            timerUnit.textContent=t('seconds');
             roundCounter.textContent=`${t('round')} 0`;
             startBtn.textContent=t('start');
             restartBtn.textContent=t('restart');
             startSub.textContent=t('startSub');
             audioIndicator.textContent=t('audioGuide');
-            flowIndicator.textContent = hiStrings.flowHi;
         })();
     </script>
 </body>
