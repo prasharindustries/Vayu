@@ -199,7 +199,22 @@
             color:var(--btn-active-text); box-shadow:0 0 20px rgba(140,180,150,0.3);
             font-weight:600;
         }
+        .disclaimer {
+    position:relative; z-index:20;
+    text-align:center;
+    max-width:400px;
+    margin:0.2rem auto 0.5rem;
+    padding:0.35rem 1rem;
+    font-size:0.68rem;
+    color:var(--text-dim);
+    letter-spacing:0.4px;
+    line-height:1.4;
+    opacity:0.75;
+}
 
+@media (max-width:480px) {
+    .disclaimer { font-size:0.65rem; padding:0.4rem 0.8rem; }
+}
         .orb-section {
             position:relative; z-index:5;
             display:flex; align-items:center; justify-content:center;
@@ -455,11 +470,17 @@
     </div>
 
     <div class="container" id="app">
-        <div class="quote-wrapper">
+                <div class="quote-wrapper">
             <div class="quote-hindi" id="quoteHi"></div>
             <div class="quote-english" id="quoteEn"></div>
         </div>
 
+        <!-- 🕉️ Disclaimer -->
+        <div class="disclaimer" id="disclaimer">
+            <span id="disclaimerText">🕉️ यदि सही तरीके से किया जाए तो 4-5 चक्र पर्याप्त हैं। इसे ज़बरदस्ती न करें।</span>
+        </div>
+
+        <!-- Technique section -->
         <div class="technique-section">
             <div class="technique-label" id="techniqueLabel">अपनी गति चुनें</div>
             <div class="technique-selector" id="techniqueSelector">
