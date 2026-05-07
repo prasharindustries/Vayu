@@ -4,575 +4,410 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover, user-scalable=no">
     <meta name="google" content="notranslate">
-    <meta name="theme-color" content="#060c0c">
+    <meta name="theme-color" content="#1a3a2a">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-    <meta name="description" content="पवन — 5-7-8 श्वास तकनीक। खोलें, साँस लें, शांत हो जाएँ।">
-    <title>पवन · Pawan · 5-7-8 Breathing</title>
-    <link rel="manifest" href="data:application/json;base64,ewogICJuYW1lIjogIvCkqvCkrvCkoyIsCiAgInNob3J0X25hbWUiOiAi4KSq4KSu4KSiIiwKICAic3RhcnRfdXJsIjogIi8iLAogICJkaXNwbGF5IjogInN0YW5kYWxvbmUiLAogICJiYWNrZ3JvdW5kX2NvbG9yIjogIiMwNjBjMGMiLAogICJ0aGVtZV9jb2xvciI6ICIjMDYwYzBjIiwKICAiaWNvbnMiOiBbXQp9">
+    <meta name="description" content="पवन — अनुकूल श्वास तकनीक। 3-4-5, 4-7-8, या 5-7-8। खोलें, साँस लें, शांत हो जाएँ।">
+    <title>पवन · Pawan · Adaptive Breathing</title>
+    <link rel="manifest" href="data:application/json;base64,ewogICJuYW1lIjogIvCkqvCkrvCkoyIsCiAgInNob3J0X25hbWUiOiAi4KSq4KSu4KSiIiwKICAic3RhcnRfdXJsIjogIi8iLAogICJkaXNwbGF5IjogInN0YW5kYWxvbmUiLAogICJiYWNrZ3JvdW5kX2NvbG9yIjogIiMxYTNhMmEiLAogICJ0aGVtZV9jb2xvciI6ICIjMWEzYTJhIiwKICAiaWNvbnMiOiBbXQp9">
     <style>
         :root {
-            --bg-deep: #060c0c;
-            --bg-surface: #0e1a18;
-            --white-soft: #e8e4db;
-            --text: #c8c4b8;
-            --text-dim: #8a8570;
+            --bg: #1a3a2a;
+            --bg-soft: #1f4432;
+            --bg-warm: #2a4a3a;
+            --bg-gold: #3a4a2a;
+            --text: #e8e4db;
+            --text-dim: #b8c4b0;
             --gold: #d4a853;
-            --gold-soft: #e8d5a3;
-            --teal: #5b9e8a;
-            --glow-inhale: rgba(180, 210, 190, 0.5);
-            --glow-hold: rgba(220, 190, 130, 0.55);
-            --glow-exhale: rgba(110, 170, 145, 0.45);
-            --btn-bg: rgba(255, 255, 245, 0.05);
-            --btn-border: rgba(255, 255, 240, 0.18);
-            --btn-text: #d4cfbf;
-            --btn-hover-bg: rgba(255, 255, 245, 0.12);
-            --btn-active-bg: rgba(200, 220, 200, 0.18);
-            --btn-active-border: rgba(200, 220, 190, 0.5);
-            --btn-active-text: #f6f3e8;
-            --start-bg: rgba(210, 180, 130, 0.15);
-            --start-border: rgba(210, 180, 130, 0.45);
-            --start-text: #f8f3e0;
-            --start-glow: rgba(180, 140, 80, 0.2);
-            --particle-color: rgba(210, 180, 130, 0.55);
-            --particle-glow: rgba(210, 180, 130, 0.12);
+            --gold-light: #e8d5a3;
+            --teal: #7ab8a0;
+            --teal-deep: #4a8a6a;
+            --white-soft: #f0ece0;
+            --btn-bg: rgba(255,255,245,0.08);
+            --btn-border: rgba(255,255,240,0.2);
+            --btn-text: #d8d4c8;
+            --btn-hover: rgba(255,255,245,0.16);
+            --btn-active-bg: rgba(180,210,180,0.22);
+            --btn-active-border: rgba(180,210,170,0.5);
+            --btn-active-text: #f8f5e8;
+            --start-bg: rgba(210,180,130,0.2);
+            --start-border: rgba(210,180,130,0.5);
+            --start-text: #faf5e0;
+            --card-bg: rgba(20,40,30,0.7);
+            --glow-inhale: rgba(160,210,180,0.5);
+            --glow-hold: rgba(220,190,130,0.55);
+            --glow-exhale: rgba(120,180,150,0.45);
         }
 
         .light-mode {
-            --bg-deep: #f5f0e8;
-            --bg-surface: #e8e2d5;
-            --white-soft: #2a2520;
-            --text: #4a4540;
-            --text-dim: #7a7568;
-            --btn-bg: rgba(60, 50, 40, 0.06);
-            --btn-border: rgba(60, 50, 40, 0.2);
-            --btn-text: #4a453e;
-            --btn-hover-bg: rgba(60, 50, 40, 0.14);
-            --btn-active-bg: rgba(100, 140, 120, 0.2);
-            --btn-active-border: rgba(80, 120, 100, 0.5);
-            --btn-active-text: #1a3028;
-            --start-bg: rgba(160, 130, 90, 0.2);
-            --start-border: rgba(160, 130, 90, 0.5);
+            --bg: #e8f0e4;
+            --bg-soft: #dce8d8;
+            --bg-warm: #e2ece0;
+            --bg-gold: #ece4d0;
+            --text: #2a3028;
+            --text-dim: #5a6058;
+            --white-soft: #2a2820;
+            --btn-bg: rgba(40,40,30,0.06);
+            --btn-border: rgba(40,40,30,0.18);
+            --btn-text: #3a3830;
+            --btn-hover: rgba(40,40,30,0.12);
+            --btn-active-bg: rgba(100,150,120,0.2);
+            --btn-active-border: rgba(80,130,100,0.5);
+            --btn-active-text: #1a2820;
+            --start-bg: rgba(160,140,100,0.2);
+            --start-border: rgba(160,140,100,0.5);
             --start-text: #2a2218;
-            --start-glow: rgba(140, 110, 60, 0.25);
-            --particle-color: rgba(140, 120, 90, 0.4);
-            --particle-glow: rgba(140, 120, 90, 0.08);
-            --glow-inhale: rgba(120, 160, 140, 0.4);
-            --glow-hold: rgba(180, 150, 100, 0.45);
-            --glow-exhale: rgba(90, 140, 120, 0.35);
+            --card-bg: rgba(220,235,220,0.75);
+            --glow-inhale: rgba(100,160,130,0.4);
+            --glow-hold: rgba(180,150,100,0.45);
+            --glow-exhale: rgba(80,140,110,0.35);
         }
 
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
+        * { margin:0; padding:0; box-sizing:border-box; }
 
         body {
-            font-family: 'Noto Sans Devanagari', 'Mangal', 'Lohit Devanagari', 'Georgia', 'Times New Roman', serif;
-            background: var(--bg-deep);
-            width: 100vw;
-            height: 100vh;
-            height: 100dvh;
-            overflow: hidden;
-            user-select: none;
-            -webkit-user-select: none;
-            -webkit-tap-highlight-color: transparent;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            cursor: default;
-            transition: background 0.8s ease;
+            font-family: 'Noto Sans Devanagari','Mangal','Lohit Devanagari','Georgia','Times New Roman',serif;
+            background: var(--bg);
+            width:100vw; height:100vh; height:100dvh;
+            overflow:hidden;
+            user-select:none; -webkit-user-select:none;
+            -webkit-tap-highlight-color:transparent;
+            display:flex; align-items:center; justify-content:center;
+            cursor:default;
+            transition: background 1.2s ease;
         }
 
         canvas#particles {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            z-index: 0;
-            pointer-events: none;
+            position:fixed; top:0; left:0; width:100%; height:100%;
+            z-index:0; pointer-events:none;
         }
 
-        /* Language toggle - top right */
+        /* Top bar */
+        .top-bar {
+            position:fixed; top:1rem; left:1rem; right:1rem;
+            z-index:100; display:flex; justify-content:space-between; align-items:center;
+            pointer-events:none;
+        }
+        .top-bar > * { pointer-events:auto; }
+
         .lang-toggle {
-            position: fixed;
-            top: 1.2rem;
-            right: 1.2rem;
-            z-index: 100;
-            background: var(--btn-bg);
-            border: 1px solid var(--btn-border);
-            color: var(--btn-text);
-            padding: 0.4rem 1rem;
-            border-radius: 30px;
-            font-size: 0.8rem;
-            letter-spacing: 0.5px;
-            cursor: pointer;
-            backdrop-filter: blur(10px);
-            -webkit-backdrop-filter: blur(10px);
-            transition: all 0.35s ease;
-            font-family: inherit;
-            white-space: nowrap;
+            background:var(--btn-bg); border:1px solid var(--btn-border);
+            color:var(--btn-text); padding:0.4rem 1rem;
+            border-radius:30px; font-size:0.8rem; letter-spacing:0.5px;
+            cursor:pointer; backdrop-filter:blur(10px);
+            -webkit-backdrop-filter:blur(10px); transition:all 0.35s ease;
+            font-family:inherit; white-space:nowrap;
         }
-        .lang-toggle:hover {
-            background: var(--btn-hover-bg);
-            border-color: rgba(255, 255, 240, 0.35);
-        }
+        .lang-toggle:hover { background:var(--btn-hover); }
 
-        /* पवन branding - appears during breathing */
         .brand {
-            position: fixed;
-            top: 1.2rem;
-            left: 50%;
-            transform: translateX(-50%);
-            z-index: 100;
-            font-size: clamp(1.2rem, 3.5vw, 1.8rem);
-            color: var(--white-soft);
-            letter-spacing: 4px;
-            font-weight: 400;
-            opacity: 0;
-            transition: opacity 0.8s ease, color 0.8s ease;
-            text-shadow: 0 2px 15px rgba(0, 0, 0, 0.4);
-            pointer-events: none;
+            font-size:clamp(1.3rem,4vw,2rem); color:var(--white-soft);
+            letter-spacing:5px; font-weight:400;
+            opacity:0; transition:opacity 0.8s ease;
+            text-shadow:0 2px 15px rgba(0,0,0,0.3);
+            text-align:center; flex:1;
         }
-        .brand.visible {
-            opacity: 0.85;
-        }
+        .brand.visible { opacity:0.9; }
 
-        /* Theme toggle - bottom right */
+        /* Theme toggle */
         .theme-toggle {
-            position: fixed;
-            bottom: 1.5rem;
-            right: 1.5rem;
-            z-index: 100;
-            background: var(--btn-bg);
-            border: 1px solid var(--btn-border);
-            color: var(--btn-text);
-            width: 44px;
-            height: 44px;
-            border-radius: 50%;
-            font-size: 1.2rem;
-            cursor: pointer;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            backdrop-filter: blur(8px);
-            -webkit-backdrop-filter: blur(8px);
-            transition: all 0.35s ease;
-            opacity: 0.5;
+            position:fixed; bottom:1.5rem; right:1.5rem; z-index:100;
+            background:var(--btn-bg); border:1px solid var(--btn-border);
+            color:var(--btn-text); width:44px; height:44px;
+            border-radius:50%; font-size:1.2rem; cursor:pointer;
+            display:flex; align-items:center; justify-content:center;
+            backdrop-filter:blur(8px); -webkit-backdrop-filter:blur(8px);
+            transition:all 0.35s ease; opacity:0.5;
         }
-        .theme-toggle:hover {
-            opacity: 1;
-            background: var(--btn-hover-bg);
-        }
+        .theme-toggle:hover { opacity:1; background:var(--btn-hover); }
 
+        /* Main container */
         .container {
-            position: relative;
-            z-index: 10;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            width: 100%;
-            height: 100%;
-            padding: 2rem;
-            gap: 0;
+            position:relative; z-index:10;
+            display:flex; flex-direction:column; align-items:center;
+            justify-content:center; width:100%; height:100%;
+            padding:1.5rem; gap:0;
         }
 
         /* Quotes */
         .quote-wrapper {
-            text-align: center;
-            max-width: 600px;
-            width: 100%;
-            min-height: 85px;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            margin-bottom: 0.8rem;
-            transition: opacity 0.6s ease;
+            text-align:center; max-width:600px; width:100%;
+            min-height:70px; display:flex; flex-direction:column;
+            align-items:center; justify-content:center;
+            margin-bottom:0.5rem; transition:opacity 0.6s ease;
         }
-
         .quote-hindi {
-            font-size: clamp(1rem, 3vw, 1.4rem);
-            color: var(--white-soft);
-            letter-spacing: 0.3px;
-            line-height: 1.7;
-            text-shadow: 0 2px 12px rgba(0, 0, 0, 0.3);
-            animation: quoteFadeIn 1.8s ease forwards;
-            transition: color 0.8s ease;
-            font-weight: 400;
+            font-size:clamp(0.95rem,2.8vw,1.3rem); color:var(--text);
+            letter-spacing:0.3px; line-height:1.6;
+            text-shadow:0 2px 10px rgba(0,0,0,0.2);
+            animation:quoteIn 1.8s ease forwards; font-weight:400;
         }
-
         .quote-english {
-            font-size: clamp(0.9rem, 2.5vw, 1.2rem);
-            color: var(--text);
-            font-style: italic;
-            letter-spacing: 0.3px;
-            line-height: 1.5;
-            margin-top: 0.3rem;
-            text-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
-            animation: quoteFadeIn 2.2s ease forwards;
-            transition: color 0.8s ease;
-            display: none;
+            font-size:clamp(0.85rem,2.2vw,1.1rem); color:var(--text-dim);
+            font-style:italic; letter-spacing:0.3px; line-height:1.5;
+            margin-top:0.3rem; display:none;
+            animation:quoteIn 2.2s ease forwards;
         }
-        .quote-english.show {
-            display: block;
+        .quote-english.show { display:block; }
+        @keyframes quoteIn {
+            from { opacity:0; transform:translateY(14px); }
+            to { opacity:1; transform:translateY(0); }
         }
 
-        @keyframes quoteFadeIn {
-            from {
-                opacity: 0;
-                transform: translateY(18px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
+        /* Technique selector - ABOVE the orb */
+        .technique-selector {
+            display:flex; gap:0.5rem; flex-wrap:wrap;
+            justify-content:center; margin-bottom:0.6rem;
+        }
+        .tech-btn {
+            background:var(--btn-bg); border:1px solid var(--btn-border);
+            color:var(--btn-text); padding:0.45rem 1rem;
+            border-radius:30px; font-size:0.78rem; letter-spacing:0.5px;
+            cursor:pointer; transition:all 0.3s ease;
+            backdrop-filter:blur(6px); -webkit-backdrop-filter:blur(6px);
+            font-family:inherit; white-space:nowrap;
+        }
+        .tech-btn:hover { background:var(--btn-hover); }
+        .tech-btn.active-tech {
+            background:var(--btn-active-bg); border-color:var(--btn-active-border);
+            color:var(--btn-active-text); box-shadow:0 0 20px rgba(140,180,150,0.3);
+            font-weight:600;
         }
 
-        /* Orb area */
+        /* Orb */
         .orb-container {
-            position: relative;
-            width: min(250px, 55vw);
-            height: min(250px, 55vw);
-            margin: 0.4rem 0 1.2rem;
+            position:relative;
+            width:min(230px,50vw); height:min(230px,50vw);
+            margin:0.3rem 0 1rem;
         }
-
         .orb {
-            width: 100%;
-            height: 100%;
-            border-radius: 50%;
-            background: radial-gradient(circle at 35% 30%, #2a4a3f, #0e2220 70%, #060f0f);
-            box-shadow: 0 0 60px rgba(100, 160, 130, 0.25), 0 0 0 1px rgba(255, 255, 240, 0.08);
-            transition: transform 0.7s cubic-bezier(0.33, 0.08, 0.21, 0.94),
-                box-shadow 0.7s cubic-bezier(0.33, 0.08, 0.21, 0.94),
+            width:100%; height:100%; border-radius:50%;
+            background:radial-gradient(circle at 35% 30%, #3a5a4a, #1a3028 70%, #0a1a14);
+            box-shadow:0 0 50px rgba(100,160,130,0.2), 0 0 0 1px rgba(255,255,240,0.06);
+            transition: transform 0.7s cubic-bezier(0.33,0.08,0.21,0.94),
+                box-shadow 0.7s cubic-bezier(0.33,0.08,0.21,0.94),
                 background 0.7s ease;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            position: relative;
-            z-index: 2;
+            display:flex; align-items:center; justify-content:center;
+            position:relative; z-index:2;
         }
-
         .orb-glow {
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            width: 100%;
-            height: 100%;
-            border-radius: 50%;
-            pointer-events: none;
-            z-index: 1;
-            transition: all 0.7s cubic-bezier(0.33, 0.08, 0.21, 0.94);
+            position:absolute; top:50%; left:50%;
+            transform:translate(-50%,-50%);
+            width:100%; height:100%; border-radius:50%;
+            pointer-events:none; z-index:1;
+            transition:all 0.7s cubic-bezier(0.33,0.08,0.21,0.94);
         }
-
         .orb-glow.ring {
-            width: 115%;
-            height: 115%;
-            box-shadow: 0 0 80px var(--glow-inhale);
-            opacity: 0.7;
-            transition: all 0.7s cubic-bezier(0.33, 0.08, 0.21, 0.94);
+            width:115%; height:115%;
+            box-shadow:0 0 70px var(--glow-inhale); opacity:0.65;
         }
-
-        /* Phase states */
         .phase-inhale .orb {
-            transform: scale(1.35);
-            background: radial-gradient(circle at 35% 30%, #c8e0d2, #3d6b58 55%, #1a3630);
-            box-shadow: 0 0 90px rgba(170, 210, 180, 0.5), 0 0 0 1px rgba(255, 255, 240, 0.18);
+            transform:scale(1.3);
+            background:radial-gradient(circle at 35% 30%, #c0dcc8, #4a7a60 55%, #1a3a2a);
+            box-shadow:0 0 80px rgba(160,200,170,0.45), 0 0 0 1px rgba(255,255,240,0.15);
         }
-        .phase-inhale .orb-glow.ring {
-            box-shadow: 0 0 110px var(--glow-inhale);
-            opacity: 0.85;
-        }
-
+        .phase-inhale .orb-glow.ring { box-shadow:0 0 100px var(--glow-inhale); opacity:0.8; }
         .phase-hold .orb {
-            transform: scale(1.35);
-            background: radial-gradient(circle at 35% 30%, #e8d8a8, #6b5a38 55%, #2a2218);
-            box-shadow: 0 0 100px rgba(210, 170, 100, 0.55), 0 0 0 1px rgba(255, 250, 220, 0.2);
+            transform:scale(1.3);
+            background:radial-gradient(circle at 35% 30%, #e8d8a0, #7a6a40 55%, #2a2218);
+            box-shadow:0 0 90px rgba(210,170,100,0.5), 0 0 0 1px rgba(255,250,220,0.18);
         }
-        .phase-hold .orb-glow.ring {
-            box-shadow: 0 0 120px var(--glow-hold);
-            opacity: 0.9;
-        }
-
+        .phase-hold .orb-glow.ring { box-shadow:0 0 110px var(--glow-hold); opacity:0.85; }
         .phase-exhale .orb {
-            transform: scale(0.88);
-            background: radial-gradient(circle at 35% 30%, #8cb8a5, #1f4a3a 55%, #0a1f18);
-            box-shadow: 0 0 55px rgba(90, 150, 130, 0.4), 0 0 0 1px rgba(255, 255, 240, 0.1);
+            transform:scale(0.9);
+            background:radial-gradient(circle at 35% 30%, #90c0a8, #2a5040 55%, #0a1f18);
+            box-shadow:0 0 50px rgba(90,150,130,0.35), 0 0 0 1px rgba(255,255,240,0.08);
         }
-        .phase-exhale .orb-glow.ring {
-            box-shadow: 0 0 70px var(--glow-exhale);
-            opacity: 0.6;
-        }
+        .phase-exhale .orb-glow.ring { box-shadow:0 0 60px var(--glow-exhale); opacity:0.55; }
 
         .phase-text {
-            color: #f0ece0;
-            font-size: clamp(0.85rem, 2vw, 1.1rem);
-            letter-spacing: 2px;
-            text-transform: uppercase;
-            font-weight: 600;
-            text-shadow: 0 2px 15px rgba(0, 0, 0, 0.7);
-            z-index: 5;
-            transition: opacity 0.3s;
+            color:#f0ece0; font-size:clamp(0.8rem,1.8vw,1rem);
+            letter-spacing:2px; text-transform:uppercase; font-weight:600;
+            text-shadow:0 2px 15px rgba(0,0,0,0.6); z-index:5;
         }
 
-        /* Countdown overlay */
+        /* Countdown */
         .countdown-overlay {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            z-index: 200;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            pointer-events: none;
-            opacity: 0;
-            transition: opacity 0.3s ease;
+            position:fixed; top:0; left:0; width:100%; height:100%;
+            z-index:200; display:flex; align-items:center; justify-content:center;
+            pointer-events:none; opacity:0; transition:opacity 0.3s ease;
+            background:rgba(0,0,0,0.2);
         }
-        .countdown-overlay.active {
-            opacity: 1;
-        }
+        .countdown-overlay.active { opacity:1; }
         .countdown-number {
-            font-size: clamp(6rem, 20vw, 12rem);
-            font-weight: 200;
-            color: #f2efe4;
-            text-shadow: 0 0 80px rgba(200, 180, 140, 0.8), 0 0 150px rgba(180, 210, 180, 0.4);
-            animation: countPulse 0.9s ease-out forwards;
-            font-family: 'Georgia', 'Times New Roman', serif;
+            font-size:clamp(5rem,18vw,11rem); font-weight:200;
+            color:#f2efe4; text-shadow:0 0 80px rgba(200,180,140,0.8);
+            animation:countPulse 0.9s ease-out forwards;
+            font-family:'Georgia','Times New Roman',serif;
         }
         @keyframes countPulse {
-            0% {
-                transform: scale(0.5);
-                opacity: 0;
-            }
-            40% {
-                transform: scale(1.15);
-                opacity: 1;
-            }
-            100% {
-                transform: scale(0.7);
-                opacity: 0;
-            }
+            0% { transform:scale(0.4); opacity:0; }
+            40% { transform:scale(1.2); opacity:1; }
+            100% { transform:scale(0.6); opacity:0; }
         }
 
         /* Timer */
         .timer {
-            font-size: clamp(2.6rem, 7vw, 4.2rem);
-            font-weight: 300;
-            color: #f2efe4;
-            letter-spacing: 5px;
-            text-shadow: 0 0 40px rgba(200, 180, 140, 0.6);
-            margin: 0.2rem 0 0.4rem;
-            font-variant-numeric: tabular-nums;
-            font-family: 'Georgia', 'Times New Roman', serif;
-            transition: color 0.8s ease;
+            font-size:clamp(2.4rem,6vw,3.8rem); font-weight:300;
+            color:#f2efe4; letter-spacing:5px;
+            text-shadow:0 0 35px rgba(200,180,140,0.5);
+            margin:0.1rem 0 0.3rem;
+            font-variant-numeric:tabular-nums;
+            font-family:'Georgia','Times New Roman',serif;
         }
-        .light-mode .timer {
-            color: #2a2218;
-            text-shadow: 0 0 30px rgba(140, 110, 60, 0.35);
-        }
+        .light-mode .timer { color:#2a2218; text-shadow:0 0 25px rgba(140,110,60,0.3); }
 
         .round-counter {
-            font-size: 0.85rem;
-            color: var(--text-dim);
-            letter-spacing: 2px;
-            margin-bottom: 0.8rem;
-            transition: color 0.8s ease;
+            font-size:0.8rem; color:var(--text-dim); letter-spacing:2px;
+            margin-bottom:0.5rem;
         }
 
-        /* Controls */
+        /* Controls row */
         .controls {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 0.7rem;
-            align-items: center;
-            justify-content: center;
+            display:flex; flex-wrap:wrap; gap:0.6rem;
+            align-items:center; justify-content:center;
         }
-
         .btn {
-            background: var(--btn-bg);
-            border: 1px solid var(--btn-border);
-            color: var(--btn-text);
-            padding: 0.65rem 1.4rem;
-            border-radius: 40px;
-            font-size: 0.85rem;
-            letter-spacing: 0.6px;
-            cursor: pointer;
-            transition: all 0.35s ease;
-            backdrop-filter: blur(8px);
-            -webkit-backdrop-filter: blur(8px);
-            font-family: inherit;
-            white-space: nowrap;
+            background:var(--btn-bg); border:1px solid var(--btn-border);
+            color:var(--btn-text); padding:0.55rem 1.2rem;
+            border-radius:35px; font-size:0.8rem; letter-spacing:0.5px;
+            cursor:pointer; transition:all 0.3s ease;
+            backdrop-filter:blur(6px); -webkit-backdrop-filter:blur(6px);
+            font-family:inherit; white-space:nowrap;
         }
-
-        .btn:hover {
-            background: var(--btn-hover-bg);
-            border-color: rgba(255, 255, 240, 0.35);
-        }
+        .btn:hover { background:var(--btn-hover); }
         .btn.active-mode {
-            background: var(--btn-active-bg);
-            border-color: var(--btn-active-border);
-            color: var(--btn-active-text);
-            box-shadow: 0 0 25px rgba(140, 180, 150, 0.25);
+            background:var(--btn-active-bg); border-color:var(--btn-active-border);
+            color:var(--btn-active-text); box-shadow:0 0 20px rgba(140,180,150,0.25);
         }
-
-        .btn-start,
+        .btn-start, .btn-restart {
+            background:var(--start-bg); border-color:var(--start-border);
+            color:var(--start-text); font-size:0.95rem;
+            padding:0.7rem 2rem; letter-spacing:1px; font-weight:600;
+            min-width:130px;
+        }
         .btn-restart {
-            background: var(--start-bg);
-            border-color: var(--start-border);
-            color: var(--start-text);
-            font-size: 1.05rem;
-            padding: 0.85rem 2.4rem;
-            letter-spacing: 1.2px;
-            font-weight: 600;
-            box-shadow: 0 0 35px var(--start-glow);
-            min-width: 150px;
-        }
-        .btn-start:hover,
-        .btn-restart:hover {
-            background: rgba(220, 190, 140, 0.25);
-            box-shadow: 0 0 50px rgba(190, 150, 90, 0.35);
-        }
-
-        .btn-restart {
-            border-color: rgba(180, 200, 180, 0.4);
-            background: rgba(180, 200, 180, 0.1);
-            color: #c8d8c8;
-            box-shadow: 0 0 25px rgba(140, 170, 140, 0.15);
-            min-width: 120px;
-        }
-        .light-mode .btn-restart {
-            color: #2a3a30;
-            background: rgba(120, 150, 130, 0.15);
-            border-color: rgba(100, 140, 120, 0.4);
-        }
-        .btn-restart:hover {
-            background: rgba(190, 210, 190, 0.2);
-            box-shadow: 0 0 40px rgba(150, 180, 150, 0.3);
+            background:rgba(160,190,170,0.12); border-color:rgba(160,190,170,0.4);
+            color:var(--text); min-width:100px;
         }
 
         .audio-indicator {
-            font-size: 0.75rem;
-            color: var(--text-dim);
-            letter-spacing: 1px;
-            margin-top: 0.3rem;
-            min-height: 18px;
-            transition: opacity 0.4s, color 0.8s ease;
-            text-align: center;
+            font-size:0.7rem; color:var(--text-dim); letter-spacing:0.8px;
+            margin-top:0.2rem; min-height:16px; text-align:center;
+        }
+
+        /* Break dialog */
+        .break-dialog {
+            position:fixed; top:0; left:0; width:100%; height:100%;
+            z-index:300; display:flex; align-items:center; justify-content:center;
+            pointer-events:none; opacity:0; transition:opacity 0.4s ease;
+            background:rgba(0,0,0,0.5);
+        }
+        .break-dialog.active { opacity:1; pointer-events:auto; }
+        .break-card {
+            background:var(--card-bg); border:1px solid var(--btn-border);
+            border-radius:24px; padding:2rem 1.8rem;
+            text-align:center; max-width:340px; width:90%;
+            backdrop-filter:blur(20px); -webkit-backdrop-filter:blur(20px);
+            box-shadow:0 20px 50px rgba(0,0,0,0.4);
+            animation:dialogIn 0.5s ease;
+        }
+        @keyframes dialogIn {
+            from { transform:scale(0.85); opacity:0; }
+            to { transform:scale(1); opacity:1; }
+        }
+        .break-title {
+            font-size:1.2rem; color:var(--white-soft); margin-bottom:0.5rem;
+            letter-spacing:0.5px;
+        }
+        .break-subtitle {
+            font-size:0.85rem; color:var(--text-dim); margin-bottom:1.2rem;
+            line-height:1.5;
+        }
+        .break-buttons {
+            display:flex; gap:0.8rem; justify-content:center; flex-wrap:wrap;
+        }
+        .break-btn {
+            padding:0.6rem 1.4rem; border-radius:30px; font-size:0.85rem;
+            cursor:pointer; font-family:inherit; letter-spacing:0.5px;
+            transition:all 0.3s ease; border:1px solid var(--btn-border);
+        }
+        .break-btn.primary {
+            background:var(--start-bg); border-color:var(--start-border);
+            color:var(--start-text); font-weight:600;
+        }
+        .break-btn.secondary {
+            background:var(--btn-bg); color:var(--btn-text);
         }
 
         /* PWA hint */
         .pwa-hint {
-            position: fixed;
-            bottom: 5.5rem;
-            left: 50%;
-            transform: translateX(-50%);
-            z-index: 200;
-            background: var(--bg-surface);
-            border: 1px solid var(--btn-border);
-            color: var(--white-soft);
-            padding: 0.75rem 1.4rem;
-            border-radius: 30px;
-            font-size: 0.8rem;
-            letter-spacing: 0.4px;
-            backdrop-filter: blur(16px);
-            -webkit-backdrop-filter: blur(16px);
-            box-shadow: 0 8px 30px rgba(0, 0, 0, 0.4);
-            animation: hintFloat 3s ease-in-out infinite;
-            cursor: pointer;
-            white-space: nowrap;
-            transition: all 0.5s ease;
-            opacity: 0;
-            pointer-events: none;
+            position:fixed; bottom:5rem; left:50%; transform:translateX(-50%);
+            z-index:200; background:var(--card-bg); border:1px solid var(--btn-border);
+            color:var(--text); padding:0.7rem 1.3rem; border-radius:30px;
+            font-size:0.75rem; letter-spacing:0.4px;
+            backdrop-filter:blur(14px); -webkit-backdrop-filter:blur(14px);
+            box-shadow:0 8px 25px rgba(0,0,0,0.3);
+            animation:hintFloat 3s ease-in-out infinite;
+            cursor:pointer; white-space:nowrap;
+            opacity:0; pointer-events:none; transition:opacity 0.5s;
         }
-        .pwa-hint.show {
-            opacity: 1;
-            pointer-events: auto;
-        }
+        .pwa-hint.show { opacity:1; pointer-events:auto; }
         @keyframes hintFloat {
-            0%,
-            100% {
-                transform: translateX(-50%) translateY(0);
-            }
-            50% {
-                transform: translateX(-50%) translateY(-8px);
-            }
+            0%,100% { transform:translateX(-50%) translateY(0); }
+            50% { transform:translateX(-50%) translateY(-6px); }
         }
 
-        @media (max-width: 480px) {
-            .container {
-                padding: 1rem;
-            }
-            .btn {
-                padding: 0.5rem 1rem;
-                font-size: 0.75rem;
-            }
-            .btn-start,
-            .btn-restart {
-                padding: 0.65rem 1.6rem;
-                font-size: 0.9rem;
-                min-width: 130px;
-            }
-            .btn-restart {
-                min-width: 100px;
-            }
-            .orb-container {
-                width: min(200px, 52vw);
-                height: min(200px, 52vw);
-                margin: 0.3rem 0 0.8rem;
-            }
-            .lang-toggle {
-                top: 0.8rem;
-                right: 0.8rem;
-                padding: 0.3rem 0.8rem;
-                font-size: 0.7rem;
-            }
-            .brand {
-                top: 0.8rem;
-                font-size: 1rem;
-            }
-            .theme-toggle {
-                bottom: 1rem;
-                right: 1rem;
-                width: 38px;
-                height: 38px;
-                font-size: 1rem;
-            }
-            .pwa-hint {
-                bottom: 4.5rem;
-                font-size: 0.7rem;
-                padding: 0.5rem 1rem;
-            }
-            .countdown-number {
-                font-size: clamp(4rem, 16vw, 8rem);
-            }
+        @media (max-width:480px) {
+            .container { padding:1rem; }
+            .btn { padding:0.45rem 0.9rem; font-size:0.7rem; }
+            .btn-start, .btn-restart { padding:0.6rem 1.4rem; font-size:0.85rem; min-width:110px; }
+            .btn-restart { min-width:85px; }
+            .orb-container { width:min(180px,48vw); height:min(180px,48vw); margin:0.2rem 0 0.7rem; }
+            .tech-btn { padding:0.35rem 0.7rem; font-size:0.7rem; }
+            .break-card { padding:1.5rem 1.2rem; }
         }
     </style>
 </head>
 <body>
     <canvas id="particles"></canvas>
 
-    <!-- Language toggle -->
-    <button class="lang-toggle" id="langToggle">English →</button>
+    <!-- Top bar -->
+    <div class="top-bar">
+        <button class="lang-toggle" id="langToggle">English →</button>
+        <div class="brand" id="brand">पवन</div>
+        <div style="width:70px;"></div><!-- spacer for symmetry -->
+    </div>
 
-    <!-- पवन brand -->
-    <div class="brand" id="brand">पवन</div>
-
-    <!-- Countdown overlay -->
+    <!-- Countdown -->
     <div class="countdown-overlay" id="countdownOverlay">
         <span class="countdown-number" id="countdownNumber"></span>
     </div>
 
+    <!-- Break dialog -->
+    <div class="break-dialog" id="breakDialog">
+        <div class="break-card">
+            <div class="break-title" id="breakTitle">🌿 शानदार!</div>
+            <div class="break-subtitle" id="breakSubtitle">आपने एक चक्र पूरा कर लिया।<br>अगला चक्र जारी रखें या 30 सेकंड का विराम लें?</div>
+            <div class="break-buttons">
+                <button class="break-btn primary" id="breakContinue">▶ जारी रखें</button>
+                <button class="break-btn secondary" id="breakRest">⏸ 30 सेकंड विराम</button>
+            </div>
+        </div>
+    </div>
+
     <div class="container" id="app">
         <!-- Quotes -->
-        <div class="quote-wrapper" id="quoteWrapper">
+        <div class="quote-wrapper">
             <div class="quote-hindi" id="quoteHi"></div>
             <div class="quote-english" id="quoteEn"></div>
+        </div>
+
+        <!-- Technique buttons -->
+        <div class="technique-selector" id="techniqueSelector">
+            <button class="tech-btn" data-tech="345">🌱 3-4-5</button>
+            <button class="tech-btn" data-tech="478">🌿 4-7-8</button>
+            <button class="tech-btn active-tech" data-tech="578">🌳 5-7-8</button>
         </div>
 
         <!-- Orb -->
@@ -599,7 +434,7 @@
         <div class="audio-indicator" id="audioIndicator"></div>
     </div>
 
-    <!-- Dark/Light toggle -->
+    <!-- Theme toggle -->
     <button class="theme-toggle" id="themeToggle" aria-label="Toggle theme">☀️</button>
 
     <!-- PWA hint -->
@@ -608,514 +443,394 @@
     <script>
         (function() {
             // ─────────────────────────────────────
-            // पवन · PAWAN · 5-7-8 Breathing
-            // Hindi-first · Countdown · Calm voice · Dark/Light · PWA
+            // पवन · PAWAN · Adaptive Breathing
+            // 3-4-5 / 4-7-8 / 5-7-8 · Break dialog · Warm green bg
             // ─────────────────────────────────────
 
-            // ── Language state ──
-            let lang = 'hi'; // 'hi' or 'en'
+            let lang = 'hi';
+            let technique = '578'; // '345','478','578'
+            let INHALE=5, HOLD=7, EXHALE=8;
+            let phase='inhale', timeLeft=INHALE, round=0, running=false, timerId=null;
+            let mode='visual', audioCtx=null;
+            let roundsBeforeBreak = 1; // show break after every round
+            let breakActive = false;
 
-       // ── Hindi UI strings ──
+            const techniques = {
+                '345': { inhale:3, hold:4, exhale:5, hi:'3-4-5 · सरल', en:'3-4-5 · Easy' },
+                '478': { inhale:4, hold:7, exhale:8, hi:'4-7-8 · मध्यम', en:'4-7-8 · Medium' },
+                '578': { inhale:5, hold:7, exhale:8, hi:'5-7-8 · उन्नत', en:'5-7-8 · Advanced' }
+            };
+
             const hiStrings = {
-                ready: 'तैयार',
-                inhale: 'श्वास लें',
-                hold: 'रोकें',
-                exhale: 'श्वास छोड़ें',
-                round: 'चक्र',
-                start: '🌿 शुरू करें',
-                pause: '⏸️ विराम',
-                resume: '🌿 जारी रखें',
-                restart: '↺ पुनः आरंभ',
-                visual: '👁️ दृश्य',
-                audio: '🎧 ध्वनि',
-                audioGuide: '🎧 आँखें बंद करें · ध्वनि मार्गदर्शन',
-                audioActive: '🎧 आँखें बंद · ध्वनि चल रही है',
-                pwaHint: '📲 होम स्क्रीन में जोड़ें',
-                countdownVoice: ['तीन', 'दो', 'एक'],
-                voiceInhale: 'श्वास लें',
-                voiceHold: 'रोकें',
-                voiceExhale: 'श्वास छोड़ें',
-                voiceInhaleDeep: 'गहरी श्वास लें',
-                voiceHoldGentle: 'धीरे से रोकें',
-                voiceExhaleSlow: 'धीरे से छोड़ें',
+                ready:'तैयार', inhale:'श्वास लें', hold:'रोकें', exhale:'श्वास छोड़ें',
+                round:'चक्र', start:'🌿 शुरू करें', pause:'⏸️ विराम', resume:'🌿 जारी रखें',
+                restart:'↺ पुनः आरंभ', visual:'👁️ दृश्य', audio:'🎧 ध्वनि',
+                audioGuide:'🎧 आँखें बंद करें', audioActive:'🎧 ध्वनि चल रही है',
+                pwaHint:'📲 होम स्क्रीन में जोड़ें',
+                countdownVoice:['तीन','दो','एक'],
+                voiceInhale:'श्वास लें', voiceHold:'रोकें', voiceExhale:'श्वास छोड़ें',
+                voiceInhaleDeep:'गहरी श्वास लें', voiceHoldGentle:'धीरे से रोकें', voiceExhaleSlow:'धीरे से छोड़ें',
+                breakTitle:'🌿 शानदार!',
+                breakSubtitle:'आपने एक चक्र पूरा कर लिया।<br>अगला चक्र जारी रखें या 30 सेकंड का विराम लें?',
+                breakContinue:'▶ जारी रखें', breakRest:'⏸ 30 सेकंड विराम',
+                breakCountdown:'विराम: '
             };
-
             const enStrings = {
-                ready: 'READY',
-                inhale: 'Inhale',
-                hold: 'Hold',
-                exhale: 'Exhale',
-                round: 'Round',
-                start: '🌿 Start',
-                pause: '⏸️ Pause',
-                resume: '🌿 Resume',
-                restart: '↺ Restart',
-                visual: '👁️ Visual',
-                audio: '🎧 Audio',
-                audioGuide: '🎧 Close your eyes · Voice guide',
-                audioActive: '🎧 Eyes closed · Voice active',
-                pwaHint: '📲 Add to Home Screen',
-                countdownVoice: ['Three', 'Two', 'One'],
-                voiceInhale: 'Breathe in',
-                voiceHold: 'Hold',
-                voiceExhale: 'Breathe out',
-                voiceInhaleDeep: 'Inhale deeply',
-                voiceHoldGentle: 'Hold gently',
-                voiceExhaleSlow: 'Exhale slowly',
+                ready:'READY', inhale:'Inhale', hold:'Hold', exhale:'Exhale',
+                round:'Round', start:'🌿 Start', pause:'⏸️ Pause', resume:'🌿 Resume',
+                restart:'↺ Restart', visual:'👁️ Visual', audio:'🎧 Audio',
+                audioGuide:'🎧 Close your eyes', audioActive:'🎧 Voice active',
+                pwaHint:'📲 Add to Home Screen',
+                countdownVoice:['Three','Two','One'],
+                voiceInhale:'Breathe in', voiceHold:'Hold', voiceExhale:'Breathe out',
+                voiceInhaleDeep:'Inhale deeply', voiceHoldGentle:'Hold gently', voiceExhaleSlow:'Exhale slowly',
+                breakTitle:'🌿 Wonderful!',
+                breakSubtitle:'You completed a round.<br>Continue with the next round or take a 30-second break?',
+                breakContinue:'▶ Continue', breakRest:'⏸ 30 sec break',
+                breakCountdown:'Break: '
             };
+            function t(k){ return lang==='hi' ? hiStrings[k] : enStrings[k]; }
 
-            function t(key) {
-                return lang === 'hi' ? hiStrings[key] : enStrings[key];
-            }
-
-            // ── Quotes Pool ──
             const quotes = [
-                { hi: "शांति भीतर से आती है, उसे बाहर मत खोजो।",
-                    en: "Peace comes from within. Do not seek it without." },
-                { hi: "वर्तमान क्षण आनंद से भरा है। यदि आप ध्यान दें, तो इसे देख लेंगे।",
-                    en: "The present moment is filled with joy. If you are attentive, you will see it." },
-                { hi: "भावनाएँ बादलों की तरह आती-जाती हैं। सचेत श्वास मेरा सहारा है।",
-                    en: "Feelings come and go like clouds. Conscious breathing is my anchor." },
-                { hi: "आपके भीतर एक शांति का अभयारण्य है, जहाँ आप कभी भी जा सकते हैं।",
-                    en: "Within you is a sanctuary of stillness you can retreat to anytime." },
-                { hi: "इस पल में खुश रहो, बस इतना ही काफी है।",
-                    en: "Be happy in this moment. That's enough." },
-                { hi: "जितने शांत होते हैं, उतना ही अधिक सुन पाते हैं।",
-                    en: "The quieter you become, the more you can hear." },
-                { hi: "जो सोचते हैं होना चाहिए, उसे छोड़ें और जो है उसे अपनाएँ।",
-                    en: "Let go of what should happen and embrace what is." },
-                { hi: "आप आकाश हैं। बाकी सब सिर्फ मौसम है।", en: "You are the sky. Everything else is the weather." },
-                { hi: "साँस लें साहस। साँस छोड़ें भय।", en: "Inhale courage. Exhale fear." },
-                { hi: "यह भी बीत जाएगा। बस साँस लें।", en: "This too shall pass. Just breathe." },
+                { hi:"शांति भीतर से आती है, उसे बाहर मत खोजो।", en:"Peace comes from within. Do not seek it without." },
+                { hi:"वर्तमान क्षण आनंद से भरा है। यदि आप ध्यान दें, तो इसे देख लेंगे।", en:"The present moment is filled with joy. If you are attentive, you will see it." },
+                { hi:"भावनाएँ बादलों की तरह आती-जाती हैं। सचेत श्वास मेरा सहारा है।", en:"Feelings come and go like clouds. Conscious breathing is my anchor." },
+                { hi:"आपके भीतर एक शांति का अभयारण्य है।", en:"Within you is a sanctuary of stillness." },
+                { hi:"इस पल में खुश रहो, बस इतना ही काफी है।", en:"Be happy in this moment. That's enough." },
+                { hi:"जितने शांत होते हैं, उतना ही अधिक सुन पाते हैं।", en:"The quieter you become, the more you can hear." },
+                { hi:"आप आकाश हैं। बाकी सब सिर्फ मौसम है।", en:"You are the sky. Everything else is the weather." },
+                { hi:"साँस लें साहस। साँस छोड़ें भय।", en:"Inhale courage. Exhale fear." },
+                { hi:"यह भी बीत जाएगा। बस साँस लें।", en:"This too shall pass. Just breathe." },
             ];
 
-            function getRandomQuote() {
-                return quotes[Math.floor(Math.random() * quotes.length)];
+            function randomQuote(){ return quotes[Math.floor(Math.random()*quotes.length)]; }
+            function setQuote(){
+                const q=randomQuote();
+                const hi=document.getElementById('quoteHi'), en=document.getElementById('quoteEn');
+                hi.style.animation='none'; en.style.animation='none';
+                hi.offsetHeight; en.offsetHeight;
+                hi.textContent=`"${q.hi}"`; en.textContent=`"${q.en}"`;
+                hi.style.animation='quoteIn 1.8s ease forwards';
+                en.style.animation='quoteIn 2.2s ease forwards';
+                updateQuoteVis();
             }
-
-            function setRandomQuote() {
-                const q = getRandomQuote();
-                const hiEl = document.getElementById('quoteHi');
-                const enEl = document.getElementById('quoteEn');
-                hiEl.style.animation = 'none';
-                enEl.style.animation = 'none';
-                hiEl.offsetHeight;
-                enEl.offsetHeight;
-                hiEl.textContent = `"${q.hi}"`;
-                enEl.textContent = `"${q.en}"`;
-                hiEl.style.animation = 'quoteFadeIn 1.8s ease forwards';
-                enEl.style.animation = 'quoteFadeIn 2.2s ease forwards';
-                updateQuoteVisibility();
+            function updateQuoteVis(){
+                document.getElementById('quoteEn').classList.toggle('show', lang==='en');
             }
+            setQuote();
 
-            function updateQuoteVisibility() {
-                const enEl = document.getElementById('quoteEn');
-                if (lang === 'en') {
-                    enEl.classList.add('show');
-                } else {
-                    enEl.classList.remove('show');
+            // DOM
+            const orbContainer=document.getElementById('orbContainer'),
+                phaseLabel=document.getElementById('phaseLabel'),
+                timerDisplay=document.getElementById('timerDisplay'),
+                roundCounter=document.getElementById('roundCounter'),
+                startBtn=document.getElementById('startBtn'),
+                restartBtn=document.getElementById('restartBtn'),
+                visualBtn=document.getElementById('visualModeBtn'),
+                audioBtn=document.getElementById('audioModeBtn'),
+                audioIndicator=document.getElementById('audioIndicator'),
+                langToggle=document.getElementById('langToggle'),
+                brand=document.getElementById('brand'),
+                countdownOverlay=document.getElementById('countdownOverlay'),
+                countdownNumber=document.getElementById('countdownNumber'),
+                themeToggle=document.getElementById('themeToggle'),
+                pwaHint=document.getElementById('pwaHint'),
+                breakDialog=document.getElementById('breakDialog'),
+                breakTitle=document.getElementById('breakTitle'),
+                breakSubtitle=document.getElementById('breakSubtitle'),
+                breakContinue=document.getElementById('breakContinue'),
+                breakRest=document.getElementById('breakRest'),
+                techniqueSelector=document.getElementById('techniqueSelector');
+
+            function setTechnique(tech){
+                technique=tech;
+                const tData=techniques[tech];
+                INHALE=tData.inhale; HOLD=tData.hold; EXHALE=tData.exhale;
+                document.querySelectorAll('.tech-btn').forEach(b=>b.classList.remove('active-tech'));
+                document.querySelector(`[data-tech="${tech}"]`).classList.add('active-tech');
+                if(!running){
+                    phase='inhale'; timeLeft=INHALE; round=0;
+                    updateUI(); updateAllLabels();
+                    timerDisplay.textContent=INHALE;
+                    roundCounter.textContent=`${t('round')} 0`;
+                    phaseLabel.textContent=t('ready');
+                    orbContainer.classList.remove('phase-inhale','phase-hold','phase-exhale');
                 }
             }
 
-            setRandomQuote();
+            techniqueSelector.addEventListener('click',(e)=>{
+                const btn=e.target.closest('.tech-btn');
+                if(!btn) return;
+                setTechnique(btn.dataset.tech);
+            });
 
-            // ── Constants ──
-            const INHALE = 5;
-            const HOLD = 7;
-            const EXHALE = 8;
+            function vibrate(p){ if(navigator.vibrate) navigator.vibrate(p); }
+            function haptic(){ vibrate([20,40,20]); }
 
-            // ── State ──
-            let phase = 'inhale';
-            let timeLeft = INHALE;
-            let round = 0;
-            let running = false;
-            let timerId = null;
-            let mode = 'visual';
-            let audioCtx = null;
-
-            // ── DOM refs ──
-            const orbContainer = document.getElementById('orbContainer');
-            const phaseLabel = document.getElementById('phaseLabel');
-            const timerDisplay = document.getElementById('timerDisplay');
-            const roundCounter = document.getElementById('roundCounter');
-            const startBtn = document.getElementById('startBtn');
-            const restartBtn = document.getElementById('restartBtn');
-            const visualBtn = document.getElementById('visualModeBtn');
-            const audioBtn = document.getElementById('audioModeBtn');
-            const audioIndicator = document.getElementById('audioIndicator');
-            const langToggle = document.getElementById('langToggle');
-            const brand = document.getElementById('brand');
-            const countdownOverlay = document.getElementById('countdownOverlay');
-            const countdownNumber = document.getElementById('countdownNumber');
-            const themeToggle = document.getElementById('themeToggle');
-            const pwaHint = document.getElementById('pwaHint');
-
-            // ── Haptic ──
-            function vibrate(pattern) {
-                if (navigator.vibrate) navigator.vibrate(pattern);
+            function initAudio(){
+                if(!audioCtx){ try{ audioCtx=new(window.AudioContext||window.webkitAudioContext)(); }catch(e){} }
+                if(audioCtx&&audioCtx.state==='suspended') audioCtx.resume();
             }
-
-            function hapticBump() {
-                vibrate([25, 45, 25]);
+            function playTone(f,d,v=0.08,type='sine'){
+                if(!audioCtx) return;
+                try{
+                    const t=audioCtx.currentTime;
+                    const o=audioCtx.createOscillator(), g=audioCtx.createGain();
+                    o.type=type; o.frequency.setValueAtTime(f,t);
+                    g.gain.setValueAtTime(v,t); g.gain.exponentialRampToValueAtTime(0.0001,t+d);
+                    o.connect(g); g.connect(audioCtx.destination);
+                    o.start(t); o.stop(t+d);
+                }catch(e){}
             }
-
-            // ── Audio ──
-            function initAudio() {
-                if (!audioCtx) {
-                    try { audioCtx = new(window.AudioContext || window.webkitAudioContext)(); } catch (e) {}
-                }
-                if (audioCtx && audioCtx.state === 'suspended') audioCtx.resume();
+            function chime(p){
+                if(p==='inhale'){ playTone(440,0.35,0.1); setTimeout(()=>playTone(520,0.3,0.07),120); }
+                else if(p==='hold'){ playTone(587,0.3,0.09,'triangle'); setTimeout(()=>playTone(660,0.25,0.06),100); }
+                else{ playTone(392,0.4,0.09); setTimeout(()=>playTone(330,0.35,0.07),150); }
             }
-
-            function playTone(freq, dur, vol = 0.08, type = 'sine') {
-                if (!audioCtx) return;
-                try {
-                    const t = audioCtx.currentTime;
-                    const osc = audioCtx.createOscillator();
-                    const gain = audioCtx.createGain();
-                    osc.type = type;
-                    osc.frequency.setValueAtTime(freq, t);
-                    gain.gain.setValueAtTime(vol, t);
-                    gain.gain.exponentialRampToValueAtTime(0.0001, t + dur);
-                    osc.connect(gain);
-                    gain.connect(audioCtx.destination);
-                    osc.start(t);
-                    osc.stop(t + dur);
-                } catch (e) {}
-            }
-
-            function playPhaseChime(p) {
-                if (p === 'inhale') {
-                    playTone(440, 0.35, 0.1, 'sine');
-                    setTimeout(() => playTone(520, 0.3, 0.07, 'sine'), 120);
-                } else if (p === 'hold') {
-                    playTone(587, 0.3, 0.09, 'triangle');
-                    setTimeout(() => playTone(660, 0.25, 0.06, 'sine'), 100);
-                } else if (p === 'exhale') {
-                    playTone(392, 0.4, 0.09, 'sine');
-                    setTimeout(() => playTone(330, 0.35, 0.07, 'sine'), 150);
-                }
-            }
-
-            // ── Calm voice using Speech API with Hindi support ──
-            function speakCalm(text, isHindi = false) {
-                if (!window.speechSynthesis) return;
+            function speakCalm(text,isHi=false){
+                if(!window.speechSynthesis) return;
                 window.speechSynthesis.cancel();
-                const u = new SpeechSynthesisUtterance(text);
-                u.lang = isHindi ? 'hi-IN' : 'en-US';
-                u.rate = 0.78;
-                u.pitch = 1.0;
-                u.volume = 0.85;
-
-                // Try to find a calm female voice
-                const voices = window.speechSynthesis.getVoices();
-                const preferred = voices.find(v =>
-                    (isHindi && v.lang.startsWith('hi')) ||
-                    (!isHindi && v.lang.startsWith('en') && v.name.includes('Female'))
-                );
-                if (preferred) u.voice = preferred;
-                else {
-                    const anyFemale = voices.find(v => v.name.includes('Female') || v.name.includes('Samantha') || v
-                        .name.includes('Karen'));
-                    if (anyFemale) u.voice = anyFemale;
-                }
-
+                const u=new SpeechSynthesisUtterance(text);
+                u.lang=isHi?'hi-IN':'en-US'; u.rate=0.78; u.pitch=1.0; u.volume=0.85;
+                const voices=window.speechSynthesis.getVoices();
+                const pref=voices.find(v=>(isHi&&v.lang.startsWith('hi'))||(!isHi&&v.lang.startsWith('en')&&v.name.includes('Female')));
+                if(pref) u.voice=pref;
                 window.speechSynthesis.speak(u);
             }
+            function speakPhrase(k){ speakCalm(t(k), lang==='hi'); }
 
-            function speakPhrase(key) {
-                const isHindi = lang === 'hi';
-                speakCalm(t(key), isHindi);
+            function updateAllLabels(){
+                if(!running){ phaseLabel.textContent=t('ready'); startBtn.textContent=t('start'); }
+                visualBtn.textContent=t('visual'); audioBtn.textContent=t('audio');
+                restartBtn.textContent=t('restart');
+                langToggle.textContent=lang==='hi'?'English →':'हिंदी →';
+                updateQuoteVis();
+                if(mode==='audio'&&running) audioIndicator.textContent=t('audioActive');
+                else if(mode==='audio'&&!running) audioIndicator.textContent=t('audioGuide');
+                else audioIndicator.textContent='';
             }
-
-            // ── UI Updates ──
-            function updateAllLabels() {
-                phaseLabel.textContent = running ? t(phase) : t('ready');
-                roundCounter.textContent = `${t('round')} ${round}`;
-                if (!running) {
-                    startBtn.textContent = t('start');
-                }
-                visualBtn.textContent = t('visual');
-                audioBtn.textContent = t('audio');
-                restartBtn.textContent = t('restart');
-                langToggle.textContent = lang === 'hi' ? 'English →' : 'हिंदी →';
-                updateQuoteVisibility();
-                if (mode === 'audio' && running) {
-                    audioIndicator.textContent = t('audioActive');
-                } else if (mode === 'audio' && !running) {
-                    audioIndicator.textContent = t('audioGuide');
-                } else {
-                    audioIndicator.textContent = '';
-                }
+            function updateUI(){
+                timerDisplay.textContent=timeLeft;
+                roundCounter.textContent=`${t('round')} ${round}`;
+                orbContainer.classList.remove('phase-inhale','phase-hold','phase-exhale');
+                if(phase==='inhale'){ orbContainer.classList.add('phase-inhale'); phaseLabel.textContent=t('inhale'); }
+                else if(phase==='hold'){ orbContainer.classList.add('phase-hold'); phaseLabel.textContent=t('hold'); }
+                else{ orbContainer.classList.add('phase-exhale'); phaseLabel.textContent=t('exhale'); }
             }
-
-            function updateUI() {
-                timerDisplay.textContent = timeLeft;
-                roundCounter.textContent = `${t('round')} ${round}`;
-                orbContainer.classList.remove('phase-inhale', 'phase-hold', 'phase-exhale');
-                if (phase === 'inhale') {
-                    orbContainer.classList.add('phase-inhale');
-                    phaseLabel.textContent = t('inhale');
-                } else if (phase === 'hold') {
-                    orbContainer.classList.add('phase-hold');
-                    phaseLabel.textContent = t('hold');
-                } else {
-                    orbContainer.classList.add('phase-exhale');
-                    phaseLabel.textContent = t('exhale');
-                }
-            }
-
-            function setPhaseCues(p) {
-                hapticBump();
-                playPhaseChime(p);
-                if (mode === 'audio') {
-                    if (p === 'inhale') speakPhrase('voiceInhale');
-                    else if (p === 'hold') speakPhrase('voiceHold');
+            function setCues(p){
+                haptic(); chime(p);
+                if(mode==='audio'){
+                    if(p==='inhale') speakPhrase('voiceInhale');
+                    else if(p==='hold') speakPhrase('voiceHold');
                     else speakPhrase('voiceExhale');
-                    audioIndicator.textContent = t('audioActive');
+                    audioIndicator.textContent=t('audioActive');
                 }
             }
 
-            // ── Phase transition ──
-            function nextPhase() {
-                if (phase === 'inhale') { phase = 'hold';
-                    timeLeft = HOLD; } else if (phase === 'hold') { phase = 'exhale';
-                    timeLeft = EXHALE; } else { phase = 'inhale';
-                    timeLeft = INHALE;
-                    round++; }
-                updateUI();
-                if (running) setPhaseCues(phase);
-            }
-
-            function tick() {
-                if (!running) return;
-                timeLeft--;
-                updateUI();
-                if (timeLeft <= 0) nextPhase();
-            }
-
-            // ── Countdown (3-2-1) ──
-            function doCountdown(callback) {
-                const numbers = lang === 'hi' ? ['३', '२', '१'] : ['3', '2', '1'];
-                const voiceWords = t('countdownVoice');
-                // Ensure it's an array
-                const words = Array.isArray(voiceWords) ? voiceWords : ['Three', 'Two', 'One'];
-                let i = 0;
-                countdownOverlay.classList.add('active');
-
-                function showNext() {
-                    if (i >= 3) {
-                        countdownOverlay.classList.remove('active');
-                        countdownNumber.textContent = '';
-                        callback();
-                        return;
+            function nextPhase(){
+                if(phase==='inhale'){ phase='hold'; timeLeft=HOLD; }
+                else if(phase==='hold'){ phase='exhale'; timeLeft=EXHALE; }
+                else{
+                    phase='inhale'; timeLeft=INHALE; round++;
+                    if(running && round>0 && round%roundsBeforeBreak===0){
+                        showBreakDialog();
                     }
-                    countdownNumber.textContent = numbers[i];
-                    countdownNumber.style.animation = 'none';
-                    countdownNumber.offsetHeight;
-                    countdownNumber.style.animation = 'countPulse 0.9s ease-out forwards';
-                    // Speak the word (calm voice)
-                    speakCalm(words[i], lang === 'hi');
-                    vibrate(80);
-                    i++;
-                    setTimeout(showNext, 950);
                 }
-                showNext();
+                updateUI();
+                if(running) setCues(phase);
+            }
+            function tick(){
+                if(!running || breakActive) return;
+                timeLeft--; updateUI();
+                if(timeLeft<=0) nextPhase();
             }
 
-            // ── Start / Pause ──
-            function start() {
-                if (running) return;
-                initAudio();
-                // Preload voices
-                if (window.speechSynthesis) window.speechSynthesis.getVoices();
+            // Break dialog
+            function showBreakDialog(){
+                breakActive=true;
+                breakDialog.classList.add('active');
+                breakTitle.textContent=t('breakTitle');
+                breakSubtitle.innerHTML=t('breakSubtitle');
+                breakContinue.textContent=t('breakContinue');
+                breakRest.textContent=t('breakRest');
+                // Change bg to warm gold-green
+                document.body.style.background='#2a3a20';
+                setTimeout(()=>{ document.body.style.background=''; }, 500);
+            }
+            function hideBreakDialog(){
+                breakDialog.classList.remove('active');
+                breakActive=false;
+            }
+            function doBreakCountdown(cb){
+                let sec=30;
+                breakTitle.textContent=lang==='hi'?'⏸ विराम':'⏸ Break';
+                breakSubtitle.innerHTML=`${t('breakCountdown')}<strong>${sec}</strong>`;
+                breakContinue.style.display='none'; breakRest.style.display='none';
+                const int=setInterval(()=>{
+                    sec--;
+                    if(sec<=0){ clearInterval(int); hideBreakDialog(); cb(); }
+                    else{ breakSubtitle.innerHTML=`${t('breakCountdown')}<strong>${sec}</strong>`; }
+                },1000);
+            }
+            breakContinue.addEventListener('click',()=>{
+                hideBreakDialog();
+                // Continue with next round
+                if(timerId) clearInterval(timerId);
+                timerId=setInterval(tick,1000);
+            });
+            breakRest.addEventListener('click',()=>{
+                doBreakCountdown(()=>{
+                    if(timerId) clearInterval(timerId);
+                    timerId=setInterval(tick,1000);
+                });
+            });
 
-                doCountdown(() => {
-                    running = true;
-                    startBtn.textContent = t('pause');
+            // Countdown
+            function doCountdown(cb){
+                const nums=lang==='hi'?['३','२','१']:['3','2','1'];
+                const words=t('countdownVoice');
+                const w=Array.isArray(words)?words:['Three','Two','One'];
+                let i=0;
+                countdownOverlay.classList.add('active');
+                function show(){
+                    if(i>=3){ countdownOverlay.classList.remove('active'); countdownNumber.textContent=''; cb(); return; }
+                    countdownNumber.textContent=nums[i];
+                    countdownNumber.style.animation='none'; countdownNumber.offsetHeight;
+                    countdownNumber.style.animation='countPulse 0.9s ease-out forwards';
+                    speakCalm(w[i],lang==='hi'); vibrate(80);
+                    i++; setTimeout(show,950);
+                }
+                show();
+            }
+
+            function start(){
+                if(running) return;
+                initAudio();
+                if(window.speechSynthesis) window.speechSynthesis.getVoices();
+                doCountdown(()=>{
+                    running=true; startBtn.textContent=t('pause');
                     brand.classList.add('visible');
-                    updateUI();
-                    setPhaseCues(phase);
-                    if (timerId) clearInterval(timerId);
-                    timerId = setInterval(tick, 1000);
+                    updateUI(); setCues(phase);
+                    if(timerId) clearInterval(timerId);
+                    timerId=setInterval(tick,1000);
                 });
             }
-
-            function pause() {
-                if (!running) return;
-                running = false;
-                if (timerId) { clearInterval(timerId);
-                    timerId = null; }
-                startBtn.textContent = t('resume');
-                if (window.speechSynthesis) window.speechSynthesis.cancel();
-                audioIndicator.textContent = mode === 'audio' ? t('audioGuide') : '';
+            function pause(){
+                if(!running) return;
+                running=false;
+                if(timerId){ clearInterval(timerId); timerId=null; }
+                startBtn.textContent=t('resume');
+                if(window.speechSynthesis) window.speechSynthesis.cancel();
+                audioIndicator.textContent=mode==='audio'?t('audioGuide'):'';
                 brand.classList.remove('visible');
             }
-
-            function restart() {
-                pause();
-                phase = 'inhale';
-                timeLeft = INHALE;
-                round = 0;
+            function restart(){
+                pause(); hideBreakDialog();
+                phase='inhale'; timeLeft=INHALE; round=0;
                 updateUI();
-                orbContainer.classList.remove('phase-inhale', 'phase-hold', 'phase-exhale');
-                phaseLabel.textContent = t('ready');
-                timerDisplay.textContent = INHALE;
-                roundCounter.textContent = `${t('round')} 0`;
-                startBtn.textContent = t('start');
-                audioIndicator.textContent = '';
+                orbContainer.classList.remove('phase-inhale','phase-hold','phase-exhale');
+                phaseLabel.textContent=t('ready');
+                timerDisplay.textContent=INHALE;
+                roundCounter.textContent=`${t('round')} 0`;
+                startBtn.textContent=t('start');
+                audioIndicator.textContent='';
                 brand.classList.remove('visible');
-                if (window.speechSynthesis) window.speechSynthesis.cancel();
+                if(window.speechSynthesis) window.speechSynthesis.cancel();
+                document.body.style.background='';
             }
 
-            startBtn.addEventListener('click', () => {
-                if (running) pause();
-                else start();
-            });
+            startBtn.addEventListener('click',()=>{ if(running) pause(); else start(); });
             restartBtn.addEventListener('click', restart);
 
-// ── Mode switching ──
-            function setVisual() {
-                mode = 'visual';
-                visualBtn.classList.add('active-mode');
+            function setVisual(){
+                mode='visual'; visualBtn.classList.add('active-mode');
                 audioBtn.classList.remove('active-mode');
-                audioIndicator.textContent = '';
-                if (running && window.speechSynthesis) window.speechSynthesis.cancel();
+                audioIndicator.textContent='';
+                if(running&&window.speechSynthesis) window.speechSynthesis.cancel();
             }
-
-            function setAudio() {
-                mode = 'audio';
-                audioBtn.classList.add('active-mode');
+            function setAudio(){
+                mode='audio'; audioBtn.classList.add('active-mode');
                 visualBtn.classList.remove('active-mode');
-                audioIndicator.textContent = running ? t('audioActive') : t('audioGuide');
-                if (running) {
-                    if (phase === 'inhale') speakPhrase('voiceInhaleDeep');
-                    else if (phase === 'hold') speakPhrase('voiceHoldGentle');
+                audioIndicator.textContent=running?t('audioActive'):t('audioGuide');
+                if(running){
+                    if(phase==='inhale') speakPhrase('voiceInhaleDeep');
+                    else if(phase==='hold') speakPhrase('voiceHoldGentle');
                     else speakPhrase('voiceExhaleSlow');
                 }
             }
+            visualBtn.addEventListener('click',setVisual);
+            audioBtn.addEventListener('click',setAudio);
 
-            visualBtn.addEventListener('click', setVisual);
-            audioBtn.addEventListener('click', setAudio);
-
-            // ── Language toggle ──
-            langToggle.addEventListener('click', () => {
-                lang = lang === 'hi' ? 'en' : 'hi';
-                updateAllLabels();
-                updateUI();
-                if (!running) {
-                    phaseLabel.textContent = t('ready');
-                    timerDisplay.textContent = timeLeft;
-                    roundCounter.textContent = `${t('round')} ${round}`;
+            langToggle.addEventListener('click',()=>{
+                lang=lang==='hi'?'en':'hi';
+                updateAllLabels(); updateUI();
+                if(!running){
+                    phaseLabel.textContent=t('ready');
+                    timerDisplay.textContent=timeLeft;
+                    roundCounter.textContent=`${t('round')} ${round}`;
                 }
-                if (mode === 'audio' && running) {
-                    audioIndicator.textContent = t('audioActive');
-                }
-                setRandomQuote();
+                setQuote();
             });
 
-            // ── Theme toggle ──
-            let isDark = true;
-            themeToggle.addEventListener('click', () => {
-                isDark = !isDark;
-                if (isDark) {
-                    document.body.classList.remove('light-mode');
-                    themeToggle.textContent = '☀️';
-                    document.querySelector('meta[name="theme-color"]').content = '#060c0c';
-                } else {
-                    document.body.classList.add('light-mode');
-                    themeToggle.textContent = '🌙';
-                    document.querySelector('meta[name="theme-color"]').content = '#f5f0e8';
-                }
+            let isDark=true;
+            themeToggle.addEventListener('click',()=>{
+                isDark=!isDark;
+                if(isDark){ document.body.classList.remove('light-mode'); themeToggle.textContent='☀️';
+                    document.querySelector('meta[name="theme-color"]').content='#1a3a2a'; }
+                else{ document.body.classList.add('light-mode'); themeToggle.textContent='🌙';
+                    document.querySelector('meta[name="theme-color"]').content='#e8f0e4'; }
             });
 
-            // ── PWA hint ──
-            function showPwaHint() {
-                const isStandalone = window.matchMedia('(display-mode: standalone)').matches || navigator.standalone;
-                const isIOS = /iphone|ipad|ipod/.test(navigator.userAgent.toLowerCase());
-                if (!isStandalone && isIOS && !localStorage.getItem('pawan-pwa-dismissed')) {
-                    pwaHint.textContent = t('pwaHint');
-                    pwaHint.classList.add('show');
+            function showPwa(){
+                const standalone=window.matchMedia('(display-mode:standalone)').matches||navigator.standalone;
+                const iOS=/iphone|ipad|ipod/.test(navigator.userAgent.toLowerCase());
+                if(!standalone&&iOS&&!localStorage.getItem('pawan-pwa-v2')){
+                    pwaHint.textContent=t('pwaHint'); pwaHint.classList.add('show');
                 }
             }
-            pwaHint.addEventListener('click', () => {
-                pwaHint.classList.remove('show');
-                localStorage.setItem('pawan-pwa-dismissed', 'true');
-            });
-            setTimeout(() => pwaHint.classList.remove('show'), 12000);
-            window.addEventListener('load', showPwaHint);
+            pwaHint.addEventListener('click',()=>{ pwaHint.classList.remove('show');
+                localStorage.setItem('pawan-pwa-v2','true'); });
+            setTimeout(()=>pwaHint.classList.remove('show'),12000);
+            window.addEventListener('load',showPwa);
 
-            // ── Particles ──
-            const canvas = document.getElementById('particles');
-            const ctx = canvas.getContext('2d');
-            let particlesArr = [];
-            const PC = 65;
-
-            function resizeCanvas() {
-                canvas.width = window.innerWidth;
-                canvas.height = window.innerHeight;
+            // Particles
+            const canvas=document.getElementById('particles'), ctx=canvas.getContext('2d');
+            let parts=[]; const PC=60;
+            function resize(){ canvas.width=window.innerWidth; canvas.height=window.innerHeight; }
+            window.addEventListener('resize',resize); resize();
+            class Particle{
+                constructor(){ this.reset(); }
+                reset(){ this.x=Math.random()*canvas.width; this.y=Math.random()*canvas.height;
+                    this.r=Math.random()*1.5+0.3; this.speed=Math.random()*0.28+0.08;
+                    this.opacity=Math.random()*0.45+0.15; this.wobble=Math.random()*Math.PI*2; }
+                update(){ this.y-=this.speed; this.wobble+=0.006;
+                    this.x+=Math.sin(this.wobble)*0.18;
+                    if(this.y<-10){ this.y=canvas.height+10; this.x=Math.random()*canvas.width; } }
+                draw(){ ctx.beginPath(); ctx.arc(this.x,this.y,this.r,0,Math.PI*2);
+                    ctx.fillStyle=`rgba(210,180,130,${this.opacity})`; ctx.fill();
+                    ctx.beginPath(); ctx.arc(this.x,this.y,this.r*2,0,Math.PI*2);
+                    ctx.fillStyle=`rgba(210,180,130,${this.opacity*0.08})`; ctx.fill(); }
             }
-            window.addEventListener('resize', resizeCanvas);
-            resizeCanvas();
+            for(let i=0;i<PC;i++) parts.push(new Particle());
+            function anim(){ ctx.clearRect(0,0,canvas.width,canvas.height);
+                for(const p of parts){ p.update(); p.draw(); } requestAnimationFrame(anim); }
+            anim();
 
-            class Particle {
-                constructor() { this.reset(); }
-                reset() {
-                    this.x = Math.random() * canvas.width;
-                    this.y = Math.random() * canvas.height;
-                    this.r = Math.random() * 1.6 + 0.4;
-                    this.speed = Math.random() * 0.3 + 0.1;
-                    this.opacity = Math.random() * 0.5 + 0.18;
-                    this.wobble = Math.random() * Math.PI * 2;
-                }
-                update() {
-                    this.y -= this.speed;
-                    this.wobble += 0.007;
-                    this.x += Math.sin(this.wobble) * 0.2;
-                    if (this.y < -10) { this.y = canvas.height + 10;
-                        this.x = Math.random() * canvas.width; }
-                }
-                draw() {
-                    ctx.beginPath();
-                    ctx.arc(this.x, this.y, this.r, 0, Math.PI * 2);
-                    ctx.fillStyle = `rgba(210,180,130,${this.opacity})`;
-                    ctx.fill();
-                    ctx.beginPath();
-                    ctx.arc(this.x, this.y, this.r * 2.2, 0, Math.PI * 2);
-                    ctx.fillStyle = `rgba(210,180,130,${this.opacity*0.1})`;
-                    ctx.fill();
-                }
-            }
-            for (let i = 0; i < PC; i++) particlesArr.push(new Particle());
-
-            function animParticles() {
-                ctx.clearRect(0, 0, canvas.width, canvas.height);
-                for (const p of particlesArr) { p.update();
-                    p.draw(); }
-                requestAnimationFrame(animParticles);
-            }
-            animParticles();
-// ── Service Worker ──
-            if ('serviceWorker' in navigator) {
-                const swCode = `
-            const C='pawan-v2';
-            self.addEventListener('install',e=>{e.waitUntil(caches.open(C).then(c=>c.addAll(['/'])).then(()=>self.skipWaiting()))});
-            self.addEventListener('activate',e=>{e.waitUntil(caches.keys().then(k=>Promise.all(k.filter(x=>x!==C).map(x=>caches.delete(x)))).then(()=>self.clients.claim()))});
-            self.addEventListener('fetch',e=>{e.respondWith(caches.match(e.request).then(r=>r||fetch(e.request).then(res=>{if(res.ok){const cl=res.clone();caches.open(C).then(c=>c.put(e.request,cl));}return res;})))});
-          `;
-                const blob = new Blob([swCode], { type: 'application/javascript' });
-                navigator.serviceWorker.register(URL.createObjectURL(blob)).catch(() => {});
+            // SW
+            if('serviceWorker' in navigator){
+                const sw=`const C='pawan-v3';self.addEventListener('install',e=>{e.waitUntil(caches.open(C).then(c=>c.addAll(['/'])).then(()=>self.skipWaiting()))});self.addEventListener('activate',e=>{e.waitUntil(caches.keys().then(k=>Promise.all(k.filter(x=>x!==C).map(x=>caches.delete(x)))).then(()=>self.clients.claim()))});self.addEventListener('fetch',e=>{e.respondWith(caches.match(e.request).then(r=>r||fetch(e.request).then(res=>{if(res.ok){const cl=res.clone();caches.open(C).then(c=>c.put(e.request,cl));}return res;})))});`;
+                navigator.serviceWorker.register(URL.createObjectURL(new Blob([sw],{type:'application/javascript'}))).catch(()=>{});
             }
 
-            // ── Init ──
+            // Init
+            setTechnique('578');
             updateAllLabels();
-            phaseLabel.textContent = t('ready');
-            timerDisplay.textContent = INHALE;
-            roundCounter.textContent = `${t('round')} 0`;
-            startBtn.textContent = t('start');
-            restartBtn.textContent = t('restart');
+            phaseLabel.textContent=t('ready');
+            timerDisplay.textContent=INHALE;
+            roundCounter.textContent=`${t('round')} 0`;
+            startBtn.textContent=t('start');
+            restartBtn.textContent=t('restart');
         })();
     </script>
 </body>
 </html>
-```
