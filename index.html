@@ -269,6 +269,16 @@
             letter-spacing:2px; text-transform:uppercase; font-weight:600;
             text-shadow:0 2px 15px rgba(0,0,0,0.6); z-index:5;
         }
+                .progress-ring {
+            position:absolute; top:50%; left:50%;
+            transform:translate(-50%,-50%);
+            width:120%; height:120%; pointer-events:none; z-index:3;
+        }
+        .progress-ring circle {
+            fill:none; stroke:rgba(210,180,130,0.4);
+            stroke-width:2; stroke-linecap:round;
+            transition:stroke-dashoffset 0.9s linear;
+        }
 
         /* Countdown */
         .countdown-overlay {
@@ -484,9 +494,12 @@
         <div class="orb-section">
             <div class="orb-container" id="orbContainer">
                 <div class="orb-glow ring" id="orbRing"></div>
-                <div class="orb" id="orb">
-                    <span class="phase-text" id="phaseLabel">तैयार</span>
-                </div>
+                            <div class="orb" id="orb">
+                <svg class="progress-ring" id="progressRing" viewBox="0 0 100 100">
+                    <circle cx="50" cy="50" r="46" id="progressCircle"/>
+                </svg>
+                <span class="phase-text" id="phaseLabel">तैयार</span>
+            </div>
             </div>
         </div>
 
@@ -707,13 +720,22 @@ document.addEventListener('touchstart',preloadVoices,{once:true});
                 else if(mode==='audio'&&!running) audioIndicator.textContent=t('audioGuide');
                 else audioIndicator.textContent='';
             }
-            function updateUI(){
+                        function updateUI(){
                 timerDisplay.textContent=timeLeft;
                 roundCounter.textContent=`${t('round')} ${round}`;
                 orbContainer.classList.remove('phase-inhale','phase-hold','phase-exhale');
                 if(phase==='inhale'){ orbContainer.classList.add('phase-inhale'); phaseLabel.textContent=t('inhale'); }
                 else if(phase==='hold'){ orbContainer.classList.add('phase-hold'); phaseLabel.textContent=t('hold'); }
                 else{ orbContainer.classList.add('phase-exhale'); phaseLabel.textContent=t('exhale'); }
+                updateProgressRing();
+            }
+                        function updateProgressRing(){
+                const circle=document.getElementById('progressCircle');
+                const total=phase==='inhale'?INHALE:phase==='hold'?HOLD:EXHALE;
+                const circumference=2*Math.PI*46;
+                const offset=circumference-(timeLeft/total)*circumference;
+                circle.style.strokeDasharray=circumference;
+                circle.style.strokeDashoffset=offset;
             }
             function setCues(p){
                 haptic(); chime(p);
@@ -823,6 +845,7 @@ document.addEventListener('touchstart',preloadVoices,{once:true});
             function restart(){
                 pause(); hideBreakDialog();
                 phase='inhale'; timeLeft=INHALE; round=0;
+                                updateProgressRing();
                 updateUI();
                 orbContainer.classList.remove('phase-inhale','phase-hold','phase-exhale');
                 phaseLabel.textContent=t('ready');
