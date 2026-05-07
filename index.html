@@ -8,39 +8,27 @@
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
     <meta name="description" content="पवन — अनुकूल श्वास तकनीक। 3-4-5, 4-7-8, या 5-7-8। खोलें, साँस लें, शांत हो जाएँ।">
-    <!-- ═══════════════════════════════════════ -->
-<!-- Social Preview Tags · पवन -->
-<!-- ═══════════════════════════════════════ -->
 
-<!-- Primary Open Graph (WhatsApp, iMessage, Facebook, LinkedIn, Slack, Discord) -->
-<meta property="og:title" content="पवन · Pawan — Breathe, Come Home">
-<meta property="og:description" content="एक लिंक। एक साँस। शांति। — A 5-7-8 breathing sanctuary. Hindi-first. No signup. Instant calm.">
-<meta property="og:image" content="https://prasharindustries.github.io/Pawan/preview.png">
-<meta property="og:image:width" content="1200">
-<meta property="og:image:height" content="630">
-<meta property="og:image:alt" content="पवन — glowing breathing orb with पवन text on dark green background">
-<meta property="og:url" content="https://prasharindustries.github.io/Pawan/">
-<meta property="og:type" content="website">
-<meta property="og:site_name" content="पवन">
-<meta property="og:locale" content="hi_IN">
+    <!-- Open Graph / Social Preview -->
+    <meta property="og:title" content="पवन — Breathe, Come Home">
+    <meta property="og:description" content="एक लिंक। एक साँस। शांति। — A 5-7-8 breathing sanctuary. Hindi-first. No signup. Instant calm.">
+    <meta property="og:image" content="https://prasharindustries.github.io/Pawan/preview.png">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630">
+    <meta property="og:image:alt" content="पवन — glowing breathing orb with पवन text on dark green background">
+    <meta property="og:url" content="https://prasharindustries.github.io/Pawan/">
+    <meta property="og:type" content="website">
+    <meta property="og:site_name" content="पवन">
+    <meta property="og:locale" content="hi_IN">
 
-<!-- Twitter Card -->
-<meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="पवन · Pawan — Breathe, Come Home">
-<meta name="twitter:description" content="एक लिंक। एक साँस। शांति। — Hindi-first adaptive breathing. No signup. Instant calm.">
-<meta name="twitter:image" content="https://prasharindustries.github.io/Pawan/preview.png">
-<meta name="twitter:image:alt" content="पवन — glowing breathing orb with पवन text on dark green background">
-<meta name="twitter:site" content="@pawan_breath">
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="पवन — Breathe, Come Home">
+    <meta name="twitter:description" content="एक लिंक। एक साँस। शांति। — Hindi-first 5-7-8 breathing. No signup. Instant calm.">
+    <meta name="twitter:image" content="https://prasharindustries.github.io/Pawan/preview.png">
+    <meta name="twitter:image:alt" content="पवन — glowing breathing orb with पवन text on dark green background">
 
-<!-- WhatsApp-specific (uses og: tags but this reinforces) -->
-<meta property="og:image:secure_url" content="https://prasharindustries.github.io/Pawan/preview.png">
-
-<!-- Pinterest / Rich Pins -->
-<meta property="og:see_also" content="https://prasharindustries.github.io/Pawan/">
-    <!-- ⬇️ PASTE THE SOCIAL PREVIEW TAGS RIGHT HERE ⬇️ -->
-    
-    
-    <title>पवन — Your Breath, Your Sanctuary</title>
+    <title>पवन — Breathe, Come Home</title>
     <link rel="manifest" href="data:application/json;base64,ewogICJuYW1lIjogIvCkqvCkrvCkoyIsCiAgInNob3J0X25hbWUiOiAi4KSq4KSu4KSiIiwKICAic3RhcnRfdXJsIjogIi8iLAogICJkaXNwbGF5IjogInN0YW5kYWxvbmUiLAogICJiYWNrZ3JvdW5kX2NvbG9yIjogIiMxYTNhMmEiLAogICJ0aGVtZV9jb2xvciI6ICIjMWEzYTJhIiwKICAiaWNvbnMiOiBbXQp9">
     <style>
         :root {
@@ -164,48 +152,48 @@
         /* Quotes */
         .quote-wrapper {
             text-align:center; max-width:600px; width:100%;
-            min-height:70px; display:flex; flex-direction:column;
+            min-height:60px; display:flex; flex-direction:column;
             align-items:center; justify-content:center;
-            margin-bottom:0.5rem; transition:opacity 0.6s ease;
+            margin-bottom:0.3rem; transition:opacity 0.6s ease;
+            position:relative; z-index:20;
         }
         .quote-hindi {
-            font-size:clamp(0.95rem,2.8vw,1.3rem); color:var(--text);
-            letter-spacing:0.3px; line-height:1.6;
+            font-size:clamp(0.9rem,2.5vw,1.2rem); color:var(--text);
+            letter-spacing:0.3px; line-height:1.5;
             text-shadow:0 2px 10px rgba(0,0,0,0.2);
             animation:quoteIn 1.8s ease forwards; font-weight:400;
         }
         .quote-english {
-            font-size:clamp(0.85rem,2.2vw,1.1rem); color:var(--text-dim);
-            font-style:italic; letter-spacing:0.3px; line-height:1.5;
-            margin-top:0.3rem; display:none;
+            font-size:clamp(0.8rem,2vw,1rem); color:var(--text-dim);
+            font-style:italic; letter-spacing:0.3px; line-height:1.4;
+            margin-top:0.2rem; display:none;
             animation:quoteIn 2.2s ease forwards;
         }
         .quote-english.show { display:block; }
         @keyframes quoteIn {
-            from { opacity:0; transform:translateY(14px); }
+            from { opacity:0; transform:translateY(12px); }
             to { opacity:1; transform:translateY(0); }
         }
-<!-- Technique selector -->
-<p class="technique-label" id="techniqueLabel">अपनी गति चुनें · Choose your pace</p>
-<div class="technique-selector" id="techniqueSelector">
-    <button class="tech-btn" data-tech="345">🌱 3-4-5</button>
-    <button class="tech-btn" data-tech="478">🌿 4-7-8</button>
-    <button class="tech-btn active-tech" data-tech="578">🌳 5-7-8</button>
-</div>
-        /* Technique selector - ABOVE the orb */
-        .technique-selector {
-            display:flex; gap:0.5rem; flex-wrap:wrap;
-            justify-content:center; margin-bottom:0.6rem;
+
+        /* Technique label + selector */
+        .technique-section {
+            position:relative; z-index:20;
+            display:flex; flex-direction:column; align-items:center;
+            margin-bottom:0.4rem;
         }
         .technique-label {
-    color: var(--text-dim);
-    font-size: 0.8rem;
-    letter-spacing: 1px;
-    margin-bottom: 0.5rem;
-    text-align: center;
-    opacity: 0.7;
-    transition: color 0.5s ease;
-}
+            color: var(--text-dim);
+            font-size: 0.8rem;
+            letter-spacing: 1px;
+            margin-bottom: 0.5rem;
+            text-align: center;
+            opacity: 0.75;
+            transition: color 0.5s ease;
+        }
+        .technique-selector {
+            display:flex; gap:0.5rem; flex-wrap:wrap;
+            justify-content:center;
+        }
         .tech-btn {
             background:var(--btn-bg); border:1px solid var(--btn-border);
             color:var(--btn-text); padding:0.45rem 1rem;
@@ -221,11 +209,19 @@
             font-weight:600;
         }
 
-        /* Orb */
-        .orb-container {
-            position:relative;
+        /* Orb area - FIXED position, text flows above and below */
+        .orb-section {
+            position:relative; z-index:5;
+            display:flex; align-items:center; justify-content:center;
             width:min(230px,50vw); height:min(230px,50vw);
-            margin:0.3rem 0 1rem;
+            margin:0.3rem 0 0.8rem;
+            flex-shrink:0;
+        }
+        .orb-container {
+            position:absolute;
+            top:50%; left:50%;
+            transform:translate(-50%,-50%);
+            width:100%; height:100%;
         }
         .orb {
             width:100%; height:100%; border-radius:50%;
@@ -293,31 +289,40 @@
             100% { transform:scale(0.6); opacity:0; }
         }
 
-        /* Timer */
+        /* Timer section */
+        .timer-section {
+            position:relative; z-index:20;
+            display:flex; flex-direction:column; align-items:center;
+            margin-bottom:0.3rem;
+        }
         .timer {
             font-size:clamp(2.4rem,6vw,3.8rem); font-weight:300;
             color:#f2efe4; letter-spacing:5px;
             text-shadow:0 0 35px rgba(200,180,140,0.5);
-            margin:0.1rem 0 0.3rem;
             font-variant-numeric:tabular-nums;
             font-family:'Georgia','Times New Roman',serif;
         }
         .light-mode .timer { color:#2a2218; text-shadow:0 0 25px rgba(140,110,60,0.3); }
 
         .round-counter {
-            font-size:0.8rem; color:var(--text-dim); letter-spacing:2px;
-            margin-bottom:0.5rem;
+            font-size: 1rem;
+            color: var(--text-dim);
+            letter-spacing: 2px;
+            margin-top: 0.1rem;
+            font-weight: 500;
         }
 
-        /* Controls row */
+        /* Controls */
         .controls {
+            position:relative; z-index:20;
             display:flex; flex-wrap:wrap; gap:0.6rem;
             align-items:center; justify-content:center;
+            margin-top:0.2rem;
         }
         .btn {
             background:var(--btn-bg); border:1px solid var(--btn-border);
-            color:var(--btn-text); padding:0.55rem 1.2rem;
-            border-radius:35px; font-size:0.8rem; letter-spacing:0.5px;
+            color:var(--btn-text); padding:0.45rem 1rem;
+            border-radius:30px; font-size:0.75rem; letter-spacing:0.5px;
             cursor:pointer; transition:all 0.3s ease;
             backdrop-filter:blur(6px); -webkit-backdrop-filter:blur(6px);
             font-family:inherit; white-space:nowrap;
@@ -329,16 +334,28 @@
         }
         .btn-start, .btn-restart {
             background:var(--start-bg); border-color:var(--start-border);
-            color:var(--start-text); font-size:0.95rem;
-            padding:0.7rem 2rem; letter-spacing:1px; font-weight:600;
-            min-width:130px;
+            color:var(--start-text);
+            font-size: 1.15rem;
+            padding: 0.8rem 2.2rem;
+            letter-spacing:1.2px; font-weight:600;
+            min-width:160px;
+            border-radius:35px;
+        }
+        .btn-start-sub {
+            font-size: 0.7rem;
+            color: var(--text-dim);
+            letter-spacing: 0.8px;
+            margin-top: 0.15rem;
+            text-align: center;
+            opacity: 0.7;
         }
         .btn-restart {
             background:rgba(160,190,170,0.12); border-color:rgba(160,190,170,0.4);
-            color:var(--text); min-width:100px;
+            color:var(--text); min-width:110px; font-size:1rem; padding:0.7rem 1.6rem;
         }
 
         .audio-indicator {
+            position:relative; z-index:20;
             font-size:0.7rem; color:var(--text-dim); letter-spacing:0.8px;
             margin-top:0.2rem; min-height:16px; text-align:center;
         }
@@ -406,13 +423,15 @@
         }
 
         @media (max-width:480px) {
-            .container { padding:1rem; }
-            .btn { padding:0.45rem 0.9rem; font-size:0.7rem; }
-            .btn-start, .btn-restart { padding:0.6rem 1.4rem; font-size:0.85rem; min-width:110px; }
-            .btn-restart { min-width:85px; }
-            .orb-container { width:min(180px,48vw); height:min(180px,48vw); margin:0.2rem 0 0.7rem; }
+            .container { padding:0.8rem; }
+            .btn { padding:0.4rem 0.8rem; font-size:0.7rem; }
+            .btn-start, .btn-restart { padding:0.65rem 1.6rem; font-size:1rem; min-width:130px; }
+            .btn-restart { min-width:90px; font-size:0.85rem; padding:0.55rem 1.2rem; }
+            .orb-section { width:min(170px,45vw); height:min(170px,45vw); margin:0.2rem 0 0.5rem; }
             .tech-btn { padding:0.35rem 0.7rem; font-size:0.7rem; }
             .break-card { padding:1.5rem 1.2rem; }
+            .round-counter { font-size:0.85rem; }
+            .btn-start-sub { font-size:0.65rem; }
         }
     </style>
 </head>
@@ -423,7 +442,7 @@
     <div class="top-bar">
         <button class="lang-toggle" id="langToggle">English →</button>
         <div class="brand" id="brand">पवन</div>
-        <div style="width:70px;"></div><!-- spacer for symmetry -->
+        <div style="width:70px;"></div>
     </div>
 
     <!-- Countdown -->
@@ -450,35 +469,43 @@
             <div class="quote-english" id="quoteEn"></div>
         </div>
 
-        <!-- Technique buttons -->
-        <div class="technique-selector" id="techniqueSelector">
-            <button class="tech-btn" data-tech="345">🌱 3-4-5</button>
-            <button class="tech-btn" data-tech="478">🌿 4-7-8</button>
-            <button class="tech-btn active-tech" data-tech="578">🌳 5-7-8</button>
-        </div>
-
-        <!-- Orb -->
-        <div class="orb-container" id="orbContainer">
-            <div class="orb-glow ring" id="orbRing"></div>
-            <div class="orb" id="orb">
-                <span class="phase-text" id="phaseLabel">तैयार</span>
+        <!-- Technique section -->
+        <div class="technique-section">
+            <div class="technique-label" id="techniqueLabel">अपनी गति चुनें</div>
+            <div class="technique-selector" id="techniqueSelector">
+                <button class="tech-btn" data-tech="345">🌱 3-4-5</button>
+                <button class="tech-btn" data-tech="478">🌿 4-7-8</button>
+                <button class="tech-btn active-tech" data-tech="578">🌳 5-7-8</button>
             </div>
         </div>
 
-        <!-- Timer -->
-        <div class="timer" id="timerDisplay">5</div>
-        <div class="round-counter" id="roundCounter">चक्र 0</div>
+        <!-- Orb section - isolated from text flow -->
+        <div class="orb-section">
+            <div class="orb-container" id="orbContainer">
+                <div class="orb-glow ring" id="orbRing"></div>
+                <div class="orb" id="orb">
+                    <span class="phase-text" id="phaseLabel">तैयार</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- Timer section -->
+        <div class="timer-section">
+            <div class="timer" id="timerDisplay">5</div>
+            <div class="round-counter" id="roundCounter">चक्र 0</div>
+        </div>
 
         <!-- Controls -->
         <div class="controls">
             <button class="btn" id="visualModeBtn">👁️ दृश्य</button>
             <button class="btn active-mode" id="audioModeBtn">🎧 ध्वनि</button>
         </div>
-        <div class="controls" style="margin-top:0.3rem;">
+        <div class="controls" style="margin-top:0.25rem;">
             <button class="btn btn-start" id="startBtn">🌿 शुरू करें</button>
             <button class="btn btn-restart" id="restartBtn">↺ पुनः आरंभ</button>
         </div>
-        <div class="audio-indicator" id="audioIndicator"></div>
+        <div class="btn-start-sub" id="startSub">प्रारंभ</div>
+        <div class="audio-indicator" id="audioIndicator">🎧 ध्वनि मार्गदर्शन</div>
     </div>
 
     <!-- Theme toggle -->
@@ -491,15 +518,16 @@
         (function() {
             // ─────────────────────────────────────
             // पवन · PAWAN · Adaptive Breathing
-            // 3-4-5 / 4-7-8 / 5-7-8 · Break dialog · Warm green bg
+            // Audio default · Orb isolated · प्रारंभ subtitle
             // ─────────────────────────────────────
 
             let lang = 'hi';
-            let technique = '578'; // '345','478','578'
+            let technique = '578';
             let INHALE=5, HOLD=7, EXHALE=8;
             let phase='inhale', timeLeft=INHALE, round=0, running=false, timerId=null;
-            let mode='audio', audioCtx=null;
-            let roundsBeforeBreak = 1; // show break after every round
+            let mode='audio';
+            let audioCtx=null;
+            let roundsBeforeBreak = 1;
             let breakActive = false;
 
             const techniques = {
@@ -512,7 +540,7 @@
                 ready:'तैयार', inhale:'श्वास लें', hold:'रोकें', exhale:'श्वास छोड़ें',
                 round:'चक्र', start:'🌿 शुरू करें', pause:'⏸️ विराम', resume:'🌿 जारी रखें',
                 restart:'↺ पुनः आरंभ', visual:'👁️ दृश्य', audio:'🎧 ध्वनि',
-                audioGuide:'🎧 आँखें बंद करें', audioActive:'🎧 ध्वनि चल रही है',
+                audioGuide:'🎧 ध्वनि मार्गदर्शन', audioActive:'🎧 ध्वनि चल रही है',
                 pwaHint:'📲 होम स्क्रीन में जोड़ें',
                 countdownVoice:['तीन','दो','एक'],
                 voiceInhale:'श्वास लें', voiceHold:'रोकें', voiceExhale:'श्वास छोड़ें',
@@ -520,13 +548,15 @@
                 breakTitle:'🌿 शानदार!',
                 breakSubtitle:'आपने एक चक्र पूरा कर लिया।<br>अगला चक्र जारी रखें या 30 सेकंड का विराम लें?',
                 breakContinue:'▶ जारी रखें', breakRest:'⏸ 30 सेकंड विराम',
-                breakCountdown:'विराम: '
+                breakCountdown:'विराम: ',
+                techniqueLabel:'अपनी गति चुनें',
+                startSub:'प्रारंभ'
             };
             const enStrings = {
                 ready:'READY', inhale:'Inhale', hold:'Hold', exhale:'Exhale',
                 round:'Round', start:'🌿 Start', pause:'⏸️ Pause', resume:'🌿 Resume',
                 restart:'↺ Restart', visual:'👁️ Visual', audio:'🎧 Audio',
-                audioGuide:'🎧 Close your eyes', audioActive:'🎧 Voice active',
+                audioGuide:'🎧 Audio guide', audioActive:'🎧 Voice active',
                 pwaHint:'📲 Add to Home Screen',
                 countdownVoice:['Three','Two','One'],
                 voiceInhale:'Breathe in', voiceHold:'Hold', voiceExhale:'Breathe out',
@@ -534,7 +564,9 @@
                 breakTitle:'🌿 Wonderful!',
                 breakSubtitle:'You completed a round.<br>Continue with the next round or take a 30-second break?',
                 breakContinue:'▶ Continue', breakRest:'⏸ 30 sec break',
-                breakCountdown:'Break: '
+                breakCountdown:'Break: ',
+                techniqueLabel:'Choose your pace',
+                startSub:'Begin'
             };
             function t(k){ return lang==='hi' ? hiStrings[k] : enStrings[k]; }
 
@@ -587,7 +619,9 @@
                 breakSubtitle=document.getElementById('breakSubtitle'),
                 breakContinue=document.getElementById('breakContinue'),
                 breakRest=document.getElementById('breakRest'),
-                techniqueSelector=document.getElementById('techniqueSelector');
+                techniqueSelector=document.getElementById('techniqueSelector'),
+                techniqueLabel=document.getElementById('techniqueLabel'),
+                startSub=document.getElementById('startSub');
 
             function setTechnique(tech){
                 technique=tech;
@@ -651,6 +685,8 @@
                 visualBtn.textContent=t('visual'); audioBtn.textContent=t('audio');
                 restartBtn.textContent=t('restart');
                 langToggle.textContent=lang==='hi'?'English →':'हिंदी →';
+                techniqueLabel.textContent=t('techniqueLabel');
+                startSub.textContent=t('startSub');
                 updateQuoteVis();
                 if(mode==='audio'&&running) audioIndicator.textContent=t('audioActive');
                 else if(mode==='audio'&&!running) audioIndicator.textContent=t('audioGuide');
@@ -692,7 +728,6 @@
                 if(timeLeft<=0) nextPhase();
             }
 
-            // Break dialog
             function showBreakDialog(){
                 breakActive=true;
                 breakDialog.classList.add('active');
@@ -700,7 +735,6 @@
                 breakSubtitle.innerHTML=t('breakSubtitle');
                 breakContinue.textContent=t('breakContinue');
                 breakRest.textContent=t('breakRest');
-                // Change bg to warm gold-green
                 document.body.style.background='#2a3a20';
                 setTimeout(()=>{ document.body.style.background=''; }, 500);
             }
@@ -721,7 +755,6 @@
             }
             breakContinue.addEventListener('click',()=>{
                 hideBreakDialog();
-                // Continue with next round
                 if(timerId) clearInterval(timerId);
                 timerId=setInterval(tick,1000);
             });
@@ -732,7 +765,6 @@
                 });
             });
 
-            // Countdown
             function doCountdown(cb){
                 const nums=lang==='hi'?['३','२','१']:['3','2','1'];
                 const words=t('countdownVoice');
@@ -757,6 +789,7 @@
                 doCountdown(()=>{
                     running=true; startBtn.textContent=t('pause');
                     brand.classList.add('visible');
+                    startSub.textContent = lang==='hi' ? 'विराम' : 'Pause';
                     updateUI(); setCues(phase);
                     if(timerId) clearInterval(timerId);
                     timerId=setInterval(tick,1000);
@@ -767,6 +800,7 @@
                 running=false;
                 if(timerId){ clearInterval(timerId); timerId=null; }
                 startBtn.textContent=t('resume');
+                startSub.textContent=t('startSub');
                 if(window.speechSynthesis) window.speechSynthesis.cancel();
                 audioIndicator.textContent=mode==='audio'?t('audioGuide'):'';
                 brand.classList.remove('visible');
@@ -780,8 +814,8 @@
                 timerDisplay.textContent=INHALE;
                 roundCounter.textContent=`${t('round')} 0`;
                 startBtn.textContent=t('start');
-                setAudio(); // Set audio mode as default
-                audioIndicator.textContent='';
+                startSub.textContent=t('startSub');
+                audioIndicator.textContent=mode==='audio'?t('audioGuide'):'';
                 brand.classList.remove('visible');
                 if(window.speechSynthesis) window.speechSynthesis.cancel();
                 document.body.style.background='';
@@ -794,12 +828,14 @@
                 mode='visual'; visualBtn.classList.add('active-mode');
                 audioBtn.classList.remove('active-mode');
                 audioIndicator.textContent='';
+                startSub.textContent = running ? (lang==='hi'?'विराम':'Pause') : t('startSub');
                 if(running&&window.speechSynthesis) window.speechSynthesis.cancel();
             }
             function setAudio(){
                 mode='audio'; audioBtn.classList.add('active-mode');
                 visualBtn.classList.remove('active-mode');
                 audioIndicator.textContent=running?t('audioActive'):t('audioGuide');
+                startSub.textContent = running ? (lang==='hi'?'विराम':'Pause') : t('startSub');
                 if(running){
                     if(phase==='inhale') speakPhrase('voiceInhaleDeep');
                     else if(phase==='hold') speakPhrase('voiceHoldGentle');
@@ -816,6 +852,9 @@
                     phaseLabel.textContent=t('ready');
                     timerDisplay.textContent=timeLeft;
                     roundCounter.textContent=`${t('round')} ${round}`;
+                    startSub.textContent=t('startSub');
+                } else {
+                    startSub.textContent = lang==='hi' ? 'विराम' : 'Pause';
                 }
                 setQuote();
             });
@@ -832,12 +871,12 @@
             function showPwa(){
                 const standalone=window.matchMedia('(display-mode:standalone)').matches||navigator.standalone;
                 const iOS=/iphone|ipad|ipod/.test(navigator.userAgent.toLowerCase());
-                if(!standalone&&iOS&&!localStorage.getItem('pawan-pwa-v2')){
+                if(!standalone&&iOS&&!localStorage.getItem('pawan-pwa-v3')){
                     pwaHint.textContent=t('pwaHint'); pwaHint.classList.add('show');
                 }
             }
             pwaHint.addEventListener('click',()=>{ pwaHint.classList.remove('show');
-                localStorage.setItem('pawan-pwa-v2','true'); });
+                localStorage.setItem('pawan-pwa-v3','true'); });
             setTimeout(()=>pwaHint.classList.remove('show'),12000);
             window.addEventListener('load',showPwa);
 
@@ -866,18 +905,21 @@
 
             // SW
             if('serviceWorker' in navigator){
-                const sw=`const C='pawan-v3';self.addEventListener('install',e=>{e.waitUntil(caches.open(C).then(c=>c.addAll(['/'])).then(()=>self.skipWaiting()))});self.addEventListener('activate',e=>{e.waitUntil(caches.keys().then(k=>Promise.all(k.filter(x=>x!==C).map(x=>caches.delete(x)))).then(()=>self.clients.claim()))});self.addEventListener('fetch',e=>{e.respondWith(caches.match(e.request).then(r=>r||fetch(e.request).then(res=>{if(res.ok){const cl=res.clone();caches.open(C).then(c=>c.put(e.request,cl));}return res;})))});`;
+                const sw=`const C='pawan-v4';self.addEventListener('install',e=>{e.waitUntil(caches.open(C).then(c=>c.addAll(['/'])).then(()=>self.skipWaiting()))});self.addEventListener('activate',e=>{e.waitUntil(caches.keys().then(k=>Promise.all(k.filter(x=>x!==C).map(x=>caches.delete(x)))).then(()=>self.clients.claim()))});self.addEventListener('fetch',e=>{e.respondWith(caches.match(e.request).then(r=>r||fetch(e.request).then(res=>{if(res.ok){const cl=res.clone();caches.open(C).then(c=>c.put(e.request,cl));}return res;})))});`;
                 navigator.serviceWorker.register(URL.createObjectURL(new Blob([sw],{type:'application/javascript'}))).catch(()=>{});
             }
 
             // Init
             setTechnique('578');
             updateAllLabels();
+            setAudio();
             phaseLabel.textContent=t('ready');
             timerDisplay.textContent=INHALE;
             roundCounter.textContent=`${t('round')} 0`;
             startBtn.textContent=t('start');
             restartBtn.textContent=t('restart');
+            startSub.textContent=t('startSub');
+            audioIndicator.textContent=t('audioGuide');
         })();
     </script>
 </body>
