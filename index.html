@@ -650,9 +650,22 @@
             function haptic(){ vibrate([20,40,20]); }
 
             function initAudio(){
-                if(!audioCtx){ try{ audioCtx=new(window.AudioContext||window.webkitAudioContext)(); }catch(e){} }
-                if(audioCtx&&audioCtx.state==='suspended') audioCtx.resume();
-            }
+    if(!audioCtx){ try{ audioCtx=new(window.AudioContext||window.webkitAudioContext)(); }catch(e){} }
+    if(audioCtx&&audioCtx.state==='suspended') audioCtx.resume();
+}
+// Pre-load speech voices on first user interaction
+let voicesLoaded=false;
+function preloadVoices(){
+    if(voicesLoaded) return;
+    if(window.speechSynthesis){
+        const voices=window.speechSynthesis.getVoices();
+        if(voices.length>0) voicesLoaded=true;
+        window.speechSynthesis.onvoiceschanged=()=>{ voicesLoaded=true; };
+    }
+}
+document.addEventListener('click',preloadVoices,{once:true});
+document.addEventListener('touchstart',preloadVoices,{once:true});
+            
             function playTone(f,d,v=0.08,type='sine'){
                 if(!audioCtx) return;
                 try{
@@ -784,9 +797,10 @@
             }
 
             function start(){
+                function start(){
                 if(running) return;
                 initAudio();
-                if(window.speechSynthesis) window.speechSynthesis.getVoices();
+                preloadVoices();
                 doCountdown(()=>{
                     running=true; startBtn.textContent=t('pause');
                     brand.classList.add('visible');
