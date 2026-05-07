@@ -1,673 +1,659 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover, user-scalable=yes, maximum-scale=2.0">
-  <title>VAYU · 5-7-8 Breathing</title>
-  <!-- Dynamic peace background with subtle 3D depth, lightweight and fast -->
-  <style>
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-    }
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover, user-scalable=no">
+    <meta name="theme-color" content="#0a0f0f">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="description" content="Vayu — A 5-7-8 breathing sanctuary. Open, breathe, come home.">
+    <title>Vayu · 5-7-8 Breathing</title>
+    <link rel="manifest" href="data:application/json;base64,ewogICJuYW1lIjogIlZheXUiLAogICJzaG9ydF9uYW1lIjogIlZheXUiLAogICJzdGFydF91cmwiOiAiLyIsCiAgImRpc3BsYXkiOiAic3RhbmRhbG9uZSIsCiAgImJhY2tncm91bmRfY29sb3IiOiAiIzBhMGYwZiIsCiAgInRoZW1lX2NvbG9yIjogIiMwYTBmMGYiLAogICJpY29ucyI6IFtdCn0=">
+    <style>
+        :root {
+            --bg-deep: #060c0c;
+            --gold: #d4a853;
+            --gold-soft: #e8d5a3;
+            --teal: #5b9e8a;
+            --teal-deep: #2a5a4a;
+            --white-soft: #e8e4db;
+            --text: #c8c4b8;
+            --orb-inhale: #b8d4c4;
+            --orb-hold: #e2cf9c;
+            --orb-exhale: #7aaf9e;
+            --glow-inhale: rgba(180, 210, 190, 0.5);
+            --glow-hold: rgba(220, 190, 130, 0.55);
+            --glow-exhale: rgba(110, 170, 145, 0.45);
+        }
 
-    body, html {
-      width: 100%;
-      height: 100%;
-      overflow: hidden;
-      font-family: 'Segoe UI', 'Inter', system-ui, -apple-system, sans-serif;
-      background: #0a1f2f;
-    }
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
 
-    /* Fast-loading dynamic 3D-like background using CSS gradients and shapes */
-    .background-peace {
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      z-index: 0;
-      background: radial-gradient(circle at 30% 40%, #1e4b5e, #0a2f3c);
-      overflow: hidden;
-    }
+        body {
+            font-family: 'Georgia', 'Times New Roman', 'Noto Serif', 'Noto Serif Devanagari', 'Mangal', 'Lohit Devanagari', serif;
+            background: var(--bg-deep);
+            width: 100vw;
+            height: 100vh;
+            height: 100dvh;
+            overflow: hidden;
+            user-select: none;
+            -webkit-user-select: none;
+            -webkit-tap-highlight-color: transparent;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: default;
+        }
 
-    /* floating soft orbs for dynamic 3d feeling, no heavy images */
-    .orb {
-      position: absolute;
-      border-radius: 50%;
-      filter: blur(60px);
-      opacity: 0.4;
-      animation: float 18s infinite alternate ease-in-out;
-      will-change: transform;
-    }
+        canvas#particles {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 0;
+            pointer-events: none;
+        }
 
-    .orb1 {
-      width: 70vmax;
-      height: 70vmax;
-      background: #3c7a6b;
-      top: -20%;
-      left: -15%;
-      animation-duration: 20s;
-    }
+        .container {
+            position: relative;
+            z-index: 10;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            width: 100%;
+            height: 100%;
+            padding: 2rem;
+            gap: 0;
+        }
 
-    .orb2 {
-      width: 60vmax;
-      height: 60vmax;
-      background: #5b8c7a;
-      bottom: -25%;
-      right: -10%;
-      animation-duration: 24s;
-      animation-delay: -4s;
-    }
+        /* Quotes */
+        .quote-wrapper {
+            text-align: center;
+            max-width: 600px;
+            width: 100%;
+            min-height: 90px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 1.2rem;
+            transition: opacity 0.6s ease;
+        }
 
-    .orb3 {
-      width: 50vmax;
-      height: 50vmax;
-      background: #2f5e4a;
-      top: 40%;
-      left: 60%;
-      animation-duration: 22s;
-      animation-delay: -8s;
-    }
+        .quote-english {
+            font-size: clamp(1rem, 3.2vw, 1.5rem);
+            color: var(--white-soft);
+            font-style: italic;
+            letter-spacing: 0.4px;
+            line-height: 1.5;
+            text-shadow: 0 2px 12px rgba(0, 0, 0, 0.6);
+            animation: quoteFadeIn 1.8s ease forwards;
+        }
 
-    .orb4 {
-      width: 40vmax;
-      height: 40vmax;
-      background: #447a6a;
-      bottom: 10%;
-      left: 5%;
-      animation-duration: 26s;
-      animation-delay: -5s;
-    }
+        .quote-hindi {
+            font-size: clamp(0.95rem, 2.8vw, 1.35rem);
+            color: #c0bdaa;
+            letter-spacing: 0.3px;
+            line-height: 1.6;
+            margin-top: 0.4rem;
+            text-shadow: 0 2px 10px rgba(0, 0, 0, 0.5);
+            animation: quoteFadeIn 2.2s ease forwards;
+        }
 
-    @keyframes float {
-      0% {
-        transform: translate(0, 0) scale(1);
-      }
-      100% {
-        transform: translate(5vw, -4vh) scale(1.1);
-      }
-    }
+        @keyframes quoteFadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(18px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
 
-    /* subtle vignette overlay */
-    .vignette {
-      position: absolute;
-      inset: 0;
-      background: radial-gradient(circle at center, transparent 30%, rgba(0, 20, 20, 0.5) 100%);
-      pointer-events: none;
-      z-index: 2;
-    }
+        /* Orb area */
+        .orb-container {
+            position: relative;
+            width: min(260px, 58vw);
+            height: min(260px, 58vw);
+            margin: 0.5rem 0 1.4rem;
+        }
 
-    /* main container */
-    .app-container {
-      position: relative;
-      z-index: 10;
-      width: 100%;
-      height: 100%;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      padding: 1.5rem;
-      backdrop-filter: blur(2px);
-    }
+        .orb {
+            width: 100%;
+            height: 100%;
+            border-radius: 50%;
+            background: radial-gradient(circle at 35% 30%, #2a4a3f, #0e2220 70%, #060f0f);
+            box-shadow: 0 0 60px rgba(100, 160, 130, 0.25), 0 0 0 1px rgba(255, 255, 240, 0.08);
+            transition: transform 0.7s cubic-bezier(0.33, 0.08, 0.21, 0.94),
+                box-shadow 0.7s cubic-bezier(0.33, 0.08, 0.21, 0.94),
+                background 0.7s ease;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            z-index: 2;
+        }
 
-    /* quote cards */
-    .quotes {
-      text-align: center;
-      margin-bottom: 1.8rem;
-      max-width: 700px;
-      width: 100%;
-      animation: fadeInUp 1.2s ease;
-    }
+        .orb-glow {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 100%;
+            height: 100%;
+            border-radius: 50%;
+            pointer-events: none;
+            z-index: 1;
+            transition: all 0.7s cubic-bezier(0.33, 0.08, 0.21, 0.94);
+        }
 
-    .quote-english {
-      font-size: clamp(1.2rem, 5vw, 2rem);
-      font-weight: 400;
-      color: #f6f9f2;
-      text-shadow: 0 4px 12px rgba(0, 20, 10, 0.6);
-      letter-spacing: 0.3px;
-      line-height: 1.4;
-      margin-bottom: 0.5rem;
-      font-style: italic;
-    }
+        .orb-glow.ring {
+            width: 115%;
+            height: 115%;
+            box-shadow: 0 0 80px var(--glow-inhale);
+            opacity: 0.7;
+            transition: all 0.7s cubic-bezier(0.33, 0.08, 0.21, 0.94);
+        }
 
-    .quote-hindi {
-      font-size: clamp(1.1rem, 4.5vw, 1.8rem);
-      font-weight: 400;
-      color: #e0f0e8;
-      text-shadow: 0 4px 10px rgba(0, 30, 15, 0.7);
-      letter-spacing: 0.2px;
-      line-height: 1.5;
-      opacity: 0.95;
-    }
+        /* Phase states */
+        .phase-inhale .orb {
+            transform: scale(1.35);
+            background: radial-gradient(circle at 35% 30%, #c8e0d2, #3d6b58 55%, #1a3630);
+            box-shadow: 0 0 90px rgba(170, 210, 180, 0.5), 0 0 0 1px rgba(255, 255, 240, 0.18);
+        }
+        .phase-inhale .orb-glow.ring {
+            box-shadow: 0 0 110px var(--glow-inhale);
+            opacity: 0.85;
+        }
 
-    /* breathing circle - visual mode */
-    .breath-circle {
-      width: min(280px, 65vw);
-      height: min(280px, 65vw);
-      border-radius: 50%;
-      background: rgba(255, 255, 255, 0.08);
-      backdrop-filter: blur(16px);
-      box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3), 0 0 0 2px rgba(255, 255, 240, 0.2);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      margin: 1rem 0 2rem;
-      transition: transform 0.2s ease, box-shadow 0.3s;
-      position: relative;
-    }
+        .phase-hold .orb {
+            transform: scale(1.35);
+            background: radial-gradient(circle at 35% 30%, #e8d8a8, #6b5a38 55%, #2a2218);
+            box-shadow: 0 0 100px rgba(210, 170, 100, 0.55), 0 0 0 1px rgba(255, 250, 220, 0.2);
+        }
+        .phase-hold .orb-glow.ring {
+            box-shadow: 0 0 120px var(--glow-hold);
+            opacity: 0.9;
+        }
 
-    .inner-circle {
-      width: 80%;
-      height: 80%;
-      border-radius: 50%;
-      background: radial-gradient(circle at 30% 30%, #c7e9da, #6b9b8a);
-      box-shadow: inset 0 0 40px rgba(255, 255, 200, 0.5), 0 0 35px #b3dfce;
-      transition: transform 0.8s cubic-bezier(0.25, 0.1, 0.15, 1), background 0.5s;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      color: #0a2f2a;
-      font-weight: 500;
-      font-size: 1.5rem;
-      letter-spacing: 2px;
-      text-transform: uppercase;
-    }
+        .phase-exhale .orb {
+            transform: scale(0.88);
+            background: radial-gradient(circle at 35% 30%, #8cb8a5, #1f4a3a 55%, #0a1f18);
+            box-shadow: 0 0 55px rgba(90, 150, 130, 0.4), 0 0 0 1px rgba(255, 255, 240, 0.1);
+        }
+        .phase-exhale .orb-glow.ring {
+            box-shadow: 0 0 70px var(--glow-exhale);
+            opacity: 0.6;
+        }
 
-    /* breathing states */
-    .breath-in .inner-circle {
-      transform: scale(1.15);
-      background: radial-gradient(circle at 30% 30%, #e0f5e8, #4f8b7a);
-      box-shadow: inset 0 0 50px #f0ffe0, 0 0 60px #9edbbe;
-    }
+        .phase-text {
+            color: #f0ece0;
+            font-size: clamp(0.9rem, 2.2vw, 1.2rem);
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            font-weight: 600;
+            text-shadow: 0 2px 15px rgba(0, 0, 0, 0.7);
+            z-index: 5;
+            transition: opacity 0.3s;
+        }
 
-    .breath-hold .inner-circle {
-      transform: scale(1.15);
-      background: radial-gradient(circle at 30% 30%, #d4efe2, #578f7a);
-      box-shadow: inset 0 0 45px #eaffdb, 0 0 55px #b3e3cc;
-    }
+        /* Timer */
+        .timer {
+            font-size: clamp(2.8rem, 8vw, 4.5rem);
+            font-weight: 300;
+            color: #f2efe4;
+            letter-spacing: 6px;
+            text-shadow: 0 0 40px rgba(200, 180, 140, 0.6);
+            margin: 0.2rem 0 0.6rem;
+            font-variant-numeric: tabular-nums;
+            font-family: 'Georgia', 'Times New Roman', serif;
+        }
 
-    .breath-out .inner-circle {
-      transform: scale(0.9);
-      background: radial-gradient(circle at 30% 30%, #b9d9ca, #4a7a68);
-      box-shadow: inset 0 0 35px #c8f0d0, 0 0 45px #7fba9f;
-    }
+        .round-counter {
+            font-size: 0.85rem;
+            color: #a09880;
+            letter-spacing: 2px;
+            margin-bottom: 1rem;
+        }
 
-    .phase-text {
-      font-weight: 600;
-      color: #f4fff0;
-      text-shadow: 0 2px 8px #1e3b30;
-    }
+        /* Controls */
+        .controls {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.8rem;
+            align-items: center;
+            justify-content: center;
+        }
 
-    /* timer and counter */
-    .timer-display {
-      font-size: 3.2rem;
-      font-weight: 600;
-      color: white;
-      text-shadow: 0 4px 15px #0f2e24;
-      margin: 0.3rem 0 0.8rem;
-      letter-spacing: 2px;
-      background: rgba(10, 30, 25, 0.4);
-      backdrop-filter: blur(8px);
-      padding: 0.4rem 1.8rem;
-      border-radius: 60px;
-      display: inline-block;
-    }
+        .btn {
+            background: rgba(255, 255, 245, 0.05);
+            border: 1px solid rgba(255, 255, 240, 0.18);
+            color: #d4cfbf;
+            padding: 0.7rem 1.5rem;
+            border-radius: 40px;
+            font-size: 0.9rem;
+            letter-spacing: 0.8px;
+            cursor: pointer;
+            transition: all 0.35s ease;
+            backdrop-filter: blur(8px);
+            -webkit-backdrop-filter: blur(8px);
+            font-family: inherit;
+            white-space: nowrap;
+        }
 
-    .round-counter {
-      font-size: 1.1rem;
-      color: #dbffe8;
-      background: rgba(20, 50, 40, 0.5);
-      padding: 0.2rem 1.5rem;
-      border-radius: 30px;
-      margin-bottom: 0.8rem;
-      backdrop-filter: blur(5px);
-    }
+        .btn:hover {
+            background: rgba(255, 255, 245, 0.12);
+            border-color: rgba(255, 255, 240, 0.35);
+        }
+        .btn.active-mode {
+            background: rgba(200, 220, 200, 0.18);
+            border-color: rgba(200, 220, 190, 0.5);
+            color: #f6f3e8;
+            box-shadow: 0 0 25px rgba(140, 180, 150, 0.25);
+        }
 
-    /* controls */
-    .mode-switch {
-      display: flex;
-      gap: 1.2rem;
-      margin: 0.8rem 0 0.5rem;
-      flex-wrap: wrap;
-      justify-content: center;
-    }
+        .btn-start {
+            background: rgba(210, 180, 130, 0.15);
+            border-color: rgba(210, 180, 130, 0.45);
+            color: #f8f3e0;
+            font-size: 1rem;
+            padding: 0.8rem 2.4rem;
+            letter-spacing: 1.5px;
+            font-weight: 600;
+            box-shadow: 0 0 35px rgba(180, 140, 80, 0.2);
+        }
+        .btn-start:hover {
+            background: rgba(220, 190, 140, 0.25);
+            box-shadow: 0 0 50px rgba(190, 150, 90, 0.35);
+        }
 
-    .mode-btn {
-      background: rgba(255, 255, 250, 0.15);
-      backdrop-filter: blur(12px);
-      border: 1px solid rgba(255, 255, 240, 0.3);
-      color: #f0faf0;
-      padding: 0.8rem 1.6rem;
-      border-radius: 40px;
-      font-size: 1rem;
-      font-weight: 500;
-      cursor: pointer;
-      transition: all 0.3s ease;
-      letter-spacing: 0.5px;
-      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
-      display: flex;
-      align-items: center;
-      gap: 0.4rem;
-    }
+        .audio-indicator {
+            font-size: 0.75rem;
+            color: #8a8570;
+            letter-spacing: 1px;
+            margin-top: 0.3rem;
+            min-height: 18px;
+            transition: opacity 0.4s;
+        }
 
-    .mode-btn.active {
-      background: #e3f5ec;
-      color: #0c3829;
-      border-color: #c8ffdd;
-      font-weight: 600;
-      box-shadow: 0 0 25px #9de0b6;
-    }
-
-    .mode-btn:hover {
-      background: rgba(210, 240, 220, 0.3);
-      border-color: #b5f0ca;
-    }
-
-    .start-btn {
-      background: #f5fff0;
-      color: #0b3824;
-      font-weight: 700;
-      padding: 0.9rem 3rem;
-      border: none;
-      border-radius: 50px;
-      font-size: 1.3rem;
-      letter-spacing: 1px;
-      margin-top: 0.6rem;
-      box-shadow: 0 10px 25px rgba(0, 40, 20, 0.5);
-      cursor: pointer;
-      transition: 0.25s;
-      backdrop-filter: blur(10px);
-      background: rgba(245, 255, 240, 0.9);
-      display: flex;
-      align-items: center;
-      gap: 0.4rem;
-    }
-
-    .start-btn:hover {
-      background: white;
-      box-shadow: 0 15px 30px #2b7350;
-    }
-
-    .hidden {
-      display: none !important;
-    }
-
-    /* audio mode text */
-    .audio-mode-indicator {
-      font-size: 0.9rem;
-      color: #c6ffe0;
-      margin-top: 0.2rem;
-      background: rgba(0, 0, 0, 0.2);
-      padding: 0.2rem 1rem;
-      border-radius: 20px;
-    }
-
-    @keyframes fadeInUp {
-      from {
-        opacity: 0;
-        transform: translateY(25px);
-      }
-      to {
-        opacity: 1;
-        transform: translateY(0);
-      }
-    }
-
-    /* responsive */
-    @media (max-width: 500px) {
-      .mode-btn {
-        padding: 0.6rem 1.2rem;
-      }
-      .timer-display {
-        font-size: 2.5rem;
-      }
-    }
-  </style>
+        @media (max-width: 480px) {
+            .container {
+                padding: 1rem;
+            }
+            .btn {
+                padding: 0.55rem 1.1rem;
+                font-size: 0.8rem;
+            }
+            .btn-start {
+                padding: 0.65rem 1.8rem;
+                font-size: 0.9rem;
+            }
+            .orb-container {
+                width: min(210px, 55vw);
+                height: min(210px, 55vw);
+                margin: 0.3rem 0 1rem;
+            }
+        }
+    </style>
 </head>
 <body>
-  <!-- Fast dynamic 3D background -->
-  <div class="background-peace">
-    <div class="orb orb1"></div>
-    <div class="orb orb2"></div>
-    <div class="orb orb3"></div>
-    <div class="orb orb4"></div>
-    <div class="vignette"></div>
-  </div>
+    <canvas id="particles"></canvas>
 
-  <div class="app-container" id="appContainer">
-    <!-- Positive quotes: English + Hindi -->
-    <div class="quotes">
-      <div class="quote-english">“Peace comes from within. Do not seek it without.”</div>
-      <div class="quote-hindi">“शांति भीतर से आती है, उसे बाहर मत खोजो।”</div>
+    <div class="container" id="app">
+        <!-- Quotes -->
+        <div class="quote-wrapper" id="quoteWrapper">
+            <div class="quote-english" id="quoteEn"></div>
+            <div class="quote-hindi" id="quoteHi"></div>
+        </div>
+
+        <!-- Orb -->
+        <div class="orb-container" id="orbContainer">
+            <div class="orb-glow ring" id="orbRing"></div>
+            <div class="orb" id="orb">
+                <span class="phase-text" id="phaseLabel">READY</span>
+            </div>
+        </div>
+
+        <!-- Timer -->
+        <div class="timer" id="timerDisplay">5</div>
+        <div class="round-counter" id="roundCounter">Round 0</div>
+
+        <!-- Controls -->
+        <div class="controls">
+            <button class="btn active-mode" id="visualModeBtn">👁️ Visual</button>
+            <button class="btn" id="audioModeBtn">🎧 Audio</button>
+        </div>
+        <button class="btn btn-start" id="startBtn">🌿 Begin</button>
+        <div class="audio-indicator" id="audioIndicator"></div>
     </div>
 
-    <!-- Visual breathing circle -->
-    <div class="breath-circle" id="breathCircle">
-      <div class="inner-circle" id="innerCircle">
-        <span class="phase-text" id="phaseLabel">READY</span>
-      </div>
-    </div>
+    <script>
+        (function() {
+            // ─────────────────────────────────────
+            // VAYU · 5-7-8 Breathing Sanctuary
+            // Flawless sync · Offline · Universal
+            // ─────────────────────────────────────
 
-    <!-- Timer and round -->
-    <div class="timer-display" id="timerDisplay">5</div>
-    <div class="round-counter" id="roundCounter">Round 0</div>
+            // ── Quotes Pool (curated, diverse, peaceful) ──
+            const quotes = [
+                { en: "Peace comes from within. Do not seek it without.", hi: "शांति भीतर से आती है, उसे बाहर मत खोजो।" },
+                { en: "The present moment is filled with joy and happiness. If you are attentive, you will see it.",
+                    hi: "वर्तमान क्षण आनंद से भरा है। यदि आप ध्यान दें, तो इसे देख लेंगे।" },
+                { en: "Feelings come and go like clouds in a windy sky. Conscious breathing is my anchor.",
+                    hi: "भावनाएँ हवादार आकाश में बादलों की तरह आती-जाती हैं। सचेत श्वास मेरा सहारा है।" },
+                { en: "Within you, there is a stillness and a sanctuary to which you can retreat at any time.",
+                    hi: "आपके भीतर एक शांति और एक अभयारण्य है, जहाँ आप कभी भी जा सकते हैं।" },
+                { en: "Be happy in the moment, that's enough. Each moment is all we need.",
+                    hi: "इस पल में खुश रहो, बस इतना ही काफी है। हर पल हमें वही देता है जो चाहिए।" },
+                { en: "The quieter you become, the more you can hear.", hi: "जितने शांत होते हैं, उतना ही अधिक सुन पाते हैं।" },
+                { en: "Let go of what you think should happen and embrace what is.",
+                    hi: "जो सोचते हैं होना चाहिए, उसे छोड़ें और जो है उसे अपनाएँ।" },
+                { en: "You are the sky. Everything else is just the weather.",
+                    hi: "आप आकाश हैं। बाकी सब सिर्फ मौसम है।" },
+                { en: "Inhale courage. Exhale fear.", hi: "साँस लें साहस। साँस छोड़ें भय।" },
+                { en: "This too shall pass. Just breathe.", hi: "यह भी बीत जाएगा। बस साँस लें।" },
+            ];
 
-    <!-- Mode switch: Visual / Audio-only -->
-    <div class="mode-switch">
-      <button class="mode-btn active" id="visualModeBtn">
-        <span>👁️</span> Visual
-      </button>
-      <button class="mode-btn" id="audioModeBtn">
-        <span>🎧</span> Audio (eyes closed)
-      </button>
-    </div>
-
-    <!-- Start / Stop -->
-    <button class="start-btn" id="startStopBtn">
-      <span>🌿</span> Start Breathing
-    </button>
-    <div class="audio-mode-indicator" id="audioIndicator"></div>
-  </div>
-
-  <script>
-    (function() {
-      // ---------- VAYU 5-7-8 Breathing ----------
-      // Phases: inhale 5s, hold 7s, exhale 8s
-      const INHALE = 5;
-      const HOLD = 7;
-      const EXHALE = 8;
-
-      // State
-      let currentPhase = 'inhale'; // 'inhale', 'hold', 'exhale'
-      let timeLeft = INHALE;
-      let roundCount = 0;
-      let isActive = false;
-      let timerInterval = null;
-      let audioCtx = null; // for Web Audio API beeps (lightweight, no external files)
-      
-      // UI Elements
-      const breathCircle = document.getElementById('breathCircle');
-      const innerCircle = document.getElementById('innerCircle');
-      const phaseLabel = document.getElementById('phaseLabel');
-      const timerDisplay = document.getElementById('timerDisplay');
-      const roundCounter = document.getElementById('roundCounter');
-      const startStopBtn = document.getElementById('startStopBtn');
-      const visualModeBtn = document.getElementById('visualModeBtn');
-      const audioModeBtn = document.getElementById('audioModeBtn');
-      const audioIndicator = document.getElementById('audioIndicator');
-
-      // Mode: 'visual' (default) or 'audio' (eyes closed, still shows minimal info)
-      let currentMode = 'visual'; 
-
-      // Audio context for generating soft guidance tones (no mp3 needed)
-      function initAudioContext() {
-        if (!audioCtx) {
-          try {
-            audioCtx = new (window.AudioContext || window.webkitAudioContext)();
-          } catch (e) {
-            console.warn("Audio not supported");
-          }
-        }
-        if (audioCtx && audioCtx.state === 'suspended') {
-          audioCtx.resume();
-        }
-      }
-
-      // Play a gentle tone (sine wave) for guidance
-      function playTone(frequency, duration, type = 'sine', volume = 0.15) {
-        if (!audioCtx) return;
-        try {
-          const now = audioCtx.currentTime;
-          const osc = audioCtx.createOscillator();
-          const gain = audioCtx.createGain();
-          osc.type = type;
-          osc.frequency.setValueAtTime(frequency, now);
-          gain.gain.setValueAtTime(volume, now);
-          gain.gain.exponentialRampToValueAtTime(0.001, now + duration);
-          osc.connect(gain);
-          gain.connect(audioCtx.destination);
-          osc.start(now);
-          osc.stop(now + duration);
-        } catch (e) {
-          // ignore audio errors
-        }
-      }
-
-      // Audio guidance: distinct sounds for inhale, hold, exhale
-      function playPhaseSound(phase) {
-        if (!audioCtx) return;
-        if (phase === 'inhale') {
-          // rising soft tone
-          playTone(380, 0.35, 'sine', 0.12);
-          setTimeout(() => playTone(420, 0.3, 'sine', 0.1), 150);
-        } else if (phase === 'hold') {
-          // steady gentle bell-like
-          playTone(520, 0.25, 'triangle', 0.1);
-          setTimeout(() => playTone(530, 0.2, 'triangle', 0.08), 120);
-        } else if (phase === 'exhale') {
-          // descending soft
-          playTone(340, 0.4, 'sine', 0.11);
-          setTimeout(() => playTone(280, 0.35, 'sine', 0.09), 180);
-        }
-      }
-
-      // Spoken guidance using Web Speech API (works offline-ish, and fast)
-      function speakGuidance(text) {
-        if (!window.speechSynthesis) return;
-        // Cancel any ongoing speech to avoid overlap
-        window.speechSynthesis.cancel();
-        const utterance = new SpeechSynthesisUtterance(text);
-        utterance.lang = 'en-US';
-        utterance.rate = 0.9;
-        utterance.pitch = 1.1;
-        utterance.volume = 0.8;
-        window.speechSynthesis.speak(utterance);
-      }
-
-      // Update UI based on current phase and time
-      function updateUI() {
-        // Update timer display
-        timerDisplay.textContent = timeLeft;
-        
-        // Remove all phase classes
-        breathCircle.classList.remove('breath-in', 'breath-hold', 'breath-out');
-        
-        let phaseText = '';
-        if (currentPhase === 'inhale') {
-          breathCircle.classList.add('breath-in');
-          phaseText = 'Breathe In';
-        } else if (currentPhase === 'hold') {
-          breathCircle.classList.add('breath-hold');
-          phaseText = 'Hold';
-        } else if (currentPhase === 'exhale') {
-          breathCircle.classList.add('breath-out');
-          phaseText = 'Breathe Out';
-        }
-        
-        phaseLabel.textContent = phaseText;
-        roundCounter.textContent = `Round ${roundCount}`;
-      }
-
-      // Move to next phase
-      function nextPhase() {
-        if (currentPhase === 'inhale') {
-          currentPhase = 'hold';
-          timeLeft = HOLD;
-        } else if (currentPhase === 'hold') {
-          currentPhase = 'exhale';
-          timeLeft = EXHALE;
-        } else if (currentPhase === 'exhale') {
-          // completed one full round
-          roundCount++;
-          currentPhase = 'inhale';
-          timeLeft = INHALE;
-        }
-        
-        updateUI();
-        
-        // Play audio cue for new phase
-        if (isActive) {
-          playPhaseSound(currentPhase);
-          
-          // Spoken guidance based on mode and phase
-          if (currentMode === 'audio') {
-            // Audio mode: clear spoken instructions
-            if (currentPhase === 'inhale') {
-              speakGuidance('Breathe in');
-            } else if (currentPhase === 'hold') {
-              speakGuidance('Hold');
-            } else if (currentPhase === 'exhale') {
-              speakGuidance('Breathe out');
+            function getRandomQuotes() {
+                const shuffled = [...quotes].sort(() => Math.random() - 0.5);
+                return shuffled.slice(0, 1)[0];
             }
-          } else {
-            // Visual mode: also provide spoken cues but maybe shorter
-            if (currentPhase === 'inhale') speakGuidance('Inhale');
-            else if (currentPhase === 'hold') speakGuidance('Hold');
-            else if (currentPhase === 'exhale') speakGuidance('Exhale');
-          }
-        }
-      }
 
-      // Timer tick
-      function tick() {
-        if (!isActive) return;
-        
-        timeLeft--;
-        updateUI();
-        
-        if (timeLeft <= 0) {
-          nextPhase();
-        }
-      }
+            function setRandomQuote() {
+                const q = getRandomQuotes();
+                const enEl = document.getElementById('quoteEn');
+                const hiEl = document.getElementById('quoteHi');
+                enEl.style.animation = 'none';
+                hiEl.style.animation = 'none';
+                enEl.offsetHeight;
+                hiEl.offsetHeight;
+                enEl.textContent = `"${q.en}"`;
+                hiEl.textContent = `"${q.hi}"`;
+                enEl.style.animation = 'quoteFadeIn 1.8s ease forwards';
+                hiEl.style.animation = 'quoteFadeIn 2.2s ease forwards';
+            }
 
-      // Start breathing session
-      function startBreathing() {
-        if (isActive) return;
-        
-        // Initialize audio on user gesture
-        initAudioContext();
-        
-        // If first start or reset, set to beginning of inhale
-        if (!isActive && roundCount === 0 && timeLeft === INHALE && currentPhase === 'inhale') {
-          // already set
-        } else if (!isActive) {
-          // could be after stop, continue from where left? Better reset to fresh inhale
-          currentPhase = 'inhale';
-          timeLeft = INHALE;
-          roundCount = 0;
-        }
-        
-        isActive = true;
-        startStopBtn.innerHTML = '<span>⏸️</span> Pause';
-        
-        updateUI();
-        
-        // Play sound for current phase start
-        playPhaseSound(currentPhase);
-        if (currentMode === 'audio') {
-          if (currentPhase === 'inhale') speakGuidance('Breathe in');
-          else if (currentPhase === 'hold') speakGuidance('Hold');
-          else if (currentPhase === 'exhale') speakGuidance('Breathe out');
-        } else {
-          speakGuidance('Begin');
-        }
-        
-        if (timerInterval) clearInterval(timerInterval);
-        timerInterval = setInterval(tick, 1000);
-      }
+            setRandomQuote();
 
-      // Pause/Stop breathing
-      function stopBreathing() {
-        if (!isActive) return;
-        isActive = false;
-        if (timerInterval) {
-          clearInterval(timerInterval);
-          timerInterval = null;
-        }
-        startStopBtn.innerHTML = '<span>🌿</span> Resume';
-        window.speechSynthesis?.cancel();
-      }
+            // ── Constants ──
+            const INHALE = 5;
+            const HOLD = 7;
+            const EXHALE = 8;
 
-      // Reset everything
-      function resetSession() {
-        stopBreathing();
-        currentPhase = 'inhale';
-        timeLeft = INHALE;
-        roundCount = 0;
-        updateUI();
-        startStopBtn.innerHTML = '<span>🌿</span> Start Breathing';
-        breathCircle.classList.remove('breath-in', 'breath-hold', 'breath-out');
-        phaseLabel.textContent = 'READY';
-        timerDisplay.textContent = INHALE;
-        roundCounter.textContent = 'Round 0';
-      }
+            // ── State ──
+            let phase = 'inhale';
+            let timeLeft = INHALE;
+            let round = 0;
+            let running = false;
+            let timerId = null;
+            let mode = 'visual';
+            let audioCtx = null;
+            let speechSynth = window.speechSynthesis;
 
-      // Toggle start/stop
-      function onStartStopClick() {
-        if (isActive) {
-          stopBreathing();
-        } else {
-          // If paused and not active, start
-          startBreathing();
-        }
-      }
+            // ── DOM refs ──
+            const orbContainer = document.getElementById('orbContainer');
+            const orb = document.getElementById('orb');
+            const orbRing = document.getElementById('orbRing');
+            const phaseLabel = document.getElementById('phaseLabel');
+            const timerDisplay = document.getElementById('timerDisplay');
+            const roundCounter = document.getElementById('roundCounter');
+            const startBtn = document.getElementById('startBtn');
+            const visualBtn = document.getElementById('visualModeBtn');
+            const audioBtn = document.getElementById('audioModeBtn');
+            const audioIndicator = document.getElementById('audioIndicator');
+            const app = document.getElementById('app');
 
-      // Switch to Visual mode
-      function setVisualMode() {
-        currentMode = 'visual';
-        visualModeBtn.classList.add('active');
-        audioModeBtn.classList.remove('active');
-        audioIndicator.textContent = '';
-        // Show circle clearly (it's always visible)
-        breathCircle.style.opacity = '1';
-        // Cancel any speech if switching during active? let it be.
-        if (isActive) {
-          window.speechSynthesis?.cancel();
-        }
-      }
+            // ── Audio setup ──
+            function initAudio() {
+                if (!audioCtx) {
+                    try {
+                        audioCtx = new(window.AudioContext || window.webkitAudioContext)();
+                    } catch (e) {}
+                }
+                if (audioCtx && audioCtx.state === 'suspended') audioCtx.resume();
+            }
 
-      // Switch to Audio mode (eyes closed)
-      function setAudioMode() {
-        currentMode = 'audio';
-        audioModeBtn.classList.add('active');
-        visualModeBtn.classList.remove('active');
-        audioIndicator.textContent = '🎧 Audio guidance · close your eyes';
-        // Keep circle visible but dim slightly? No, still visible for timer.
-        breathCircle.style.opacity = '0.9';
-        if (isActive) {
-          // give immediate spoken instruction
-          if (currentPhase === 'inhale') speakGuidance('Inhale deeply');
-          else if (currentPhase === 'hold') speakGuidance('Hold your breath');
-          else if (currentPhase === 'exhale') speakGuidance('Exhale slowly');
-        }
-      }
+            function playTone(freq, dur, vol = 0.08, type = 'sine') {
+                if (!audioCtx) return;
+                try {
+                    const t = audioCtx.currentTime;
+                    const osc = audioCtx.createOscillator();
+                    const gain = audioCtx.createGain();
+                    osc.type = type;
+                    osc.frequency.setValueAtTime(freq, t);
+                    gain.gain.setValueAtTime(vol, t);
+                    gain.gain.exponentialRampToValueAtTime(0.0001, t + dur);
+                    osc.connect(gain);
+                    gain.connect(audioCtx.destination);
+                    osc.start(t);
+                    osc.stop(t + dur);
+                } catch (e) {}
+            }
 
-      // Event Listeners
-      startStopBtn.addEventListener('click', onStartStopClick);
-      
-      visualModeBtn.addEventListener('click', setVisualMode);
-      audioModeBtn.addEventListener('click', setAudioMode);
+            function playPhaseChime(p) {
+                if (p === 'inhale') { playTone(440, 0.35, 0.1, 'sine');
+                    setTimeout(() => playTone(520, 0.3, 0.07, 'sine'), 120); } else if (p === 'hold') { playTone(587, 0.3,
+                        0.09, 'triangle');
+                    setTimeout(() => playTone(660, 0.25, 0.06, 'sine'), 100); } else if (p === 'exhale') { playTone(392, 0.4,
+                        0.09, 'sine');
+                    setTimeout(() => playTone(330, 0.35, 0.07, 'sine'), 150); }
+            }
 
-      // Initial reset
-      resetSession();
+            function speakWord(word) {
+                if (!speechSynth) return;
+                speechSynth.cancel();
+                const u = new SpeechSynthesisUtterance(word);
+                u.lang = 'en-US';
+                u.rate = 0.85;
+                u.pitch = 1.05;
+                u.volume = 0.9;
+                speechSynth.speak(u);
+            }
 
-      // Ensure audio context is resumed on first interaction (browser policy)
-      document.addEventListener('click', function resumeAudioOnce() {
-        initAudioContext();
-      }, { once: true });
+            // ── UI updates ──
+            function updateUI() {
+                timerDisplay.textContent = timeLeft;
+                roundCounter.textContent = `Round ${round}`;
+                orbContainer.classList.remove('phase-inhale', 'phase-hold', 'phase-exhale');
+                if (phase === 'inhale') {
+                    orbContainer.classList.add('phase-inhale');
+                    phaseLabel.textContent = 'Inhale';
+                } else if (phase === 'hold') {
+                    orbContainer.classList.add('phase-hold');
+                    phaseLabel.textContent = 'Hold';
+                } else {
+                    orbContainer.classList.add('phase-exhale');
+                    phaseLabel.textContent = 'Exhale';
+                }
+            }
 
-      // Handle page unload to clear interval
-      window.addEventListener('beforeunload', () => {
-        if (timerInterval) clearInterval(timerInterval);
-        window.speechSynthesis?.cancel();
-      });
+            function setPhaseAudioCues(p) {
+                playPhaseChime(p);
+                if (p === 'inhale') speakWord('Breathe in');
+                else if (p === 'hold') speakWord('Hold');
+                else speakWord('Breathe out');
+                if (mode === 'audio') {
+                    audioIndicator.textContent = '🎧 Eyes closed · Voice guiding';
+                }
+            }
 
-      // Additional: if user wants to start with audio mode they can click.
-      // Also set initial quote already displayed.
-    })();
-  </script>
+            // ── Phase transition ──
+            function nextPhase() {
+                if (phase === 'inhale') { phase = 'hold';
+                    timeLeft = HOLD; } else if (phase === 'hold') { phase = 'exhale';
+                    timeLeft = EXHALE; } else { phase = 'inhale';
+                    timeLeft = INHALE;
+                    round++; }
+                updateUI();
+                if (running) setPhaseAudioCues(phase);
+            }
+
+            function tick() {
+                if (!running) return;
+                timeLeft--;
+                updateUI();
+                if (timeLeft <= 0) nextPhase();
+            }
+
+            // ── Start / Stop ──
+            function start() {
+                if (running) return;
+                initAudio();
+                running = true;
+                startBtn.textContent = '⏸️ Pause';
+                updateUI();
+                setPhaseAudioCues(phase);
+                if (timerId) clearInterval(timerId);
+                timerId = setInterval(tick, 1000);
+            }
+
+            function pause() {
+                if (!running) return;
+                running = false;
+                if (timerId) { clearInterval(timerId);
+                    timerId = null; }
+                startBtn.textContent = '🌿 Resume';
+                if (speechSynth) speechSynth.cancel();
+                audioIndicator.textContent = '';
+            }
+
+            function resetAll() {
+                pause();
+                phase = 'inhale';
+                timeLeft = INHALE;
+                round = 0;
+                updateUI();
+                orbContainer.classList.remove('phase-inhale', 'phase-hold', 'phase-exhale');
+                phaseLabel.textContent = 'READY';
+                timerDisplay.textContent = INHALE;
+                roundCounter.textContent = 'Round 0';
+                startBtn.textContent = '🌿 Begin';
+                audioIndicator.textContent = '';
+            }
+
+            startBtn.addEventListener('click', () => {
+                if (running) pause();
+                else start();
+            });
+
+            // ── Mode switching ──
+            function setVisual() {
+                mode = 'visual';
+                visualBtn.classList.add('active-mode');
+                audioBtn.classList.remove('active-mode');
+                audioIndicator.textContent = '';
+                if (running && speechSynth) speechSynth.cancel();
+                orb.style.opacity = '1';
+                orbRing.style.opacity = '1';
+                phaseLabel.style.opacity = '1';
+            }
+
+            function setAudio() {
+                mode = 'audio';
+                audioBtn.classList.add('active-mode');
+                visualBtn.classList.remove('active-mode');
+                audioIndicator.textContent = '🎧 Close your eyes · Voice + tone guide';
+                if (running) {
+                    if (phase === 'inhale') speakWord('Inhale deeply');
+                    else if (phase === 'hold') speakWord('Hold gently');
+                    else speakWord('Exhale slowly');
+                }
+            }
+
+            visualBtn.addEventListener('click', setVisual);
+            audioBtn.addEventListener('click', setAudio);
+
+            // ── Particles Canvas ──
+            const canvas = document.getElementById('particles');
+            const ctx = canvas.getContext('2d');
+            let particlesArr = [];
+            const PARTICLE_COUNT = 70;
+
+            function resizeCanvas() {
+                canvas.width = window.innerWidth;
+                canvas.height = window.innerHeight;
+            }
+            window.addEventListener('resize', resizeCanvas);
+            resizeCanvas();
+
+            class Particle {
+                constructor() {
+                    this.reset();
+                }
+                reset() {
+                    this.x = Math.random() * canvas.width;
+                    this.y = Math.random() * canvas.height;
+                    this.r = Math.random() * 1.8 + 0.4;
+                    this.speed = Math.random() * 0.35 + 0.12;
+                    this.opacity = Math.random() * 0.55 + 0.2;
+                    this.wobble = Math.random() * Math.PI * 2;
+                }
+                update() {
+                    this.y -= this.speed;
+                    this.wobble += 0.008;
+                    this.x += Math.sin(this.wobble) * 0.25;
+                    if (this.y < -10) { this.y = canvas.height + 10;
+                        this.x = Math.random() * canvas.width; }
+                }
+                draw() {
+                    ctx.beginPath();
+                    ctx.arc(this.x, this.y, this.r, 0, Math.PI * 2);
+                    ctx.fillStyle = `rgba(210,180,130,${this.opacity})`;
+                    ctx.fill();
+                    ctx.beginPath();
+                    ctx.arc(this.x, this.y, this.r * 2.5, 0, Math.PI * 2);
+                    ctx.fillStyle = `rgba(210,180,130,${this.opacity * 0.12})`;
+                    ctx.fill();
+                }
+            }
+
+            for (let i = 0; i < PARTICLE_COUNT; i++) particlesArr.push(new Particle());
+
+            function animateParticles() {
+                ctx.clearRect(0, 0, canvas.width, canvas.height);
+                for (const p of particlesArr) { p.update();
+                    p.draw(); }
+                requestAnimationFrame(animateParticles);
+            }
+            animateParticles();
+
+            // ── Service Worker Registration ──
+            if ('serviceWorker' in navigator) {
+                const swCode = `
+            const CACHE = 'vayu-v2';
+            const URLS = ['/'];
+            self.addEventListener('install', e => {
+              e.waitUntil(caches.open(CACHE).then(c => c.addAll(URLS)).then(() => self.skipWaiting()));
+            });
+            self.addEventListener('activate', e => {
+              e.waitUntil(caches.keys().then(keys => Promise.all(keys.filter(k => k !== CACHE).map(k => caches.delete(k)))).then(() => self.clients.claim()));
+            });
+            self.addEventListener('fetch', e => {
+              e.respondWith(caches.match(e.request).then(r => r || fetch(e.request).then(res => {
+                if(res.ok){ const clone = res.clone(); caches.open(CACHE).then(c => c.put(e.request, clone)); }
+                return res;
+              })));
+            });
+          `;
+                const blob = new Blob([swCode], { type: 'application/javascript' });
+                const swUrl = URL.createObjectURL(blob);
+                navigator.serviceWorker.register(swUrl).catch(() => {});
+            }
+
+            // ── Initial state ──
+            updateUI();
+            phaseLabel.textContent = 'READY';
+            timerDisplay.textContent = INHALE;
+            roundCounter.textContent = 'Round 0';
+            startBtn.textContent = '🌿 Begin';
+            setVisual();
+        })();
+    </script>
 </body>
 </html>
