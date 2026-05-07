@@ -729,13 +729,17 @@ document.addEventListener('touchstart',preloadVoices,{once:true});
                 else{ orbContainer.classList.add('phase-exhale'); phaseLabel.textContent=t('exhale'); }
                 updateProgressRing();
             }
-                        function updateProgressRing(){
+                                    function updateProgressRing(){
                 const circle=document.getElementById('progressCircle');
+                if(!circle) return;
                 const total=phase==='inhale'?INHALE:phase==='hold'?HOLD:EXHALE;
                 const circumference=2*Math.PI*46;
-                const offset=circumference-(timeLeft/total)*circumference;
+                const elapsed=total-timeLeft;
+                const offset=circumference-(elapsed/total)*circumference;
                 circle.style.strokeDasharray=circumference;
                 circle.style.strokeDashoffset=offset;
+                circle.style.transform='rotate(-90deg)';
+                circle.style.transformOrigin='50% 50%';
             }
             function setCues(p){
                 haptic(); chime(p);
